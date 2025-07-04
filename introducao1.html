@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteador de Cenários - Hardware</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+
+        .sort-button {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+
+        .sort-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(52, 152, 219, 0.4);
+        }
+
+        .sort-button:active {
+            transform: translateY(0);
+        }
+
+        .sort-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .scenario-container {
+            display: none;
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            text-align: left;
+            border-left: 5px solid #3498db;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .scenario-container.show {
+            display: block;
+        }
+
+        .scenario-title {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .scenario-description {
+            color: #34495e;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .requirements {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .requirements h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .requirements ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .requirements li {
+            color: #34495e;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .requirements li:before {
+            content: "▶";
+            color: #3498db;
+            position: absolute;
+            left: 0;
+        }
+
+        .question {
+            background: #e8f5e8;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #27ae60;
+            margin-top: 20px;
+        }
+
+        .question h3 {
+            color: #27ae60;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .question p {
+            color: #2c3e50;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .roulette-animation {
+            display: inline-block;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .new-sort-button {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+        }
+
+        .new-sort-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(231, 76, 60, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .sort-button {
+                padding: 12px 30px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clique para sortear seu exercício</h1>
+        <p class="subtitle">Atividade de introdução a informática</p>
+        
+        <button class="sort-button" id="sortButton" onclick="sortScenario()">
+            <span id="buttonText">Sortear Cenário</span>
+        </button>
+
+        <div class="scenario-container" id="scenarioContainer">
+            <div class="scenario-title" id="scenarioTitle"></div>
+            <div class="scenario-description" id="scenarioDescription"></div>
+            <div class="requirements" id="requirements"></div>
+            <div class="question" id="question"></div>
+            
+            <div style="text-align: center;">
+                <button class="new-sort-button" onclick="newSort()">
+                    🔄 Sortear Novo Cenário
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const scenarios = [
+            {
+                title: "Cenário 1: Maria, Designer Gráfico",
+                description: "Maria é uma designer gráfico freelancer que trabalha com softwares pesados de edição, como Adobe Photoshop, Illustrator e After Effects. Ela também precisa renderizar vídeos em alta resolução e frequentemente trabalha com arquivos grandes.",
+                requirements: {
+                    softwares: "Adobe Photoshop, Illustrator, After Effects, Premiere Pro",
+                    tarefas: "Edição de imagens, criação de ilustrações vetoriais, renderização de vídeos",
+                    mobilidade: "Média (precisa trabalhar em casa e em cafés, mas não viaja com frequência)"
+                },
+                question: "Qual computador (notebook ou desktop) você recomendaria para Maria? Especifique as características de hardware necessárias, como processador, memória RAM, placa gráfica e armazenamento. Especifique também o valor a investir, contabilizando o valor dos softwares utilizados."
+            },
+            {
+                title: "Cenário 2: João, Programador e Desenvolvedor de Jogos",
+                description: "João é um programador que trabalha com desenvolvimento de jogos e criação de aplicações complexas. Ele utiliza ferramentas de programação como Visual Studio, Unity, Unreal Engine e bancos de dados robustos. João também testa os jogos que desenvolve em diferentes configurações.",
+                requirements: {
+                    softwares: "Visual Studio, Unity, Unreal Engine, MySQL",
+                    tarefas: "Programação, desenvolvimento e teste de jogos, gerenciamento de bancos de dados",
+                    mobilidade: "Baixa (trabalha principalmente em um escritório fixo)"
+                },
+                question: "Qual computador (notebook ou desktop) você recomendaria para João? Especifique as características de hardware necessárias, como processador, memória RAM, placa gráfica e armazenamento. Especifique também o valor a investir, contabilizando o valor dos softwares utilizados."
+            },
+            {
+                title: "Cenário 3: Ana, Estudante Universitária",
+                description: "Ana é uma estudante de Engenharia Civil que precisa de um computador para assistir a aulas online, fazer anotações, realizar pesquisas na internet e usar softwares de modelagem como AutoCAD e Revit. Ela precisa de um equipamento leve e portátil para levar para as aulas.",
+                requirements: {
+                    softwares: "AutoCAD, Revit, Microsoft Office, navegadores de internet",
+                    tarefas: "Modelagem 3D, anotações, pesquisa online",
+                    mobilidade: "Alta (leva o computador para a universidade todos os dias)"
+                },
+                question: "Qual computador (notebook ou tablet com teclado) você recomendaria para Ana? Especifique as características de hardware necessárias, como processador, memória RAM e armazenamento. Especifique também o valor a investir, contabilizando o valor dos softwares utilizados."
+            },
+            {
+                title: "Cenário 4: Lucas, Editor de Vídeos e Criador de Conteúdo",
+                description: "Lucas é um criador de conteúdo digital que se dedica principalmente à edição de vídeos para seu canal no YouTube. Ele utiliza softwares de edição de vídeo como Adobe Premiere Pro e DaVinci Resolve, além de ferramentas de design gráfico para criar thumbnails e outros materiais visuais. Lucas também realiza livestreams e precisa de um computador capaz de suportar multitarefa sem problemas.",
+                requirements: {
+                    softwares: "Adobe Premiere Pro, DaVinci Resolve, OBS Studio, Adobe Photoshop",
+                    tarefas: "Edição de vídeos em 4K, criação de thumbnails, livestreaming",
+                    mobilidade: "Baixa (trabalha principalmente em um estúdio fixo)"
+                },
+                question: "Qual computador (notebook ou desktop) você recomendaria para Lucas? Especifique as características de hardware necessárias, como processador, memória RAM, placa gráfica, armazenamento e conectividade. Especifique também o valor a investir, contabilizando o valor dos softwares utilizados."
+            },
+            {
+                title: "Cenário 5: Carla, Executiva de Negócios",
+                description: "Carla é uma executiva que precisa de um computador para gerenciar suas atividades diárias, como conferências online, criação de relatórios, análise de dados e apresentações. Ela utiliza pacotes de software corporativos e precisa de um equipamento que ofereça segurança, confiabilidade e mobilidade para viagens de negócios frequentes.",
+                requirements: {
+                    softwares: "Microsoft Office, Zoom, ferramentas de CRM, plataformas de análise de dados",
+                    tarefas: "Conferências online, criação de relatórios e apresentações, análise de dados",
+                    mobilidade: "Alta (viagens frequentes, trabalha em diferentes locais)"
+                },
+                question: "Qual computador (notebook ou ultrabook) você recomendaria para Carla? Especifique as características de hardware e recursos adicionais, como segurança e duração da bateria. Especifique também o valor a investir, contabilizando o valor dos softwares utilizados."
+            },
+            {
+                title: "Cenário 6: Pedro, Cientista de Dados",
+                description: "Pedro é um cientista de dados que trabalha com grandes volumes de dados e utiliza ferramentas avançadas de análise e modelagem, como Python, R, e MATLAB. Ele realiza simulações, análise estatística e machine learning, e precisa de um computador capaz de processar grandes quantidades de dados de forma eficiente.",
+                requirements: {
+                    softwares: "Python, R, MATLAB, Jupyter Notebook, Hadoop",
+                    tarefas: "Análise de dados, simulações, modelagem estatística, machine learning",
+                    mobilidade: "Baixa (trabalha em um laboratório de pesquisa)"
+                },
+                question: "Qual computador (notebook ou workstation) você recomendaria para Pedro? Especifique as características de hardware necessárias, como processador, memória RAM, armazenamento, e se é necessário suporte para computação em nuvem. Especifique também o valor a investir, contabilizando o valor dos softwares utilizados."
+            }
+        ];
+
+        let currentScenario = null;
+
+        function sortScenario() {
+            const button = document.getElementById('sortButton');
+            const buttonText = document.getElementById('buttonText');
+            
+            // Animação do botão
+            button.disabled = true;
+            buttonText.innerHTML = '<span class="roulette-animation">🎲</span> Sorteando...';
+            
+            setTimeout(() => {
+                // Sorteia um cenário aleatório
+                const randomIndex = Math.floor(Math.random() * scenarios.length);
+                currentScenario = scenarios[randomIndex];
+                
+                // Exibe o cenário
+                displayScenario(currentScenario);
+                
+                // Restaura o botão
+                button.disabled = false;
+                buttonText.textContent = 'Sortear Cenário';
+                
+                // Esconde o botão principal e mostra o container do cenário
+                button.style.display = 'none';
+                document.getElementById('scenarioContainer').classList.add('show');
+            }, 2000);
+        }
+
+        function displayScenario(scenario) {
+            document.getElementById('scenarioTitle').textContent = scenario.title;
+            document.getElementById('scenarioDescription').textContent = scenario.description;
+            
+            const requirementsDiv = document.getElementById('requirements');
+            requirementsDiv.innerHTML = `
+                <h3>Requisitos:</h3>
+                <ul>
+                    <li><strong>Softwares:</strong> ${scenario.requirements.softwares}</li>
+                    <li><strong>Tarefas:</strong> ${scenario.requirements.tarefas}</li>
+                    <li><strong>Mobilidade:</strong> ${scenario.requirements.mobilidade}</li>
+                </ul>
+            `;
+            
+            const questionDiv = document.getElementById('question');
+            questionDiv.innerHTML = `
+                <h3>Pergunta:</h3>
+                <p>${scenario.question}</p>
+            `;
+        }
+
+        function newSort() {
+            // Esconde o container do cenário
+            document.getElementById('scenarioContainer').classList.remove('show');
+            
+            // Mostra o botão principal novamente
+            setTimeout(() => {
+                document.getElementById('sortButton').style.display = 'inline-block';
+            }, 300);
+        }
+    </script>
+</body>
+</html>
