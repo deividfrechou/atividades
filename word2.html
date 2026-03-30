@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercício Word – Bolo de Cenoura</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f0f4f8;
+    --accent: #2d6a4f;
+    --accent2: #1b4332;
+    --card: #ffffff;
+    --border: #b7d5c4;
+    --text: #1a1a2e;
+    --muted: #4a6571;
+    --tag-bg: #e8f5e9;
+    --tag-border: #a5d6a7;
+    --shadow: rgba(30,80,60,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Lora', Georgia, serif;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 36px 16px 64px;
+  }
+
+  .page-header {
+    max-width: 720px;
+    margin: 0 auto 32px;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--accent2);
+    letter-spacing: 0.03em;
+    margin-bottom: 6px;
+  }
+
+  .page-header p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── TOP ROW ── */
+  .top-row {
+    max-width: 720px;
+    margin: 0 auto 36px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  @media (max-width: 580px) {
+    .top-row { grid-template-columns: 1fr; }
+  }
+
+  /* ── PREVIEW ── */
+  .preview-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 14px 10px;
+    box-shadow: 0 2px 12px var(--shadow);
+    text-align: center;
+  }
+
+  .card-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+
+  .preview-thumb {
+    display: block;
+    cursor: zoom-in;
+    position: relative;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .preview-thumb:hover { transform: scale(1.03); box-shadow: 0 6px 20px var(--shadow); }
+  .preview-thumb img { display: block; width: 100%; height: auto; }
+
+  .preview-thumb::after {
+    content: "🔍 ampliar";
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(27,67,50,0.72);
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 5px 0;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .preview-thumb:hover::after { opacity: 1; }
+
+  .preview-card .hint {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 8px;
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,20,15,0.85);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+    padding: 24px;
+  }
+  .lightbox.open { display: flex; animation: fadeIn 0.2s ease; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 88vh;
+    border: 3px solid var(--border);
+    border-radius: 4px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 16px; right: 20px;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    background: none; border: none;
+    opacity: 0.8;
+    transition: opacity 0.15s;
+  }
+  .lightbox-close:hover { opacity: 1; }
+
+  /* ── INSTRUCTIONS ── */
+  .instructions-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px 18px;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+
+  .instructions-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--accent2);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.86rem;
+    line-height: 1.5;
+  }
+
+  .check-box {
+    width: 18px; height: 18px; min-width: 18px;
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    margin-top: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+    user-select: none;
+  }
+
+  .check-box.checked { background: var(--accent); border-color: var(--accent); }
+  .check-box.checked::after { content: '✓'; color: #fff; font-size: 0.75rem; font-weight: bold; }
+
+  .task-text { flex: 1; }
+  .task-text strong { color: var(--accent2); }
+
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    color: var(--accent2);
+    font-size: 0.68rem;
+    border-radius: 20px;
+    padding: 1px 7px;
+    margin-left: 4px;
+    white-space: nowrap;
+  }
+
+  .progress-bar-wrap {
+    margin-top: 14px;
+    background: #ddeee6;
+    border-radius: 20px;
+    height: 7px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #52b788);
+    border-radius: 20px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  .progress-label {
+    font-size: 0.74rem;
+    color: var(--muted);
+    margin-top: 5px;
+    text-align: right;
+  }
+
+  /* ── TEXT DOCUMENT ── */
+  .doc-wrapper { max-width: 720px; margin: 0 auto; }
+
+  .doc-header-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .doc-header-label .label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    color: var(--accent2);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    white-space: nowrap;
+  }
+
+  .doc-header-label .line { flex: 1; height: 1px; background: var(--border); }
+
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 7px 15px;
+    font-family: 'Lora', serif;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .copy-btn:hover { background: var(--accent2); }
+
+  .doc {
+    background: var(--card);
+    border: 1.5px solid #cdd9e0;
+    border-radius: 6px;
+    padding: 44px 50px 50px;
+    box-shadow: 0 4px 24px var(--shadow);
+  }
+
+  .plain-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #111;
+    white-space: pre-wrap;
+    word-break: break-word;
+    /* intentionally NO formatting — students will apply their own */
+  }
+
+  @media (max-width: 560px) {
+    .doc { padding: 26px 16px 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Exercício de Formatação — Microsoft Word</h1>
+  <p>Copie o texto abaixo para o Word e aplique todas as formatações indicadas</p>
+</div>
+
+<div class="top-row">
+
+  <!-- Preview -->
+  <div class="preview-card">
+    <span class="card-label">Exemplo</span>
+    <div class="preview-thumb" onclick="openLightbox()">
+      <img src="/mnt/user-data/uploads/word2.png" alt="Exemplo do exercício">
+    </div>
+    <p class="hint">clique para ampliar</p>
+  </div>
+
+  <!-- Checklist -->
+  <div class="instructions-card">
+    <h2>📋 O que você deve fazer no Word</h2>
+    <ul class="checklist" id="checklist">
+      <li>
+        <div class="check-box" onclick="toggle(this)"></div>
+        <span class="task-text">
+          <strong>Tipo de papel:</strong> Carta
+          <span class="tag">Layout › Tamanho › Carta</span>
+        </span>
+      </li>
+      <li>
+        <div class="check-box" onclick="toggle(this)"></div>
+        <span class="task-text">
+          <strong>Margens</strong> de 2,3 cm em todos os lados
+          <span class="tag">Layout › Margens › Personalizadas</span>
+        </span>
+      </li>
+      <li>
+        <div class="check-box" onclick="toggle(this)"></div>
+        <span class="task-text">
+          <strong>Título centralizado</strong>
+          <span class="tag">Início › Parágrafo › Centralizar</span>
+        </span>
+      </li>
+      <li>
+        <div class="check-box" onclick="toggle(this)"></div>
+        <span class="task-text">
+          <strong>Cor de fundo de página</strong> (à sua escolha)
+          <span class="tag">Design › Cor da Página</span>
+        </span>
+      </li>
+      <li>
+        <div class="check-box" onclick="toggle(this)"></div>
+        <span class="task-text">
+          <strong>Borda de página</strong> (à sua escolha)
+          <span class="tag">Design › Bordas de Página</span>
+        </span>
+      </li>
+      <li>
+        <div class="check-box" onclick="toggle(this)"></div>
+        <span class="task-text">
+          <strong>Formatação de fonte</strong>: tipo de letra e cor (à sua escolha)
+          <span class="tag">Início › Fonte</span>
+        </span>
+      </li>
+      <li>
+        <div class="check-box" onclick="toggle(this)"></div>
+        <span class="task-text">
+          <strong>Inserir uma imagem</strong> relacionada ao tema
+          <span class="tag">Inserir › Imagens</span>
+        </span>
+      </li>
+      <li>
+        <div class="check-box" onclick="toggle(this)"></div>
+        <span class="task-text">
+          Nos parágrafos do modo de preparo: recuo de <strong>1,5 cm</strong> na 1ª linha + <strong>alinhamento justificado</strong>
+          <span class="tag">Início › Parágrafo</span>
+        </span>
+      </li>
+    </ul>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <p class="progress-label" id="progressLabel">0 de 8 concluídos</p>
+  </div>
+
+</div>
+
+<!-- Plain text block -->
+<div class="doc-wrapper">
+  <div class="doc-header-label">
+    <span class="label">📄 Texto para copiar no Word</span>
+    <div class="line"></div>
+    <button class="copy-btn" onclick="copyText()">📋 Copiar texto</button>
+  </div>
+
+  <div class="doc">
+    <div class="plain-text" id="plainText">Bolo de Cenoura
+Cobertura de Chocolate
+
+Ingredientes
+Massa:
+3 cenouras médias picadas
+3 ovos
+1 xícara de óleo
+2 xícaras de açúcar
+2 e 1/2 xícaras de farinha de trigo
+1 colher (sopa) de fermento em pó
+
+Cobertura:
+1 colher (sopa) de manteiga
+3 colheres (sopa) de chocolate em pó
+1 xícara de açúcar
+5 colheres (sopa) de leite
+
+Modo de preparo:
+No liquidificador, bata as cenouras, os ovos e o óleo até obter uma mistura homogênea. Em seguida, despeje em uma tigela e misture o açúcar e a farinha de trigo aos poucos. Mexa bem até formar uma massa lisa e uniforme. Acrescente o fermento por último, misturando delicadamente. Leve ao forno preaquecido a 180 °C por cerca de 40 minutos ou até dourar.
+
+Modo de preparo da cobertura
+Em uma panela, adicione a manteiga, o chocolate em pó, o açúcar e o leite e misture bem antes de levar ao fogo. Cozinhe em fogo médio, mexendo sempre para não grudar no fundo da panela. Quando começar a ferver, continue mexendo até engrossar levemente e formar uma calda cremosa. Desligue o fogo e deixe descansar por alguns instantes para ganhar mais consistência. Despeje a cobertura ainda quente sobre o bolo já assado, espalhando bem por toda a superfície.</div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img src="/mnt/user-data/uploads/word2.png" alt="Exemplo ampliado">
+</div>
+
+<script>
+  function openLightbox() {
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  function toggle(box) {
+    box.classList.toggle('checked');
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const total = document.querySelectorAll('.check-box').length;
+    const done  = document.querySelectorAll('.check-box.checked').length;
+    const pct   = Math.round((done / total) * 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = done + ' de ' + total + ' concluídos';
+  }
+
+  function copyText() {
+    const text = document.getElementById('plainText').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = '✅ Copiado!';
+      setTimeout(() => { btn.textContent = '📋 Copiar texto'; }, 2000);
+    });
+  }
+</script>
+</body>
+</html>
