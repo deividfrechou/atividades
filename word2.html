@@ -1,400 +1,242 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Exercício Word – Bolo de Cenoura</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #f0f4f8;
-    --accent: #2d6a4f;
-    --accent2: #1b4332;
-    --card: #ffffff;
-    --border: #b7d5c4;
-    --text: #1a1a2e;
-    --muted: #4a6571;
-    --tag-bg: #e8f5e9;
-    --tag-border: #a5d6a7;
-    --shadow: rgba(30,80,60,0.10);
-  }
+  <meta charset="UTF-8">
+  <title>Exercício Word – Bolo de Cenoura</title>
+  <style>
+    /* === GERAL === */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 30px;
+      color: #222;
+    }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+    h1 {
+      text-align: center;
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+    }
 
-  body {
-    background: var(--bg);
-    font-family: 'Lora', Georgia, serif;
-    color: var(--text);
-    min-height: 100vh;
-    padding: 36px 16px 64px;
-  }
+    .subtitulo {
+      text-align: center;
+      color: #555;
+      font-size: 0.9rem;
+      margin-bottom: 30px;
+    }
 
-  .page-header {
-    max-width: 720px;
-    margin: 0 auto 32px;
-    text-align: center;
-  }
+    /* === LINHA COM EXEMPLO + INSTRUÇÕES === */
+    .topo {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 36px;
+    }
 
-  .page-header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: var(--accent2);
-    letter-spacing: 0.03em;
-    margin-bottom: 6px;
-  }
+    /* === IMAGEM DE EXEMPLO === */
+    .exemplo img {
+      width: 160px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      display: block;
+    }
 
-  .page-header p {
-    font-size: 0.88rem;
-    color: var(--muted);
-    font-style: italic;
-  }
+    .exemplo p {
+      font-size: 0.75rem;
+      color: #777;
+      text-align: center;
+      margin-top: 4px;
+    }
 
-  /* ── TOP ROW ── */
-  .top-row {
-    max-width: 720px;
-    margin: 0 auto 36px;
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 24px;
-    align-items: start;
-  }
+    /* === MODAL (imagem ampliada) === */
+    #modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      cursor: pointer;
+    }
 
-  @media (max-width: 580px) {
-    .top-row { grid-template-columns: 1fr; }
-  }
+    #modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 3px solid #fff;
+    }
 
-  /* ── PREVIEW ── */
-  .preview-card {
-    background: var(--card);
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    padding: 14px 14px 10px;
-    box-shadow: 0 2px 12px var(--shadow);
-    text-align: center;
-  }
+    /* === INSTRUÇÕES === */
+    .instrucoes {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 16px 20px;
+      flex: 1;
+    }
 
-  .card-label {
-    display: inline-block;
-    background: var(--accent);
-    color: #fff;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 3px 12px;
-    border-radius: 20px;
-    margin-bottom: 10px;
-  }
+    .instrucoes h2 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
 
-  .preview-thumb {
-    display: block;
-    cursor: zoom-in;
-    position: relative;
-    border: 1.5px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+    .instrucoes ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-  .preview-thumb:hover { transform: scale(1.03); box-shadow: 0 6px 20px var(--shadow); }
-  .preview-thumb img { display: block; width: 100%; height: auto; }
+    .instrucoes li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
 
-  .preview-thumb::after {
-    content: "🔍 ampliar";
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: rgba(27,67,50,0.72);
-    color: #fff;
-    font-size: 0.7rem;
-    padding: 5px 0;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-  .preview-thumb:hover::after { opacity: 1; }
+    .instrucoes input[type="checkbox"] {
+      margin-top: 3px;
+      cursor: pointer;
+    }
 
-  .preview-card .hint {
-    font-size: 0.72rem;
-    color: var(--muted);
-    font-style: italic;
-    margin-top: 8px;
-  }
+    .caminho {
+      font-size: 0.75rem;
+      color: #888;
+      display: block;
+    }
 
-  /* ── LIGHTBOX ── */
-  .lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(10,20,15,0.85);
-    z-index: 999;
-    align-items: center;
-    justify-content: center;
-    cursor: zoom-out;
-    padding: 24px;
-  }
-  .lightbox.open { display: flex; animation: fadeIn 0.2s ease; }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    /* === TEXTO DO EXERCÍCIO === */
+    .texto-bloco {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 30px 40px;
+    }
 
-  .lightbox img {
-    max-width: 90vw;
-    max-height: 88vh;
-    border: 3px solid var(--border);
-    border-radius: 4px;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
-  }
+    .texto-bloco-topo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
 
-  .lightbox-close {
-    position: absolute;
-    top: 16px; right: 20px;
-    color: #fff;
-    font-size: 2rem;
-    cursor: pointer;
-    background: none; border: none;
-    opacity: 0.8;
-    transition: opacity 0.15s;
-  }
-  .lightbox-close:hover { opacity: 1; }
+    .texto-bloco-topo span {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #444;
+    }
 
-  /* ── INSTRUCTIONS ── */
-  .instructions-card {
-    background: var(--card);
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    padding: 20px 22px 18px;
-    box-shadow: 0 2px 12px var(--shadow);
-  }
+    button {
+      background: #2d6a4f;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
 
-  .instructions-card h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    color: var(--accent2);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+    button:hover {
+      background: #1b4332;
+    }
 
-  .checklist { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-
-  .checklist li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 0.86rem;
-    line-height: 1.5;
-  }
-
-  .check-box {
-    width: 18px; height: 18px; min-width: 18px;
-    border: 2px solid var(--accent);
-    border-radius: 4px;
-    margin-top: 1px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.15s;
-    user-select: none;
-  }
-
-  .check-box.checked { background: var(--accent); border-color: var(--accent); }
-  .check-box.checked::after { content: '✓'; color: #fff; font-size: 0.75rem; font-weight: bold; }
-
-  .task-text { flex: 1; }
-  .task-text strong { color: var(--accent2); }
-
-  .tag {
-    display: inline-block;
-    background: var(--tag-bg);
-    border: 1px solid var(--tag-border);
-    color: var(--accent2);
-    font-size: 0.68rem;
-    border-radius: 20px;
-    padding: 1px 7px;
-    margin-left: 4px;
-    white-space: nowrap;
-  }
-
-  .progress-bar-wrap {
-    margin-top: 14px;
-    background: #ddeee6;
-    border-radius: 20px;
-    height: 7px;
-    overflow: hidden;
-  }
-
-  .progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), #52b788);
-    border-radius: 20px;
-    transition: width 0.4s ease;
-    width: 0%;
-  }
-
-  .progress-label {
-    font-size: 0.74rem;
-    color: var(--muted);
-    margin-top: 5px;
-    text-align: right;
-  }
-
-  /* ── TEXT DOCUMENT ── */
-  .doc-wrapper { max-width: 720px; margin: 0 auto; }
-
-  .doc-header-label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
-
-  .doc-header-label .label {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.85rem;
-    color: var(--accent2);
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    white-space: nowrap;
-  }
-
-  .doc-header-label .line { flex: 1; height: 1px; background: var(--border); }
-
-  .copy-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 7px 15px;
-    font-family: 'Lora', serif;
-    font-size: 0.78rem;
-    cursor: pointer;
-    transition: background 0.15s;
-    white-space: nowrap;
-  }
-  .copy-btn:hover { background: var(--accent2); }
-
-  .doc {
-    background: var(--card);
-    border: 1.5px solid #cdd9e0;
-    border-radius: 6px;
-    padding: 44px 50px 50px;
-    box-shadow: 0 4px 24px var(--shadow);
-  }
-
-  .plain-text {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 1rem;
-    line-height: 1.65;
-    color: #111;
-    white-space: pre-wrap;
-    word-break: break-word;
-    /* intentionally NO formatting — students will apply their own */
-  }
-
-  @media (max-width: 560px) {
-    .doc { padding: 26px 16px 30px; }
-  }
-</style>
+    /* Texto sem formatação, como seria digitado puro no Word */
+    #texto {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+  </style>
 </head>
 <body>
 
-<div class="page-header">
   <h1>Exercício de Formatação — Microsoft Word</h1>
-  <p>Copie o texto abaixo para o Word e aplique todas as formatações indicadas</p>
-</div>
+  <p class="subtitulo">Copie o texto para o Word e aplique as formatações indicadas abaixo</p>
 
-<div class="top-row">
+  <!-- TOPO: imagem de exemplo + checklist de tarefas -->
+  <div class="topo">
 
-  <!-- Preview -->
-  <div class="preview-card">
-    <span class="card-label">Exemplo</span>
-    <div class="preview-thumb" onclick="openLightbox()">
-      <img src="word2.png" alt="Exemplo do exercício">
+    <!-- Imagem pequena clicável -->
+    <div class="exemplo">
+      <img src="word2-modelo.png" alt="Modelo do exercício" onclick="abrirModal()">
+      <p>clique para ampliar</p>
     </div>
-    <p class="hint">clique para ampliar</p>
-  </div>
 
-  <!-- Checklist -->
-  <div class="instructions-card">
-    <h2>📋 O que você deve fazer no Word</h2>
-    <ul class="checklist" id="checklist">
-      <li>
-        <div class="check-box" onclick="toggle(this)"></div>
-        <span class="task-text">
-          <strong>Tipo de papel:</strong> Carta
-          <span class="tag">Layout › Tamanho › Carta</span>
-        </span>
-      </li>
-      <li>
-        <div class="check-box" onclick="toggle(this)"></div>
-        <span class="task-text">
-          <strong>Margens</strong> de 2,3 cm em todos os lados
-          <span class="tag">Layout › Margens › Personalizadas</span>
-        </span>
-      </li>
-      <li>
-        <div class="check-box" onclick="toggle(this)"></div>
-        <span class="task-text">
-          <strong>Título centralizado</strong>
-          <span class="tag">Início › Parágrafo › Centralizar</span>
-        </span>
-      </li>
-      <li>
-        <div class="check-box" onclick="toggle(this)"></div>
-        <span class="task-text">
-          <strong>Cor de fundo de página</strong> (à sua escolha)
-          <span class="tag">Design › Cor da Página</span>
-        </span>
-      </li>
-      <li>
-        <div class="check-box" onclick="toggle(this)"></div>
-        <span class="task-text">
-          <strong>Borda de página</strong> (à sua escolha)
-          <span class="tag">Design › Bordas de Página</span>
-        </span>
-      </li>
-      <li>
-        <div class="check-box" onclick="toggle(this)"></div>
-        <span class="task-text">
-          <strong>Formatação de fonte</strong>: tipo de letra e cor (à sua escolha)
-          <span class="tag">Início › Fonte</span>
-        </span>
-      </li>
-      <li>
-        <div class="check-box" onclick="toggle(this)"></div>
-        <span class="task-text">
-          <strong>Inserir uma imagem</strong> relacionada ao tema
-          <span class="tag">Inserir › Imagens</span>
-        </span>
-      </li>
-      <li>
-        <div class="check-box" onclick="toggle(this)"></div>
-        <span class="task-text">
-          Nos parágrafos do modo de preparo: recuo de <strong>1,5 cm</strong> na 1ª linha + <strong>alinhamento justificado</strong>
-          <span class="tag">Início › Parágrafo</span>
-        </span>
-      </li>
-    </ul>
-    <div class="progress-bar-wrap">
-      <div class="progress-bar" id="progressBar"></div>
+    <!-- Lista de tarefas -->
+    <div class="instrucoes">
+      <h2>📋 O que fazer no Word:</h2>
+      <ul>
+        <li>
+          <input type="checkbox">
+          <span>
+            <strong>Tipo de papel:</strong> Carta
+            <span class="caminho">Layout › Tamanho › Carta</span>
+          </span>
+        </li>
+        <li>
+          <input type="checkbox">
+          <span>
+            <strong>Margens</strong> de 2,3 cm em todos os lados
+            <span class="caminho">Layout › Margens › Personalizadas</span>
+          </span>
+        </li>
+        <li>
+          <input type="checkbox">
+          <span>
+            <strong>Título centralizado</strong>
+            <span class="caminho">Início › Parágrafo › Centralizar</span>
+          </span>
+        </li>
+        <li>
+          <input type="checkbox">
+          <span>
+            <strong>Cor de fundo de página</strong> (à sua escolha)
+            <span class="caminho">Design › Cor da Página</span>
+          </span>
+        </li>
+        <li>
+          <input type="checkbox">
+          <span>
+            <strong>Borda de página</strong> (à sua escolha)
+            <span class="caminho">Design › Bordas de Página</span>
+          </span>
+        </li>
+        <li>
+          <input type="checkbox">
+          <span>
+            <strong>Fonte</strong>: escolha o tipo de letra e a cor
+            <span class="caminho">Início › Fonte</span>
+          </span>
+        </li>
+        <li>
+          <input type="checkbox">
+          <span>
+            <strong>Inserir uma imagem</strong> relacionada ao tema
+            <span class="caminho">Inserir › Imagens</span>
+          </span>
+        </li>
+        <li>
+          <input type="checkbox">
+          <span>
+            Parágrafos do modo de preparo: recuo de <strong>1,5 cm</strong> na 1ª linha + <strong>alinhamento justificado</strong>
+            <span class="caminho">Início › Parágrafo</span>
+          </span>
+        </li>
+      </ul>
     </div>
-    <p class="progress-label" id="progressLabel">0 de 8 concluídos</p>
+
   </div>
 
-</div>
+  <!-- TEXTO PARA COPIAR -->
+  <div class="texto-bloco">
+    <div class="texto-bloco-topo">
+      <span>📄 Texto para copiar no Word:</span>
+      <button onclick="copiarTexto()">📋 Copiar texto</button>
+    </div>
 
-<!-- Plain text block -->
-<div class="doc-wrapper">
-  <div class="doc-header-label">
-    <span class="label">📄 Texto para copiar no Word</span>
-    <div class="line"></div>
-    <button class="copy-btn" onclick="copyText()">📋 Copiar texto</button>
-  </div>
-
-  <div class="doc">
-    <div class="plain-text" id="plainText">Bolo de Cenoura
+    <div id="texto">Bolo de Cenoura
 Cobertura de Chocolate
 
 Ingredientes
@@ -418,46 +260,38 @@ No liquidificador, bata as cenouras, os ovos e o óleo até obter uma mistura ho
 Modo de preparo da cobertura
 Em uma panela, adicione a manteiga, o chocolate em pó, o açúcar e o leite e misture bem antes de levar ao fogo. Cozinhe em fogo médio, mexendo sempre para não grudar no fundo da panela. Quando começar a ferver, continue mexendo até engrossar levemente e formar uma calda cremosa. Desligue o fogo e deixe descansar por alguns instantes para ganhar mais consistência. Despeje a cobertura ainda quente sobre o bolo já assado, espalhando bem por toda a superfície.</div>
   </div>
-</div>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-  <img src="word2.png" alt="Exemplo ampliado">
-</div>
+  <!-- MODAL: imagem ampliada ao clicar -->
+  <div id="modal" onclick="fecharModal()">
+    <img src="word2-modelo.png" alt="Modelo ampliado">
+  </div>
 
-<script>
-  function openLightbox() {
-    document.getElementById('lightbox').classList.add('open');
-  }
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-  }
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeLightbox();
-  });
+  <script>
+    // Abre o modal com a imagem ampliada
+    function abrirModal() {
+      document.getElementById('modal').style.display = 'flex';
+    }
 
-  function toggle(box) {
-    box.classList.toggle('checked');
-    updateProgress();
-  }
+    // Fecha o modal ao clicar fora da imagem
+    function fecharModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
 
-  function updateProgress() {
-    const total = document.querySelectorAll('.check-box').length;
-    const done  = document.querySelectorAll('.check-box.checked').length;
-    const pct   = Math.round((done / total) * 100);
-    document.getElementById('progressBar').style.width = pct + '%';
-    document.getElementById('progressLabel').textContent = done + ' de ' + total + ' concluídos';
-  }
-
-  function copyText() {
-    const text = document.getElementById('plainText').innerText;
-    navigator.clipboard.writeText(text).then(() => {
-      const btn = document.querySelector('.copy-btn');
-      btn.textContent = '✅ Copiado!';
-      setTimeout(() => { btn.textContent = '📋 Copiar texto'; }, 2000);
+    // Fecha o modal com a tecla Esc
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') fecharModal();
     });
-  }
-</script>
+
+    // Copia o texto para a área de transferência
+    function copiarTexto() {
+      var texto = document.getElementById('texto').innerText;
+      navigator.clipboard.writeText(texto).then(function() {
+        var btn = document.querySelector('button');
+        btn.textContent = '✅ Copiado!';
+        setTimeout(function() { btn.textContent = '📋 Copiar texto'; }, 2000);
+      });
+    }
+  </script>
+
 </body>
 </html>
