@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividade - TechStore</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #020617; /* cor sólida evita bugs em mobile */
+      color: #e2e8f0;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      user-select: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin: 15px;
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 10px;
+        padding: 15px;
+        border-radius: 10px;
+      }
+
+      table {
+        font-size: 12px;
+      }
+
+      th, td {
+        padding: 6px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 5px;
+      }
+
+      .container {
+        padding: 15px;
+        border-radius: 8px;
+      }
+    }
+
+    h1, h2 {
+      color: #38bdf8;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #475569;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #334155;
+    }
+
+    .section {
+      margin-top: 25px;
+    }
+
+    .highlight {
+      color: #22c55e;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body oncontextmenu="return false"> <!-- bloqueia clique direito -->
+
+<div class="container">
+  <h1>📊 Atividade: Controle de Vendas - TechStore</h1>
+
+  <div class="section">
+    <h2>Parte 1: Criando a Tabela</h2>
+    <p>No Word, crie uma tabela com <strong>6 colunas e 6 linhas</strong>.</p>
+    <p><strong>Título:</strong> Controle de Vendas Semanais - TechStore</p>
+
+    <table>
+      <tr>
+        <th>Produto</th>
+        <th>Segunda</th>
+        <th>Terça</th>
+        <th>Quarta</th>
+        <th>Quinta</th>
+        <th>Sexta</th>
+      </tr>
+      <tr><td>Mouse Gamer</td><td>12</td><td>15</td><td>10</td><td>18</td><td>20</td></tr>
+      <tr><td>Teclado</td><td>8</td><td>10</td><td>12</td><td>9</td><td>11</td></tr>
+      <tr><td>Headset</td><td>5</td><td>7</td><td>6</td><td>8</td><td>10</td></tr>
+      <tr><td>Monitor</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+      <tr><td>Cadeira Gamer</td><td>2</td><td>3</td><td>2</td><td>4</td><td>5</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Parte 2: Criando o Gráfico</h2>
+    <p>Utilize os dados da tabela para criar um gráfico no Word (colunas ou barras).</p>
+  </div>
+
+  <div class="section">
+    <h2>Parte 3: Análise</h2>
+    <p>Responda no Word:</p>
+    <ol>
+      <li>Qual foi o produto mais vendido na semana?</li>
+      <li>Qual dia teve mais vendas no geral?</li>
+      <li>Se você fosse o gerente, em qual produto investiria mais? Por quê?</li>
+      <li>O que você faria para melhorar as vendas dos produtos menos vendidos?</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+// bloqueia copiar
+  document.addEventListener('copy', function(e) {
+    e.preventDefault();
+  });
+
+// bloqueia colar
+  document.addEventListener('paste', function(e) {
+    e.preventDefault();
+  });
+
+// bloqueia teclado Ctrl+C, Ctrl+V
+  document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'v')) {
+      e.preventDefault();
+    }
+  });
+</script>
+
+</body>
+</html>
