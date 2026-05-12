@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercício Word - Relatório Hospitalar</title>
+
+<style>
+
+    body{
+        font-family: Arial, sans-serif;
+        background: #eef2f7;
+        margin: 0;
+        padding: 30px;
+        user-select: none;
+    }
+
+    .container{
+        max-width: 950px;
+        margin: auto;
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h1{
+        text-align: center;
+        color: #0f4c81;
+        margin-bottom: 25px;
+        font-size: 34px;
+    }
+
+    h2{
+        color: #0f4c81;
+        margin-top: 35px;
+    }
+
+    p{
+        text-align: justify;
+        line-height: 1.8;
+        font-size: 18px;
+        color: #333;
+    }
+
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    th, td{
+        border: 1px solid #999;
+        padding: 12px;
+        text-align: center;
+    }
+
+    th{
+        background-color: #0f4c81;
+        color: white;
+    }
+
+    tr:nth-child(even){
+        background-color: #f3f3f3;
+    }
+
+    .atividade{
+        background: #eaf4ff;
+        padding: 20px;
+        border-left: 6px solid #0f4c81;
+        margin-top: 25px;
+        font-size: 17px;
+    }
+
+    .configuracoes{
+        background: #fff8e6;
+        padding: 20px;
+        border-left: 6px solid #d89b00;
+        margin-top: 25px;
+    }
+
+    ul{
+        line-height: 1.8;
+        font-size: 17px;
+    }
+
+</style>
+</head>
+
+<body oncontextmenu="return false;">
+
+<div class="container">
+
+    <h1>RELATÓRIO DE ATENDIMENTO</h1>
+
+    <p>
+        O Hospital Vida Plena realizou um levantamento mensal para analisar o fluxo de atendimentos em diferentes setores da unidade. O acompanhamento desses dados é fundamental para compreender a demanda, organizar equipes e garantir um atendimento mais eficiente aos pacientes.
+    </p>
+
+    <p>
+        A utilização de tabelas e gráficos facilita a interpretação das informações e auxilia gestores na tomada de decisões estratégicas. Relatórios hospitalares são ferramentas importantes para melhorar processos internos, reduzir filas de espera e otimizar os recursos disponíveis.
+    </p>
+
+    <h2>Tabela de Atendimentos</h2>
+
+    <table>
+
+        <tr>
+            <th>Setor</th>
+            <th>Pacientes Atendidos</th>
+            <th>Tempo Médio (min)</th>
+            <th>Satisfação (%)</th>
+        </tr>
+
+        <tr>
+            <td>Emergência</td>
+            <td>320</td>
+            <td>45</td>
+            <td>88</td>
+        </tr>
+
+        <tr>
+            <td>Pediatria</td>
+            <td>210</td>
+            <td>30</td>
+            <td>94</td>
+        </tr>
+
+        <tr>
+            <td>Clínica Geral</td>
+            <td>280</td>
+            <td>35</td>
+            <td>91</td>
+        </tr>
+
+        <tr>
+            <td>Ortopedia</td>
+            <td>190</td>
+            <td>40</td>
+            <td>89</td>
+        </tr>
+
+    </table>
+
+    <div class="atividade">
+
+        <strong>ATIVIDADE:</strong><br><br>
+
+        • Inserir um gráfico de pacientes atendidos.<br>
+        • Inserir um gráfico de satisfação de atendimento.<br>
+        • Inserir uma imagem relacionada à área hospitalar.<br>
+        • Centralizar o título principal.<br>
+        • Aplicar bordas e sombreamento na tabela.<br>
+        • Alterar a cor do título para azul escuro.<br>
+        • Justificar os parágrafos do texto.<br>
+        • Aplicar espaçamento entre linhas de 1,5.<br>
+        • Destacar os títulos usando negrito.<br>
+        • Inserir rodapé com o nome do aluno.<br>
+        • Inserir número de página.<br>
+        • Salvar o arquivo com o nome:
+        <strong>Relatorio_Hospitalar.docx</strong>
+
+    </div>
+
+    <div class="configuracoes">
+
+        <h2>CONFIGURAÇÕES DO DOCUMENTO</h2>
+
+        <ul>
+            <li>Fonte: Arial</li>
+            <li>Tamanho do texto: 12</li>
+            <li>Título: tamanho 20 e negrito</li>
+            <li>Margens: Normal</li>
+            <li>Espaçamento entre linhas: 1,5</li>
+            <li>Alinhamento do texto: Justificado</li>
+            <li>Tabela centralizada</li>
+            <li>Utilizar cores suaves e profissionais</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<script>
+
+// Bloquear copiar
+document.addEventListener('copy', function(e) {
+    e.preventDefault();
+});
+
+// Bloquear colar
+document.addEventListener('paste', function(e) {
+    e.preventDefault();
+});
+
+// Bloquear recortar
+document.addEventListener('cut', function(e) {
+    e.preventDefault();
+});
+
+// Bloquear menu direito
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// Bloquear atalhos
+document.addEventListener('keydown', function(e) {
+
+    // Ctrl+C
+    if (e.ctrlKey && e.key === 'c') {
+        e.preventDefault();
+    }
+
+    // Ctrl+V
+    if (e.ctrlKey && e.key === 'v') {
+        e.preventDefault();
+    }
+
+    // Ctrl+X
+    if (e.ctrlKey && e.key === 'x') {
+        e.preventDefault();
+    }
+
+    // Ctrl+U
+    if (e.ctrlKey && e.key === 'u') {
+        e.preventDefault();
+    }
+
+    // Ctrl+S
+    if (e.ctrlKey && e.key === 's') {
+        e.preventDefault();
+    }
+
+    // F12
+    if (e.key === 'F12') {
+        e.preventDefault();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
