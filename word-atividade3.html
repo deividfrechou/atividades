@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartaz — Ferramentas do Word</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Kalam:wght@400;700&family=Segoe+UI:wght@400;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F1E6;
+    --ink:#1c1c1c;
+    --purple:#7B4FA0;
+    --green:#3F8F3B;
+    --blue:#2F6FD1;
+    --pink:#D6408C;
+    --orange:#E8871E;
+    --card:#FFFDF9;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Segoe UI', Arial, sans-serif;
+  }
+  .wrap{ max-width:1080px; margin:0 auto; padding:48px 24px 100px; }
+
+  /* HERO */
+  .hero{ text-align:center; margin-bottom:50px; position:relative; }
+  .hero .eyebrow{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--blue); background:#E9F0FC; border:1px solid #C9DBF5;
+    padding:6px 14px; border-radius:999px; margin-bottom:16px;
+  }
+  .hero h1{
+    font-family:'Permanent Marker', cursive;
+    font-size:clamp(32px,5.4vw,52px);
+    color:var(--blue);
+    -webkit-text-stroke:1px #12305c;
+    margin:0 0 8px;
+    letter-spacing:1px;
+  }
+  .hero p{ max-width:600px; margin:0 auto; color:#555; font-size:16px; }
+
+  .word-mini{ display:inline-flex; vertical-align:-8px; margin-right:6px; }
+
+  /* SECTION HEADERS */
+  .section-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+    color:#8a8a8a; margin:48px 0 16px; display:flex; align-items:center; gap:10px;
+  }
+  .section-label::after{ content:""; flex:1; height:1px; background:#DDD6C4; }
+  .section-title{
+    font-family:'Kalam', cursive; font-weight:700; font-size:24px; margin:0 0 6px;
+  }
+
+  /* ACTIVITY BRIEF */
+  .brief{
+    background:var(--card);
+    border:2px solid #2b2b2b;
+    border-radius:10px;
+    padding:26px 28px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    margin-bottom:10px;
+  }
+  .brief-row{ display:flex; gap:20px; flex-wrap:wrap; }
+  .brief-item{ flex:1; min-width:220px; }
+  .brief-item .k{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:.06em; color:var(--blue); margin-bottom:4px;
+  }
+  .brief-item .v{ font-size:15px; }
+  .brief hr{ border:none; border-top:1px dashed #ccc; margin:18px 0; }
+
+  /* STEPS */
+  .steps{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:6px; }
+  .step{
+    background:#fff; border:1px solid #E3DCC8; border-radius:10px; padding:18px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.05); position:relative;
+  }
+  .step .n{
+    font-family:'Kalam',cursive; font-weight:700; font-size:24px; color:var(--purple); margin-bottom:6px;
+  }
+  .step h4{ margin:0 0 6px; font-size:14.5px; }
+  .step p{ margin:0; font-size:13px; color:#555; }
+
+  /* A4 GUIDE */
+  .a4-guide{ display:flex; gap:24px; align-items:center; flex-wrap:wrap; margin-top:10px; }
+  .a4-shape{
+    width:150px; height:212px; background:#fff; border:2px solid #2b2b2b;
+    border-radius:4px; flex-shrink:0; position:relative;
+    box-shadow:4px 4px 0 rgba(0,0,0,0.08);
+  }
+  .a4-shape .col{ position:absolute; top:8%; bottom:8%; width:28%; border:1.5px dashed #bbb; border-radius:3px; }
+  .a4-shape .c1{ left:4%; border-color:var(--pink); }
+  .a4-shape .c2{ left:36%; border-color:var(--green); }
+  .a4-shape .c3{ left:68%; border-color:var(--blue); }
+  .a4-shape .label{ position:absolute; bottom:-24px; left:0; right:0; text-align:center; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#888; }
+  .a4-notes{ flex:1; min-width:260px; font-size:14px; color:#444; }
+  .a4-notes ul{ margin:6px 0; padding-left:20px; }
+  .a4-notes li{ margin-bottom:6px; }
+
+  /* CHECKLIST */
+  .checklist{
+    background:#fff; border:1px solid #E3DCC8; border-radius:10px; padding:20px 24px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  }
+  .checklist ul{ margin:0; padding-left:0; list-style:none; }
+  .checklist li{
+    display:flex; align-items:flex-start; gap:10px; margin-bottom:12px; font-size:14.5px;
+  }
+  .checklist li:last-child{ margin-bottom:0; }
+  .chk{
+    flex-shrink:0; width:20px; height:20px; border:2px solid var(--green); border-radius:5px;
+    margin-top:1px;
+  }
+
+  /* GALLERY */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+  }
+  .gcard{
+    background:#fff; border:1px solid #E3DCC8; border-radius:12px; overflow:hidden;
+    box-shadow:0 6px 16px rgba(0,0,0,0.08);
+    display:flex; flex-direction:column;
+  }
+  .gcard .thumb-wrap{
+    position:relative; overflow:hidden; cursor:zoom-in; background:#eee;
+  }
+  .gcard img{
+    width:100%; display:block; aspect-ratio:4/5; object-fit:cover;
+    transition:transform .35s ease;
+  }
+  .gcard .thumb-wrap:hover img{ transform:scale(1.05); }
+  .zoom-hint{
+    position:absolute; bottom:10px; right:10px;
+    background:rgba(28,28,28,0.75); color:#fff;
+    font-family:'IBM Plex Mono',monospace; font-size:11px;
+    padding:5px 10px; border-radius:999px;
+    display:flex; align-items:center; gap:5px;
+    pointer-events:none;
+  }
+  .zoom-hint svg{ width:12px; height:12px; }
+  .gcard-body{ padding:16px 18px 18px; }
+  .gcard-body .tag{
+    display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:10.5px;
+    text-transform:uppercase; letter-spacing:.05em; color:#fff;
+    padding:3px 9px; border-radius:999px; margin-bottom:8px;
+  }
+  .gcard:nth-child(1) .tag{ background:var(--pink); }
+  .gcard:nth-child(2) .tag{ background:var(--blue); }
+  .gcard:nth-child(3) .tag{ background:var(--purple); }
+  .gcard-body h4{ margin:0 0 6px; font-family:'Kalam',cursive; font-size:17px; }
+  .gcard-body p{ margin:0; font-size:13px; color:#666; }
+
+  /* LIGHTBOX */
+  .lightbox{
+    position:fixed; inset:0; background:rgba(20,18,14,0.92);
+    display:none; align-items:center; justify-content:center;
+    z-index:200; padding:30px; flex-direction:column;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox img{
+    max-width:min(92vw, 850px); max-height:80vh; border-radius:6px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+  }
+  .lightbox .cap{
+    color:#eee; font-family:'IBM Plex Mono',monospace; font-size:13px; margin-top:16px; text-align:center;
+  }
+  .lightbox .close{
+    position:absolute; top:22px; right:26px;
+    width:42px; height:42px; border-radius:50%;
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3);
+    color:#fff; font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .lightbox .close:hover{ background:rgba(255,255,255,0.22); }
+  .lightbox .nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:46px; height:46px; border-radius:50%;
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3);
+    color:#fff; font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .lightbox .nav:hover{ background:rgba(255,255,255,0.22); }
+  .lightbox .prev{ left:20px; }
+  .lightbox .next{ right:20px; }
+
+  footer{ text-align:center; color:#888; font-size:13px; margin-top:60px; font-family:'IBM Plex Mono', monospace; }
+
+  @media (max-width:640px){
+    .lightbox .nav{ width:38px; height:38px; font-size:18px; }
+    .lightbox .close{ width:36px; height:36px; top:14px; right:14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">Nova atividade · Cartaz A4</div>
+    <h1>Ferramentas do Word</h1>
+    <p>Cada aluno vai criar um <b>cartaz em uma única folha A4</b>, desenhando e explicando <b>apenas 3 ferramentas</b> do Word escolhidas por ele.</p>
+  </div>
+
+  <!-- BRIEF -->
+  <div class="section-label">A atividade em resumo</div>
+  <div class="brief">
+    <div class="brief-row">
+      <div class="brief-item">
+        <div class="k">Formato</div>
+        <div class="v">1 folha A4 (retrato ou paisagem), feita à mão com lápis de cor, canetinha ou marca-texto.</div>
+      </div>
+      <div class="brief-item">
+        <div class="k">Quantidade</div>
+        <div class="v">Apenas <b>3 ferramentas</b> do Word — o aluno escolhe quais.</div>
+      </div>
+      <div class="brief-item">
+        <div class="k">Objetivo</div>
+        <div class="v">Treinar síntese: explicar com poucas palavras, um desenho e um exemplo prático.</div>
+      </div>
+    </div>
+    <hr>
+    <div class="brief-row">
+      <div class="brief-item">
+        <div class="k">Para cada ferramenta, incluir</div>
+        <div class="v">
+          <ul style="margin:6px 0 0; padding-left:18px;">
+            <li>Nome da ferramenta</li>
+            <li>Desenho do ícone</li>
+            <li>O que é / para que serve</li>
+            <li>Um exemplo de uso real</li>
+          </ul>
+        </div>
+      </div>
+      <div class="brief-item">
+        <div class="k">Layout livre</div>
+        <div class="v">O aluno pode organizar como quiser: em colunas, em tabela, em mapa mental — os três exemplos abaixo mostram estilos diferentes, todos válidos.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEPS -->
+  <div class="section-label">Passo a passo</div>
+  <div class="steps">
+    <div class="step">
+      <div class="n">1</div>
+      <h4>Escolha as 3 ferramentas</h4>
+      <p>Podem ser de formatação (negrito, itálico...), de inserção (tabela, imagem...) ou de layout (alinhamento, colunas...).</p>
+    </div>
+    <div class="step">
+      <div class="n">2</div>
+      <h4>Planeje o espaço na folha</h4>
+      <p>Divida a A4 em 3 partes iguais — colunas, blocos ou ao redor de um elemento central.</p>
+    </div>
+    <div class="step">
+      <div class="n">3</div>
+      <h4>Desenhe o ícone de cada uma</h4>
+      <p>Um quadrado com a letra ou símbolo, do jeito que aparece na barra de ferramentas do Word.</p>
+    </div>
+    <div class="step">
+      <div class="n">4</div>
+      <h4>Escreva a explicação</h4>
+      <p>Frase curta e direta: o que a ferramenta faz e onde ela fica no programa.</p>
+    </div>
+    <div class="step">
+      <div class="n">5</div>
+      <h4>Crie um exemplo de uso</h4>
+      <p>Uma frase, uma tabela pequena ou uma situação real mostrando a ferramenta em ação.</p>
+    </div>
+    <div class="step">
+      <div class="n">6</div>
+      <h4>Capriche no visual</h4>
+      <p>Título, cores, setas e um toque de humor ou dica deixam o cartaz mais atrativo.</p>
+    </div>
+  </div>
+
+  <!-- A4 GUIDE -->
+  <div class="section-label">Como organizar na folha</div>
+  <div class="a4-guide">
+    <div class="a4-shape">
+      <div class="col c1"></div>
+      <div class="col c2"></div>
+      <div class="col c3"></div>
+      <div class="label">exemplo: 3 colunas</div>
+    </div>
+    <div class="a4-notes">
+      <p>Não existe um único jeito certo — o importante é que as <b>3 ferramentas fiquem bem distribuídas</b> e fáceis de ler. Algumas ideias:</p>
+      <ul>
+        <li><b>Colunas lado a lado</b>, uma ferramenta por coluna.</li>
+        <li><b>Tabela</b>, com linhas para ferramenta / explicação / exemplo.</li>
+        <li><b>Mapa mental</b>, com o Word no centro e as 3 ferramentas ao redor.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="section-label">Checklist antes de entregar</div>
+  <div class="checklist">
+    <ul>
+      <li><span class="chk"></span> Título do cartaz bem visível</li>
+      <li><span class="chk"></span> As 3 ferramentas escolhidas estão diferentes entre si</li>
+      <li><span class="chk"></span> Cada ferramenta tem: nome + desenho + explicação + exemplo</li>
+      <li><span class="chk"></span> A folha está bem organizada, sem espaços vazios grandes</li>
+      <li><span class="chk"></span> Nome do aluno e turma no cartaz</li>
+    </ul>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="section-label">Exemplos de cartazes</div>
+  <p style="margin-top:-6px; color:#666; font-size:14.5px;">Três jeitos diferentes de organizar a mesma atividade. Clique em qualquer imagem para ampliar.</p>
+
+  <div class="gallery">
+    <div class="gcard">
+      <div class="thumb-wrap" data-index="0">
+        <img src="word-atividade3-exemplo1.png" alt="Exemplo 1 — cartaz em 3 colunas: Negrito, Alinhamento Centralizado, Inserir Tabela">
+        <div class="zoom-hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+          ampliar
+        </div>
+      </div>
+      <div class="gcard-body">
+        <span class="tag">Estilo colunas</span>
+        <h4>Negrito · Alinhamento · Tabela</h4>
+        <p>Três faixas coloridas lado a lado, cada uma com desenho, definição e exemplo prático.</p>
+      </div>
+    </div>
+
+    <div class="gcard">
+      <div class="thumb-wrap" data-index="1">
+        <img src="word-atividade3-exemplo2.png" alt="Exemplo 2 — cartão em tabela: Ferramenta, O que é e Exemplo de uso">
+        <div class="zoom-hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+          ampliar
+        </div>
+      </div>
+      <div class="gcard-body">
+        <span class="tag">Estilo tabela</span>
+        <h4>Cartão das Ferramentas</h4>
+        <p>Uma tabela com 3 colunas fixas (ferramenta, explicação, exemplo) e uma linha por ferramenta.</p>
+      </div>
+    </div>
+
+    <div class="gcard">
+      <div class="thumb-wrap" data-index="2">
+        <img src="word-atividade3-exemplo3.png" alt="Exemplo 3 — mapa mental com o Word no centro e 3 ferramentas ao redor">
+        <div class="zoom-hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+          ampliar
+        </div>
+      </div>
+      <div class="gcard-body">
+        <span class="tag">Estilo mapa mental</span>
+        <h4>Word no centro</h4>
+        <p>Uma nuvem central com "3 Ferramentas do Word" e cada ferramenta explicada ao redor, ligada por setas.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>atividade individual · cartaz em folha A4 · desenhado à mão</footer>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="close" id="lbClose">&times;</button>
+  <button class="nav prev" id="lbPrev">&#8249;</button>
+  <button class="nav next" id="lbNext">&#8250;</button>
+  <img id="lbImg" src="" alt="">
+  <div class="cap" id="lbCap"></div>
+</div>
+
+<script>
+  const images = [
+    { src: "word-atividade3-exemplo1.jpg", cap: "Exemplo 1 — Negrito · Alinhamento Centralizado · Inserir Tabela" },
+    { src: "word-atividade3-exemplo2.jpg", cap: "Exemplo 2 — Cartão das Ferramentas do Word (estilo tabela)" },
+    { src: "word-atividade3-exemplo3.jpg", cap: "Exemplo 3 — Mapa mental com o Word no centro" }
+  ];
+  let current = 0;
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCap = document.getElementById('lbCap');
+
+  function openLightbox(i){
+    current = i;
+    lbImg.src = images[i].src;
+    lbCap.textContent = images[i].cap;
+    lightbox.classList.add('open');
+  }
+  function closeLightbox(){ lightbox.classList.remove('open'); }
+  function showNext(){ current = (current + 1) % images.length; openLightbox(current); }
+  function showPrev(){ current = (current - 1 + images.length) % images.length; openLightbox(current); }
+
+  document.querySelectorAll('.thumb-wrap').forEach(el=>{
+    el.addEventListener('click', ()=> openLightbox(parseInt(el.dataset.index)));
+  });
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lbNext').addEventListener('click', showNext);
+  document.getElementById('lbPrev').addEventListener('click', showPrev);
+  lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e)=>{
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowRight') showNext();
+    if(e.key === 'ArrowLeft') showPrev();
+  });
+</script>
+
+</body>
+</html>
