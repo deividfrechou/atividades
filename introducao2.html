@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informática: Gerações, Hardware, Software e Periféricos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E7ECEF;
+    --paper:#F6F4EC;
+    --ink:#182635;
+    --ink-soft:#4B5C6E;
+    --copper:#B5722E;
+    --copper-deep:#8C5320;
+    --terminal:#3C7A57;
+    --terminal-bg:#DCE9DF;
+    --line:#C6CDD4;
+    --grid:rgba(24,38,53,0.07);
+    --wrong:#B0432E;
+    --wrong-bg:#F5DCD5;
+    --right:#2F7D4F;
+    --right-bg:#DCEFE0;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      linear-gradient(var(--grid) 1px, transparent 1px) 0 0/40px 40px,
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0/40px 40px,
+      var(--bg);
+    color:var(--ink);
+    font-family:'Lora', Georgia, serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.mono{font-family:'IBM Plex Mono', monospace;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+
+  nav.topnav{position:sticky;top:0;z-index:50;background:rgba(231,236,239,0.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  .topnav-inner{max-width:900px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{font-family:'IBM Plex Mono';font-weight:700;font-size:0.85rem;letter-spacing:0.02em;white-space:nowrap;}
+  .brand span{color:var(--copper);}
+  .navlinks{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;}
+  .navlinks::-webkit-scrollbar{display:none;}
+  .navlinks a{font-family:'IBM Plex Mono';font-size:0.68rem;text-transform:uppercase;letter-spacing:0.05em;text-decoration:none;color:var(--ink-soft);white-space:nowrap;padding:6px 9px;border-radius:3px;transition:background .15s,color .15s;}
+  .navlinks a:hover, .navlinks a.active{background:var(--ink);color:var(--paper);}
+
+  header.hero{padding:64px 0 46px;}
+  .eyebrow{font-family:'IBM Plex Mono';font-size:0.76rem;letter-spacing:0.13em;text-transform:uppercase;color:var(--copper-deep);margin:0 0 14px;}
+  .eyebrow::before{content:"$ ";color:var(--terminal);}
+  h1.title{font-size:clamp(1.9rem, 4.6vw, 3.1rem);line-height:1.1;margin:0 0 20px;font-weight:700;letter-spacing:-0.01em;}
+  p.lede{font-size:1.1rem;color:var(--ink-soft);max-width:62ch;margin:0 0 22px;}
+  .meta-box{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:16px 20px;font-size:0.88rem;color:var(--ink-soft);}
+  .meta-box b{color:var(--ink);}
+
+  section{padding:48px 0;}
+  section.divider-top{border-top:1px solid var(--line);}
+  h2.h2{font-size:1.4rem;margin:0 0 4px;font-weight:600;display:flex;align-items:baseline;gap:10px;}
+  h2.h2 .num{color:var(--copper);font-size:0.9rem;}
+  p.section-kicker{font-family:'IBM Plex Mono';font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--terminal);margin:0 0 22px;}
+
+  .topic-body{display:grid;grid-template-columns:1.25fr 0.85fr;gap:26px;align-items:start;margin-bottom:18px;}
+  @media(max-width:680px){.topic-body{grid-template-columns:1fr;}}
+  .topic-text p{margin:0 0 14px;}
+  .topic-text p:last-child{margin-bottom:0;}
+  figure.fig{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:6px;overflow:hidden;}
+  figure.fig img{width:100%;height:180px;object-fit:cover;background:#d8d3c4;}
+  figure.fig figcaption{font-family:'IBM Plex Mono';font-size:0.66rem;color:var(--ink-soft);padding:8px 12px;border-top:1px solid var(--line);}
+
+  /* resumo */
+  .resumo{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:18px 22px;margin:18px 0;}
+  .resumo .rtitle{font-family:'IBM Plex Mono';font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;color:var(--ink);display:block;margin-bottom:10px;}
+  .resumo .rtitle::before{content:"📌 ";}
+  .resumo ul{margin:0;padding-left:20px;}
+  .resumo li{margin-bottom:6px;font-size:0.94rem;}
+  .resumo li:last-child{margin-bottom:0;}
+
+  /* curiosidade */
+  .curio{background:#F2E4D0;border-left:4px solid var(--copper);border-radius:6px;padding:16px 18px;margin:18px 0;font-size:0.94rem;}
+  .curio .ctitle{font-family:'IBM Plex Mono';font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;color:var(--copper-deep);display:block;margin-bottom:6px;}
+  .curio .ctitle::before{content:"💡 ";}
+
+  /* quiz / desafio */
+  .quiz{background:var(--terminal-bg);border:1px solid #bcd8c6;border-radius:6px;padding:18px 20px 20px;margin:18px 0;}
+  .quiz .qtitle{font-family:'IBM Plex Mono';font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;color:var(--terminal);display:block;margin-bottom:10px;}
+  .quiz .qtitle::before{content:"🎯 ";}
+  .quiz-q{font-weight:600;margin:0 0 12px;font-size:0.98rem;}
+  .quiz-options{display:flex;flex-direction:column;gap:8px;}
+  .quiz-opt{
+    text-align:left;font-family:'Lora';font-size:0.92rem;color:var(--ink);
+    background:var(--paper);border:1px solid var(--line);border-radius:5px;
+    padding:10px 14px;cursor:pointer;transition:background .12s,border-color .12s;
+  }
+  .quiz-opt:hover:not(:disabled){border-color:var(--terminal);}
+  .quiz-opt:disabled{cursor:default;}
+  .quiz-opt.correct{background:var(--right-bg);border-color:var(--right);color:var(--right);font-weight:600;}
+  .quiz-opt.wrong{background:var(--wrong-bg);border-color:var(--wrong);color:var(--wrong);font-weight:600;}
+  .quiz-feedback{margin-top:12px;padding-top:12px;border-top:1px dashed #bcd8c6;font-size:0.9rem;color:var(--ink);display:none;}
+  .quiz-feedback.show{display:block;}
+  .quiz-feedback .tag{font-family:'IBM Plex Mono';font-weight:700;font-size:0.75rem;text-transform:uppercase;margin-right:6px;}
+  .quiz-feedback.is-right .tag{color:var(--right);}
+  .quiz-feedback.is-wrong .tag{color:var(--wrong);}
+
+  /* linguagem de programação da época */
+  .langbox{background:var(--ink);color:#DCE9DF;border-radius:6px;padding:16px 18px;margin:18px 0;font-family:'IBM Plex Mono';font-size:0.86rem;line-height:1.7;}
+  .langbox .ltitle{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;color:var(--copper);display:block;margin-bottom:8px;}
+  .langbox .ltitle::before{content:"⌨ ";}
+  .langbox code{background:rgba(255,255,255,0.08);padding:1px 6px;border-radius:3px;}
+
+  /* vídeos complementares */
+  .video-block{margin:20px 0;}
+  .video-block .vtitle{font-family:'IBM Plex Mono';font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;color:var(--ink-soft);display:block;margin-bottom:10px;}
+  .video-block .vtitle::before{content:"▶ ";color:var(--copper);}
+  .video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  @media(max-width:640px){.video-grid{grid-template-columns:1fr;}}
+  .video-grid.shorts{grid-template-columns:repeat(4,1fr);}
+  @media(max-width:760px){.video-grid.shorts{grid-template-columns:repeat(2,1fr);}}
+  .video-embed{position:relative;width:100%;padding-top:56.25%;background:#000;border-radius:6px;overflow:hidden;border:1px solid var(--line);}
+  .video-embed.short{padding-top:177.7%;}
+  .video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+
+  /* glossary-like grid (peripherals classification) */
+  .class-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0;}
+  @media(max-width:700px){.class-grid{grid-template-columns:1fr;}}
+  .class-card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:16px;}
+  .class-card h4{margin:0 0 8px;font-family:'IBM Plex Mono';font-size:0.82rem;color:var(--copper-deep);}
+  .class-card p{margin:0;font-size:0.88rem;color:var(--ink-soft);}
+
+  footer{padding:36px 0 56px;border-top:1px solid var(--line);}
+  footer p{font-size:0.78rem;color:var(--ink-soft);font-family:'IBM Plex Mono';}
+
+  ::selection{background:var(--copper);color:var(--paper);}
+  :focus-visible{outline:2px solid var(--terminal);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header class="hero wrap" id="inicio">
+  <h1 class="title">Gerações da Computação, Hardware, Software e Periféricos</h1>
+</header>
+
+<!-- ============================================================ -->
+<!-- GERAÇÕES DA COMPUTAÇÃO -->
+<!-- ============================================================ -->
+<section class="divider-top" id="geracoes">
+  <div class="wrap">
+    <h2 class="h2"><span class="num">01</span> As gerações da computação</h2>
+    <p class="section-kicker">história e evolução do computador</p>
+
+    <!-- Antes das gerações: máquinas antigas -->
+    <div class="topic-body">
+      <div class="topic-text">
+        <p><strong>Antes de existir qualquer computador eletrônico, humanos já buscavam formas de calcular mais rápido.</strong> O <strong>ábaco</strong>, usado há milhares de anos na Mesopotâmia, China e outras civilizações, é uma das primeiras "calculadoras" da história: contas deslizantes representavam números, permitindo somar e subtrair rapidamente.</p>
+        <p>No século XIX, o matemático britânico <strong>Charles Babbage</strong> projetou a <strong>Máquina Analítica</strong> — um mecanismo movido a engrenagens que reunia, pela primeira vez, ideias centrais de todo computador moderno: memória, processamento e a capacidade de seguir instruções programadas em cartões perfurados. Sua colaboradora <strong>Ada Lovelace</strong> escreveu instruções para essa máquina, sendo por isso lembrada como a primeira programadora da história — mesmo mais de cem anos antes de existir eletricidade suficiente para construí-la de verdade.</p>
+      </div>
+      <figure class="fig">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Chinese%20Suanpan%20Abacus.jpg" alt="Ábaco chinês tradicional" onerror="this.parentElement.style.display='none'">
+        <figcaption>Ábaco chinês (suanpan) — uma das primeiras ferramentas de cálculo</figcaption>
+      </figure>
+    </div>
+    <figure class="fig" style="max-width:420px;margin:0 0 18px;">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/AnalyticalMachine%20Babbage%20London.jpg" alt="Máquina Analítica de Charles Babbage" onerror="this.parentElement.style.display='none'">
+      <figcaption>Máquina Analítica de Charles Babbage — projeto do século XIX, exposta no Science Museum de Londres</figcaption>
+    </figure>
+    <div class="resumo">
+      <span class="rtitle">Resumo</span>
+      <ul>
+        <li>Ábaco: uma das primeiras "calculadoras" da história, usada há milhares de anos</li>
+        <li>Máquina Analítica (Charles Babbage, séc. XIX): 1º projeto conceitual de um computador programável</li>
+        <li>Ada Lovelace: escreveu as primeiras instruções para essa máquina, sendo considerada a 1ª programadora da história</li>
+        <li>Essas máquinas eram totalmente mecânicas, sem eletricidade</li>
+      </ul>
+    </div>
+    <div class="curio">
+      <span class="ctitle">Curiosidade</span>
+      A Máquina Analítica de Babbage nunca chegou a ser construída por completo em vida do autor — faltava dinheiro e a precisão mecânica da época ainda não dava conta do projeto. Só em 1991 o Science Museum de Londres construiu uma versão funcional de uma máquina anterior de Babbage, provando que suas ideias realmente funcionariam.
+    </div>
+    <div class="quiz" data-answer="1" data-explain="Ada Lovelace escreveu instruções para a Máquina Analítica de Babbage no século XIX, sendo por isso considerada a primeira programadora da história — mesmo décadas antes de existir qualquer computador eletrônico.">
+      <span class="qtitle">Desafio</span>
+      <p class="quiz-q">Quem é considerada a primeira programadora da história, por escrever instruções para a Máquina Analítica de Babbage?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" data-idx="0">Grace Hopper</button>
+        <button class="quiz-opt" data-idx="1">Ada Lovelace</button>
+        <button class="quiz-opt" data-idx="2">Jean Bartik</button>
+        <button class="quiz-opt" data-idx="3">Kay McNulty</button>
+      </div>
+      <p class="quiz-feedback"></p>
+    </div>
+
+    <!-- 1ª geração -->
+    <div class="topic-body">
+      <div class="topic-text">
+        <p><strong>A 1ª geração de computadores (décadas de 1940 e 1950)</strong> nasceu com as válvulas eletrônicas — componentes de vidro parecidos com pequenas lâmpadas, usados para processar e armazenar informações. O exemplo mais famoso é o <strong>ENIAC</strong>, construído nos Estados Unidos e concluído em 1946: ele ocupava uma sala inteira, pesava cerca de 30 toneladas e usava aproximadamente 18 mil válvulas.</p>
+        <p>Computadores dessa geração eram gigantescos, consumiam muita energia, esquentavam bastante e as válvulas queimavam com frequência, exigindo manutenção constante. Ainda assim, o ENIAC representou um salto enorme: pela primeira vez, cálculos complexos podiam ser feitos eletronicamente, em vez de manualmente ou com engrenagens mecânicas.</p>
+      </div>
+      <figure class="fig">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Classic%20shot%20of%20the%20ENIAC.jpg" alt="ENIAC, computador da 1ª geração" onerror="this.parentElement.style.display='none'">
+        <figcaption>ENIAC (1946) — 1ª geração, válvulas eletrônicas</figcaption>
+      </figure>
+    </div>
+    <figure class="fig" style="max-width:420px;margin:0 0 18px;">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Early%20triode%20vacuum%20tubes.jpg" alt="Válvulas eletrônicas em tamanho real da época" onerror="this.parentElement.style.display='none'">
+      <figcaption>Válvulas eletrônicas — tamanho real das usadas na 1ª geração</figcaption>
+    </figure>
+    <div class="langbox">
+      <span class="ltitle">Linguagem da época: código binário</span>
+      Nos computadores da 1ª geração, não existia teclado nem tela. Programar significava enviar instruções diretamente na <code>linguagem de máquina</code>: sequências de <code>0</code> e <code>1</code> que representavam, fisicamente, chaves ligadas ou desligadas, cabos conectados de um jeito ou de outro. Era um processo lento, difícil de revisar e exclusivo de especialistas — bem diferente de escrever código em uma linguagem legível como fazemos hoje.
+    </div>
+    <div class="video-block">
+      <span class="vtitle">Vídeos complementares</span>
+      <div class="video-grid">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/4ObouwCHk8w" title="Vídeo sobre a 1ª geração de computadores" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/bGk9W65vXNA" title="Vídeo sobre a 1ª geração de computadores" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+    </div>
+    <div class="resumo">
+      <span class="rtitle">Resumo</span>
+      <ul>
+        <li>1ª geração = válvulas eletrônicas (1940–1950s)</li>
+        <li>Computadores enormes, pesados e que esquentavam muito</li>
+        <li>ENIAC: cerca de 18 mil válvulas, 30 toneladas</li>
+        <li>Linguagem da época: código binário (0 e 1), programado manualmente</li>
+        <li>Grande avanço: cálculos feitos eletronicamente, não manualmente</li>
+      </ul>
+    </div>
+    <div class="curio">
+      <span class="ctitle">Curiosidade</span>
+      Foi por essa época que surgiu o termo "bug" (bicho) para erros de computador: em 1947, a equipe da matemática Grace Hopper encontrou uma mariposa de verdade presa em um relé do computador Harvard Mark II, atrapalhando seu funcionamento.
+    </div>
+    <div class="quiz" data-answer="1" data-explain="A 1ª geração de computadores usava válvulas eletrônicas — componentes grandes, que esquentavam e queimavam com facilidade. Foram os transistores, na 2ª geração, que substituíram as válvulas.">
+      <span class="qtitle">Desafio</span>
+      <p class="quiz-q">Qual componente era usado para processar informações nos computadores da 1ª geração, como o ENIAC?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" data-idx="0">Microprocessadores</button>
+        <button class="quiz-opt" data-idx="1">Válvulas eletrônicas</button>
+        <button class="quiz-opt" data-idx="2">Circuitos integrados</button>
+        <button class="quiz-opt" data-idx="3">Transistores</button>
+      </div>
+      <p class="quiz-feedback"></p>
+    </div>
+
+    <!-- 2ª geração -->
+    <div class="topic-body" style="margin-top:40px;">
+      <div class="topic-text">
+        <p><strong>A 2ª geração (final dos anos 1950 até meados dos 1960)</strong> começou quando cientistas dos Laboratórios Bell inventaram o <strong>transistor</strong>, em 1947. O transistor fazia o mesmo trabalho de uma válvula, mas era muito menor, mais rápido, mais confiável e consumia menos energia.</p>
+        <p>Com transistores, os computadores ficaram consideravelmente menores e mais baratos de manter, o que permitiu que universidades e empresas — não apenas governos — começassem a ter acesso a máquinas de processamento de dados.</p>
+      </div>
+      <figure class="fig">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/IBM%20card%20punch%20machine%2029.jpg" alt="Perfuradora de cartões, usada para entrada de dados na 2ª geração" onerror="this.parentElement.style.display='none'">
+        <figcaption>Cartões perfurados — forma comum de inserir dados até os anos 1970</figcaption>
+      </figure>
+    </div>
+    <figure class="fig" style="max-width:420px;margin:0 0 18px;">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20First%20Transistor%20ever%20made%2C%20built%20in%201947%20-%20Bell%20Labs.jpg" alt="Transistor original de 1947, dos Laboratórios Bell" onerror="this.parentElement.style.display='none'">
+      <figcaption>Transistor original (1947) — Laboratórios Bell, o componente da 2ª geração</figcaption>
+    </figure>
+    <div class="langbox">
+      <span class="ltitle">Linguagem da época: assembly</span>
+      Com transistores, os computadores passaram a usar o <code>assembly</code> (ou "linguagem de montagem"): em vez de escrever sequências de 0 e 1 diretamente, o programador usava pequenos códigos mnemônicos (como <code>ADD</code>, <code>MOV</code>, <code>JMP</code>) que representavam instruções do processador. Era mais fácil que o binário puro, mas ainda exigia conhecer profundamente o funcionamento interno da máquina — cada modelo de computador tinha seu próprio "dialeto" de assembly.
+    </div>
+    <div class="video-block">
+      <span class="vtitle">Vídeos complementares</span>
+      <div class="video-grid">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/fF6Xl8iep7o" title="Vídeo sobre a 2ª geração de computadores" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/ru-XdO9h7AM" title="Vídeo sobre a 2ª geração de computadores" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/kTIeJyEYF7A" title="Vídeo sobre a 2ª geração de computadores" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/BgfpFlFGgmo" title="Vídeo sobre a 2ª geração de computadores" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+      <div class="video-grid shorts" style="margin-top:14px;">
+        <div class="video-embed short"><iframe src="https://www.youtube.com/embed/SVQmKXiiRHc" title="Vídeo curto sobre a 2ª geração de computadores" allowfullscreen loading="lazy"></iframe></div>
+      </div>
+    </div>
+    <div class="resumo">
+      <span class="rtitle">Resumo</span>
+      <ul>
+        <li>2ª geração = transistores (fim dos anos 1950 aos 1960)</li>
+        <li>Transistor: menor, mais rápido e mais confiável que a válvula</li>
+        <li>Computadores ficaram menores, mais baratos e mais acessíveis</li>
+        <li>Linguagem da época: assembly, com mnemônicos como ADD e MOV</li>
+        <li>Entrada de dados ainda era feita, muitas vezes, por cartões perfurados</li>
+      </ul>
+    </div>
+    <div class="curio">
+      <span class="ctitle">Curiosidade</span>
+      Os três cientistas que inventaram o transistor nos Laboratórios Bell — Bardeen, Brattain e Shockley — dividiram o Prêmio Nobel de Física em 1956 por essa descoberta, considerada uma das mais importantes do século XX.
+    </div>
+    <div class="quiz" data-answer="1" data-explain="O transistor, inventado em 1947, substituiu a válvula eletrônica e deu início à 2ª geração de computadores: máquinas menores, mais rápidas e mais confiáveis.">
+      <span class="qtitle">Desafio</span>
+      <p class="quiz-q">Qual invenção marcou a passagem da 1ª para a 2ª geração de computadores?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" data-idx="0">O mouse</button>
+        <button class="quiz-opt" data-idx="1">O transistor</button>
+        <button class="quiz-opt" data-idx="2">A internet</button>
+        <button class="quiz-opt" data-idx="3">O circuito integrado</button>
+      </div>
+      <p class="quiz-feedback"></p>
+    </div>
+
+    <!-- 3ª e 4ª geração -->
+    <div class="topic-body" style="margin-top:40px;">
+      <div class="topic-text">
+        <p><strong>A 3ª geração (anos 1960–1970)</strong> trouxe o <strong>circuito integrado</strong>: engenheiros descobriram como colocar vários transistores em uma única pastilha de silício, o chip. Isso permitiu reduzir ainda mais o tamanho dos computadores e aumentar sua velocidade.</p>
+        <p>Essa miniaturização culminou, em 1971, no <strong>microprocessador Intel 4004</strong> — o primeiro chip a reunir todo o "cérebro" de um computador em um único componente do tamanho de uma unha. Isso deu início à <strong>4ª geração</strong>, quando os computadores puderam, finalmente, caber em uma mesa: o kit <strong>Altair 8800</strong> (1975) e depois o <strong>IBM PC</strong> (1981) levaram a computação para dentro de casas e escritórios comuns pela primeira vez.</p>
+      </div>
+      <figure class="fig">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Intel%20C4004.jpg" alt="Intel 4004, primeiro microprocessador comercial" onerror="this.parentElement.style.display='none'">
+        <figcaption>Intel 4004 (1971) — 3ª/4ª geração, o 1º microprocessador</figcaption>
+      </figure>
+    </div>
+    <figure class="fig" style="max-width:420px;margin:0 0 18px;">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ibm%20pc%205150.jpg" alt="IBM PC 5150, lançado em 1981" onerror="this.parentElement.style.display='none'">
+      <figcaption>IBM PC 5150 (1981) — o computador pessoal chega ao mercado</figcaption>
+    </figure>
+    <div class="resumo">
+      <span class="rtitle">Resumo</span>
+      <ul>
+        <li>3ª geração = circuito integrado (vários transistores em um chip)</li>
+        <li>Intel 4004 (1971): primeiro microprocessador comercial</li>
+        <li>4ª geração = microprocessadores → nascem os computadores pessoais (Altair 8800, IBM PC)</li>
+        <li>Pela 1ª vez, computadores couberam em uma mesa de casa</li>
+      </ul>
+    </div>
+    <div class="curio">
+      <span class="ctitle">Curiosidade</span>
+      O Altair 8800 era vendido como kit para montar em casa, por cerca de US$ 397, sem teclado, tela ou mouse — você "programava" a máquina apertando pequenas alavancas no painel frontal.
+    </div>
+    <div class="quiz" data-answer="2" data-explain="O Intel 4004 foi revolucionário por reunir, em um único chip minúsculo, todo o processamento que antes exigia uma sala cheia de equipamentos — abrindo caminho para os computadores pessoais.">
+      <span class="qtitle">Desafio</span>
+      <p class="quiz-q">Por que o lançamento do Intel 4004, em 1971, foi tão importante?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" data-idx="0">Foi o primeiro mouse do mercado</button>
+        <button class="quiz-opt" data-idx="1">Foi o primeiro sistema operacional gráfico</button>
+        <button class="quiz-opt" data-idx="2">Reuniu todo o processador em um único chip pequeno</button>
+        <button class="quiz-opt" data-idx="3">Criou a primeira rede de internet</button>
+      </div>
+      <p class="quiz-feedback"></p>
+    </div>
+
+    <!-- 5ª geração -->
+    <div class="topic-body" style="margin-top:40px;">
+      <div class="topic-text">
+        <p>Em 1984, a Apple lançou o <strong>Macintosh</strong>, popularizando a <strong>interface gráfica</strong> — janelas, ícones e o uso do mouse — tornando o computador acessível para quem não era especialista em tecnologia. A partir daí, a evolução acelerou: a internet conectou o mundo nos anos 1990, os notebooks tornaram o computador portátil, e os smartphones, a partir de 2007, colocaram um computador completo no bolso de bilhões de pessoas.</p>
+        <p>Hoje vivemos a <strong>5ª geração</strong>, marcada pela <strong>inteligência artificial</strong>, pela <strong>computação em nuvem</strong> (guardar e processar dados em servidores remotos, acessados pela internet) e pela mobilidade total: um smartphone atual tem muito mais poder de processamento do que os computadores que levaram o homem à Lua em 1969.</p>
+      </div>
+      <figure class="fig">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Macintosh%20128k.jpg" alt="Macintosh 128K, lançado pela Apple em 1984" onerror="this.parentElement.style.display='none'">
+        <figcaption>Macintosh 128K (1984) — populariza janelas, ícones e mouse</figcaption>
+      </figure>
+    </div>
+    <div class="resumo">
+      <span class="rtitle">Resumo</span>
+      <ul>
+        <li>Macintosh (1984): populariza interface gráfica + mouse</li>
+        <li>Anos 1990: internet conecta o mundo</li>
+        <li>Anos 2000+: notebooks, smartphones e mobilidade</li>
+        <li>5ª geração (hoje): inteligência artificial + computação em nuvem</li>
+      </ul>
+    </div>
+    <div class="curio">
+      <span class="ctitle">Curiosidade</span>
+      O anúncio de lançamento do Macintosh, exibido durante o Super Bowl de 1984, foi dirigido pelo cineasta Ridley Scott (o mesmo de "Blade Runner") e é considerado até hoje um dos comerciais mais marcantes da história da publicidade.
+    </div>
+    <div class="quiz" data-answer="2" data-explain="A 5ª geração, em que vivemos hoje, é marcada pela inteligência artificial, pela computação em nuvem e pela mobilidade (smartphones, notebooks) — bem diferente das salas cheias de válvulas da 1ª geração.">
+      <span class="qtitle">Desafio</span>
+      <p class="quiz-q">O que caracteriza a 5ª geração da computação, na qual vivemos atualmente?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" data-idx="0">Uso exclusivo de válvulas eletrônicas</button>
+        <button class="quiz-opt" data-idx="1">Computadores do tamanho de uma sala inteira</button>
+        <button class="quiz-opt" data-idx="2">Inteligência artificial, nuvem e mobilidade</button>
+        <button class="quiz-opt" data-idx="3">Ausência total de internet</button>
+      </div>
+      <p class="quiz-feedback"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- HARDWARE X SOFTWARE -->
+<!-- ============================================================ -->
+<section class="divider-top" id="hardware-software">
+  <div class="wrap">
+    <h2 class="h2"><span class="num">02</span> Hardware x Software</h2>
+    <p class="section-kicker">os dois lados de todo computador</p>
+    <div class="topic-body">
+      <div class="topic-text">
+        <p>Todo sistema computacional é formado por duas partes que trabalham juntas, mas são bem diferentes entre si. O <strong>hardware</strong> é a parte física: tudo que você pode tocar — processador, memória, teclado, tela, cabos, placa-mãe. É o "corpo" do computador.</p>
+        <p>Já o <strong>software</strong> é o conjunto de instruções que diz ao hardware o que fazer: o sistema operacional (como Windows, macOS, Linux ou Android), os aplicativos, os jogos, os sites. É a "mente" do computador — sem software, o hardware é só um monte de peças eletrônicas paradas.</p>
+        <p>Uma boa forma de lembrar a diferença: se você pode <strong>chutar</strong> o componente, é hardware. Se você só pode <strong>ver na tela</strong>, é software.</p>
+      </div>
+      <figure class="fig">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Computer-motherboard.jpg" alt="Placa-mãe de computador, exemplo de hardware" onerror="this.parentElement.style.display='none'">
+        <figcaption>Placa-mãe — hardware que conecta todos os outros componentes</figcaption>
+      </figure>
+    </div>
+    <div class="resumo">
+      <span class="rtitle">Resumo</span>
+      <ul>
+        <li>Hardware = parte física (processador, memória, teclado, tela...)</li>
+        <li>Software = instruções que comandam o hardware (sistema operacional, apps...)</li>
+        <li>Hardware sem software não funciona; software sem hardware não roda</li>
+        <li>Truque: dá pra chutar → hardware. Só aparece na tela → software</li>
+      </ul>
+    </div>
+    <div class="curio">
+      <span class="ctitle">Curiosidade</span>
+      A palavra "software" foi usada pela primeira vez em um sentido técnico em 1958, pelo estatístico John Tukey, como um trocadilho com "hardware" (que já existia como termo de ferragens e componentes físicos muito antes da informática).
+    </div>
+    <div class="quiz" data-answer="2" data-explain="O sistema operacional é um conjunto de instruções (software) que gerencia o computador. Teclado, processador e monitor são todos hardware — partes físicas que você pode tocar.">
+      <span class="qtitle">Desafio</span>
+      <p class="quiz-q">Qual das opções abaixo é um exemplo de SOFTWARE?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" data-idx="0">Teclado</button>
+        <button class="quiz-opt" data-idx="1">Processador</button>
+        <button class="quiz-opt" data-idx="2">Sistema operacional</button>
+        <button class="quiz-opt" data-idx="3">Monitor</button>
+      </div>
+      <p class="quiz-feedback"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ARQUITETURA BÁSICA -->
+<!-- ============================================================ -->
+<section class="divider-top" id="arquitetura">
+  <div class="wrap">
+    <h2 class="h2"><span class="num">03</span> Arquitetura básica do computador</h2>
+    <p class="section-kicker">como as peças conversam entre si</p>
+    <div class="topic-body">
+      <div class="topic-text">
+        <p>Por baixo de qualquer computador — de um PC de mesa a um smartphone — existe uma lógica em comum, conhecida como <strong>arquitetura de Von Neumann</strong>, proposta em 1945 pelo matemático John von Neumann. Ela organiza o computador em quatro grandes funções:</p>
+        <p><strong>Entrada:</strong> como os dados chegam até a máquina (teclado, mouse, microfone). <strong>Processamento:</strong> feito pela <strong>CPU</strong> (unidade central de processamento), o "cérebro" que executa cálculos e comandos. <strong>Memória:</strong> onde os dados ficam guardados — a <strong>RAM</strong> guarda tudo temporariamente enquanto o computador está ligado, enquanto o <strong>armazenamento</strong> (HD ou SSD) guarda os dados permanentemente. <strong>Saída:</strong> como o resultado é entregue de volta (tela, caixa de som, impressora).</p>
+        <p>A <strong>placa-mãe</strong> é o componente físico que conecta e permite a comunicação entre todas essas partes — processador, memória, armazenamento e periféricos.</p>
+      </div>
+      <figure class="fig">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Computer-motherboard.jpg" alt="Placa-mãe conectando os componentes do computador" onerror="this.parentElement.style.display='none'">
+        <figcaption>Placa-mãe: conecta CPU, memória e demais componentes</figcaption>
+      </figure>
+    </div>
+    <div class="resumo">
+      <span class="rtitle">Resumo</span>
+      <ul>
+        <li>Entrada → Processamento (CPU) → Memória (RAM/armazenamento) → Saída</li>
+        <li>CPU: executa os cálculos e comandos, é o "cérebro"</li>
+        <li>RAM: memória temporária, some quando o computador desliga</li>
+        <li>HD/SSD: armazenamento permanente dos dados</li>
+        <li>Placa-mãe: conecta fisicamente todos os componentes</li>
+      </ul>
+    </div>
+    <div class="curio">
+      <span class="ctitle">Curiosidade</span>
+      Um HD de 1 gigabyte fabricado pela IBM em 1980 pesava cerca de 250 kg e tinha o tamanho de uma geladeira — hoje, um pendrive de bolso guarda centenas de vezes mais dados.
+    </div>
+    <div class="quiz" data-answer="1" data-explain="A CPU (unidade central de processamento) é o componente responsável por executar cálculos e comandos — é por isso que ela é chamada de 'cérebro' do computador. A RAM guarda dados temporariamente, e o HD guarda dados de forma permanente.">
+      <span class="qtitle">Desafio</span>
+      <p class="quiz-q">Na arquitetura básica de um computador, qual componente é responsável por executar os cálculos e comandos?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" data-idx="0">RAM</button>
+        <button class="quiz-opt" data-idx="1">CPU (processador)</button>
+        <button class="quiz-opt" data-idx="2">HD / SSD</button>
+        <button class="quiz-opt" data-idx="3">Fonte de alimentação</button>
+      </div>
+      <p class="quiz-feedback"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PERIFÉRICOS -->
+<!-- ============================================================ -->
+<section class="divider-top" id="perifericos">
+  <div class="wrap">
+    <h2 class="h2"><span class="num">04</span> Periféricos e suas funções</h2>
+    <p class="section-kicker">os "sentidos" do computador</p>
+    <div class="topic-body">
+      <div class="topic-text">
+        <p><strong>Periféricos</strong> são todos os dispositivos que se conectam ao computador para permitir que ele receba informações ou entregue resultados. Eles se dividem em três grupos, dependendo da direção em que a informação viaja:</p>
+      </div>
+      <figure class="fig">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Compaq%20keyboard%20and%20mouse.jpg" alt="Teclado e mouse, periféricos de entrada" onerror="this.parentElement.style.display='none'">
+        <figcaption>Teclado e mouse — periféricos de entrada</figcaption>
+      </figure>
+    </div>
+
+    <div class="class-grid">
+      <div class="class-card">
+        <h4>PERIFÉRICOS DE ENTRADA</h4>
+        <p>Levam informação do usuário para o computador. Exemplos: teclado, mouse, microfone, câmera, scanner.</p>
+      </div>
+      <div class="class-card">
+        <h4>PERIFÉRICOS DE SAÍDA</h4>
+        <p>Levam informação do computador para o usuário. Exemplos: monitor, caixa de som, impressora, fone de ouvido.</p>
+      </div>
+      <div class="class-card">
+        <h4>ENTRADA E SAÍDA</h4>
+        <p>Fazem os dois sentidos ao mesmo tempo. Exemplos: pendrive, tela touch screen, impressora multifuncional (imprime e digitaliza).</p>
+      </div>
+    </div>
+
+    <figure class="fig" style="max-width:420px;margin:0 0 18px;">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Epson-inkjet-printer.jpg" alt="Impressora, exemplo de periférico de saída" onerror="this.parentElement.style.display='none'">
+      <figcaption>Impressora — periférico de saída (leva dados do computador para o papel)</figcaption>
+    </figure>
+
+    <div class="resumo">
+      <span class="rtitle">Resumo</span>
+      <ul>
+        <li>Periférico de entrada: usuário → computador (teclado, mouse, microfone)</li>
+        <li>Periférico de saída: computador → usuário (monitor, impressora, caixa de som)</li>
+        <li>Entrada e saída: os dois sentidos (pendrive, tela touch, impressora multifuncional)</li>
+      </ul>
+    </div>
+    <div class="curio">
+      <span class="ctitle">Curiosidade</span>
+      Muito antes das impressoras eletrônicas, Charles Babbage já havia projetado, no século XIX, um mecanismo para imprimir tabelas de números em sua Máquina Diferencial — mais de 100 anos antes das impressoras que conhecemos hoje.
+    </div>
+    <div class="quiz" data-answer="2" data-explain="O pendrive recebe dados do computador (saída, quando você grava arquivos nele) e também envia dados para o computador (entrada, quando você os abre) — por isso é um periférico de entrada e saída.">
+      <span class="qtitle">Desafio</span>
+      <p class="quiz-q">O pendrive é considerado um periférico de:</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" data-idx="0">Somente entrada</button>
+        <button class="quiz-opt" data-idx="1">Somente saída</button>
+        <button class="quiz-opt" data-idx="2">Entrada e saída</button>
+        <button class="quiz-opt" data-idx="3">Nenhuma das anteriores</button>
+      </div>
+      <p class="quiz-feedback"></p>
+    </div>
+  </div>
+</section>
+
+<section class="divider-top">
+  <div class="wrap">
+    <h2 class="h2"><span class="num">＋</span> Para o debate em sala</h2>
+    <p class="section-kicker">leve suas respostas e dúvidas</p>
+    <div class="resumo">
+      <span class="rtitle">Perguntas para levar para a conversa</span>
+      <ul>
+        <li>Qual das gerações da computação você acha que trouxe a mudança mais radical? Por quê?</li>
+        <li>Cite três hardwares e três softwares que você usou só hoje.</li>
+        <li>Se a RAM "esquece" tudo ao desligar o computador, por que ela ainda é útil?</li>
+        <li>Pense em um periférico que você usa e que não foi citado aqui — ele é de entrada, saída, ou os dois?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Material de apoio — BNCC Computação EF06CO01 e EM13CO01. Fotografias históricas via Wikimedia Commons, usadas para fins didáticos.</p>
+  </div>
+</footer>
+
+<script>
+  // scroll spy
+  const links = document.querySelectorAll('.navlinks a');
+  const sections = Array.from(links).map(a => document.querySelector(a.getAttribute('href')));
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const id = '#' + e.target.id;
+        links.forEach(a=> a.classList.toggle('active', a.getAttribute('href') === id));
+      }
+    });
+  }, {rootMargin: '-40% 0px -55% 0px'});
+  sections.forEach(s => s && obs.observe(s));
+
+  // quiz logic
+  document.querySelectorAll('.quiz').forEach(quiz=>{
+    const correctIdx = quiz.getAttribute('data-answer');
+    const explain = quiz.getAttribute('data-explain') || '';
+    const feedback = quiz.querySelector('.quiz-feedback');
+    const buttons = quiz.querySelectorAll('.quiz-opt');
+
+    buttons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const chosenIdx = btn.getAttribute('data-idx');
+        const isRight = chosenIdx === correctIdx;
+
+        buttons.forEach(b=>{
+          b.disabled = true;
+          if(b.getAttribute('data-idx') === correctIdx){
+            b.classList.add('correct');
+          }
+        });
+        if(!isRight){
+          btn.classList.add('wrong');
+        }
+
+        feedback.classList.add('show');
+        feedback.classList.add(isRight ? 'is-right' : 'is-wrong');
+        feedback.innerHTML = '<span class="tag">' + (isRight ? 'Certinho!' : 'Quase!') + '</span>' + explain;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
