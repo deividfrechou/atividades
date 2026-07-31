@@ -155,6 +155,39 @@
             line-height: 1.6;
         }
 
+        .checklist {
+            background: #fff4e6;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #e67e22;
+            margin-top: 20px;
+        }
+
+        .checklist h3 {
+            color: #d35400;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .checklist ol {
+            color: #34495e;
+            font-size: 1.05em;
+            line-height: 1.8;
+            padding-left: 22px;
+        }
+
+        .checklist li {
+            margin-bottom: 8px;
+        }
+
+        .checklist .obs {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #e67e22;
+            font-size: 0.95em;
+            color: #7f4a1e;
+        }
+
         .roulette-animation {
             display: inline-block;
             animation: spin 2s linear infinite;
@@ -224,7 +257,24 @@
             <div class="scenario-description" id="scenarioDescription"></div>
             <div class="requirements" id="requirements"></div>
             <div class="question" id="question"></div>
-            
+
+            <div class="checklist">
+                <h3>📋 O que você precisa pesquisar</h3>
+                <ol>
+                    <li>Qual tipo de computador usar (notebook, PC desktop, tablet, all-in-one, workstation, placa tipo Raspberry Pi, etc.) e por quê.</li>
+                    <li>Qual processador é ideal (marca, modelo/geração, quantidade de núcleos) para as tarefas descritas.</li>
+                    <li>Qual quantidade e tipo de memória RAM é ideal.</li>
+                    <li>É necessária placa de vídeo dedicada? Se sim, qual modelo? Se não, por que a integrada é suficiente?</li>
+                    <li>Qual tipo e capacidade de armazenamento (SSD, HD, capacidade em GB/TB).</li>
+                    <li>Quais periféricos são necessários para o trabalho (ex: mouse, teclado, monitor, webcam, headset, mesa digitalizadora, etc.).</li>
+                    <li>Quais periféricos ou acessórios opcionais poderiam melhorar o trabalho, mesmo não sendo essenciais.</li>
+                    <li>Quais programas/softwares seriam usados, incluindo versões gratuitas ou pagas.</li>
+                    <li>Pesquisar e listar o valor de cada item (hardware, periféricos e softwares) para montar um orçamento.</li>
+                    <li>Somar todos os valores e apresentar o valor total do investimento necessário.</li>
+                </ol>
+                <div class="obs">💡 Dica: monte o orçamento em formato de tabela (item | especificação | valor) e cite de onde tirou os preços pesquisados.</div>
+            </div>
+
             <div style="text-align: center;">
                 <button class="new-sort-button" onclick="newSort()">
                     🔄 Sortear Novo Cenário
@@ -294,6 +344,66 @@
                     mobilidade: "Baixa (trabalha em um laboratório de pesquisa)"
                 },
                 question: "Qual computador (notebook ou workstation) você recomendaria para Pedro? Especifique as características de hardware necessárias, como processador, memória RAM, armazenamento, e se é necessário suporte para computação em nuvem. Especifique também o valor a investir, contabilizando o valor dos softwares utilizados."
+            },
+            {
+                title: "Cenário 7: Roberto, Aposentado",
+                description: "Roberto é aposentado e quer um equipamento simples para fazer videochamadas com a família, ler notícias, assistir vídeos e usar aplicativos de mensagem. Ele não tem experiência com tecnologia e prefere algo leve, com tela grande e fácil de usar, sem precisar de teclado e mouse.",
+                requirements: {
+                    softwares: "WhatsApp, YouTube, navegador de internet, aplicativos de notícias",
+                    tarefas: "Videochamadas, leitura de notícias, mensagens, entretenimento leve",
+                    mobilidade: "Média (usa principalmente em casa, mas gosta de levar para outros cômodos)"
+                },
+                question: "Qual equipamento (tablet, notebook ou outro) você recomendaria para Roberto? Especifique tamanho de tela, armazenamento e outros recursos importantes para facilitar o uso. Especifique também o valor a investir, contabilizando o valor dos softwares/aplicativos utilizados (se houver custo)."
+            },
+            {
+                title: "Cenário 8: Juliana, Ilustradora Digital",
+                description: "Juliana é uma ilustradora que cria artes digitais e quadrinhos. Ela precisa desenhar diretamente na tela com uma caneta stylus, com boa precisão de pressão e resposta rápida, além de rodar softwares de ilustração profissionais. Também exporta suas artes em alta resolução para impressão.",
+                requirements: {
+                    softwares: "Procreate ou Adobe Photoshop, Clip Studio Paint, Adobe Illustrator",
+                    tarefas: "Ilustração digital com caneta, edição de imagens em alta resolução, exportação para impressão",
+                    mobilidade: "Alta (gosta de desenhar em diferentes lugares, como cafés e eventos)"
+                },
+                question: "Qual equipamento (tablet com caneta, notebook conversível ou mesa digitalizadora + PC) você recomendaria para Juliana? Especifique processador, memória RAM, armazenamento e as características da tela/caneta necessárias. Especifique também o valor a investir, contabilizando o valor dos softwares utilizados."
+            },
+            {
+                title: "Cenário 9: Diego, Entusiasta de Automação Residencial",
+                description: "Diego é um hobbista que quer montar um sistema de automação residencial: controlar luzes, sensores de temperatura e câmeras de segurança usando uma placa de computador de baixo custo, programando em Python. Ele não precisa de um computador completo para isso, apenas de uma placa dedicada rodando continuamente.",
+                requirements: {
+                    softwares: "Python, Home Assistant, sistema operacional Linux para placas embarcadas",
+                    tarefas: "Automação residencial, leitura de sensores, controle remoto de dispositivos",
+                    mobilidade: "Nenhuma (fica fixo em um local da casa, ligado 24h)"
+                },
+                question: "Qual placa (ex: Raspberry Pi ou similar) você recomendaria para Diego? Especifique o modelo, memória RAM, armazenamento (cartão SD/SSD) e acessórios necessários (fonte, case, cabos). Especifique também o valor a investir, contabilizando o valor dos softwares utilizados (se houver custo)."
+            },
+            {
+                title: "Cenário 10: Beatriz, Estudante do Clube de Robótica",
+                description: "Beatriz está no ensino médio e participa do clube de robótica da escola. Ela precisa de uma placa de computador pequena e barata para programar robôs, testar sensores e motores, e aprender lógica de programação com os colegas em projetos de grupo.",
+                requirements: {
+                    softwares: "Python, Scratch, IDE Arduino, sistema operacional para placas embarcadas",
+                    tarefas: "Programação de robôs, testes com sensores e motores, aprendizado de lógica",
+                    mobilidade: "Média (leva a placa para a escola em dias de clube)"
+                },
+                question: "Qual placa (ex: Raspberry Pi, ou alternativa mais em conta) você recomendaria para Beatriz? Especifique o modelo, memória RAM, armazenamento e acessórios necessários (fonte, cartão de memória, cabos, case). Especifique também o valor a investir, contabilizando o valor dos softwares utilizados (se houver custo)."
+            },
+            {
+                title: "Cenário 11: Marcos, Jogador e Streamer",
+                description: "Marcos joga games competitivos em alta resolução e taxa de quadros, e também transmite ao vivo (streaming) suas partidas, precisando rodar o jogo e o software de transmissão ao mesmo tempo sem travamentos. Ele também grava e edita vídeos de melhores momentos para postar depois.",
+                requirements: {
+                    softwares: "Jogos diversos (alta demanda gráfica), OBS Studio, Discord, Adobe Premiere Pro",
+                    tarefas: "Jogos em alta performance, transmissão ao vivo simultânea, edição de vídeos",
+                    mobilidade: "Baixa (joga e transmite sempre do mesmo setup em casa)"
+                },
+                question: "Qual computador (desktop gamer) você recomendaria para Marcos? Especifique processador, memória RAM, placa de vídeo, armazenamento e periféricos importantes para jogos e streaming. Especifique também o valor a investir, contabilizando o valor dos softwares utilizados."
+            },
+            {
+                title: "Cenário 12: Camila, Bióloga de Campo",
+                description: "Camila é bióloga e passa longos períodos em expedições de campo, coletando dados sobre fauna e flora. Ela precisa de um equipamento resistente a poeira, umidade e quedas, com boa duração de bateria, para registrar dados, tirar fotos e preencher planilhas mesmo sem acesso à internet.",
+                requirements: {
+                    softwares: "Aplicativos de coleta de dados de campo, planilhas eletrônicas, GPS/mapas offline",
+                    tarefas: "Coleta de dados em campo, registro fotográfico, preenchimento de planilhas offline",
+                    mobilidade: "Muito alta (uso em trilhas, florestas e áreas remotas, longe de tomadas)"
+                },
+                question: "Qual equipamento (tablet resistente/rugged, notebook robusto) você recomendaria para Camila? Especifique certificação de resistência, duração de bateria, armazenamento e conectividade necessária. Especifique também o valor a investir, contabilizando o valor dos softwares utilizados."
             }
         ];
 
