@@ -180,6 +180,18 @@
             margin-bottom: 8px;
         }
 
+        .checklist .sub-checklist {
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            color: #5c3d16;
+            font-size: 0.97em;
+        }
+
+        .checklist .sub-checklist li {
+            margin-bottom: 6px;
+        }
+
         .checklist .obs {
             margin-top: 15px;
             padding-top: 15px;
@@ -227,6 +239,124 @@
             box-shadow: 0 12px 25px rgba(231, 76, 60, 0.4);
         }
 
+        .example-toggle-button {
+            background: transparent;
+            color: #6c3fc5;
+            border: 2px solid #6c3fc5;
+            padding: 10px 26px;
+            font-size: 1em;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 5px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .example-toggle-button:hover {
+            background: #6c3fc5;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .example-model {
+            display: none;
+            background: #f5f0fc;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: left;
+            border-left: 5px solid #6c3fc5;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .example-model.show {
+            display: block;
+        }
+
+        .example-model h2 {
+            color: #4a2d82;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .example-model .example-tag {
+            display: inline-block;
+            background: #6c3fc5;
+            color: #fff;
+            font-size: 0.75em;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .example-model .scenario-description {
+            color: #4a2d82;
+            font-size: 1.05em;
+        }
+
+        .example-model h3 {
+            color: #4a2d82;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .example-model .resolution-item {
+            background: #fff;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border-left: 3px solid #9b7fd4;
+        }
+
+        .example-model .resolution-item strong {
+            color: #4a2d82;
+        }
+
+        .example-model .resolution-item p {
+            color: #34495e;
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .budget-table th, .budget-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0d4f5;
+            font-size: 0.95em;
+            color: #34495e;
+        }
+
+        .budget-table th {
+            background: #6c3fc5;
+            color: #fff;
+        }
+
+        .budget-table tr.total-row td {
+            font-weight: 700;
+            color: #4a2d82;
+            border-top: 2px solid #6c3fc5;
+        }
+
+        .example-model .obs {
+            background: #fff;
+            border-left: 4px solid #9b7fd4;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.95em;
+            color: #4a2d82;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
@@ -252,6 +382,113 @@
             <span id="buttonText">Sortear Cenário</span>
         </button>
 
+        <br>
+        <button class="example-toggle-button" id="exampleToggleButton" onclick="toggleExample()">
+            <span id="exampleToggleText">📖 Ver exemplo resolvido (modelo)</span>
+        </button>
+
+        <div class="example-model" id="exampleModel">
+            <span class="example-tag">EXEMPLO / MODELO — não sorteável</span>
+            <h2>Cenário Modelo: Rafael, Fotógrafo e Criador de Conteúdo</h2>
+            <p class="scenario-description">Rafael faz fotos para redes sociais e pequenos eventos. Ele edita suas fotos em lote no Lightroom, faz retoques mais detalhados no Photoshop e monta artes simples para os posts no Canva. De vez em quando exporta vídeos curtos (menos de 2 minutos) para os Reels. Não trabalha com vídeo em 4K nem faz renderizações pesadas, mas precisa de um computador que não trave ao editar várias fotos em alta resolução ao mesmo tempo.</p>
+
+            <div class="requirements">
+                <h3>Requisitos:</h3>
+                <ul>
+                    <li><strong>Softwares:</strong> Adobe Lightroom, Adobe Photoshop, Canva, editor de vídeo leve (CapCut ou Premiere Rush)</li>
+                    <li><strong>Tarefas:</strong> Edição de fotos em lote, retoques detalhados, montagem de artes simples, edição leve de vídeos curtos</li>
+                    <li><strong>Mobilidade:</strong> Média (edita em casa, mas às vezes leva o equipamento para eventos)</li>
+                </ul>
+            </div>
+
+            <h3>✅ Como responder ponto a ponto (exemplo de raciocínio)</h3>
+
+            <div class="resolution-item">
+                <strong>1. Tipo de computador</strong>
+                <p>Como Rafael às vezes precisa levar o equipamento para eventos, mas edita principalmente em casa, um <strong>notebook de porte médio (tela 15,6")</strong> é o mais equilibrado: permite editar em qualquer lugar sem abrir mão de uma tela confortável.</p>
+            </div>
+
+            <div class="resolution-item">
+                <strong>2. Processador</strong>
+                <p>Um <strong>Intel Core i5 de geração recente</strong> (ou AMD Ryzen 5) dá conta de rodar o Lightroom e o Photoshop com fluidez. Não é preciso ir direto para um i7/Ryzen 7, já que Rafael não faz renderização de vídeo pesada nem trabalha com projetos 4K.</p>
+            </div>
+
+            <div class="resolution-item">
+                <strong>3. Memória RAM</strong>
+                <p><strong>16 GB</strong> é o ideal: o Lightroom e o Photoshop consomem bem mais memória que programas de escritório, principalmente ao editar várias fotos em alta resolução ao mesmo tempo. Com 8 GB o sistema ficaria lento.</p>
+            </div>
+
+            <div class="resolution-item">
+                <strong>4. Placa de vídeo</strong>
+                <p>Uma <strong>placa de vídeo dedicada de entrada</strong> (ex: NVIDIA GeForce RTX 2050 ou GTX 1650) é recomendada, pois acelera filtros e exportações no Photoshop e ajuda na edição leve de vídeo. Não é necessário um modelo mais robusto, já que Rafael não joga nem edita vídeo em 4K — isso seria exagero para o caso dele.</p>
+            </div>
+
+            <div class="resolution-item">
+                <strong>5. Armazenamento</strong>
+                <p>Um <strong>SSD de 512 GB</strong> é o ideal: fotos em alta resolução ocupam mais espaço que documentos, então 256 GB ficaria apertado, mas 1 TB ainda não é necessário para o volume de trabalho de Rafael.</p>
+            </div>
+
+            <div class="resolution-item">
+                <strong>6. Periféricos necessários</strong>
+                <p>Mouse (de preferência com boa precisão), teclado e, se possível, um monitor externo com boa cobertura de cor para conferir as fotos com mais fidelidade em casa.</p>
+            </div>
+
+            <div class="resolution-item">
+                <strong>7. Periféricos opcionais</strong>
+                <p>Cartão de memória extra e leitor de cartão SD (para descarregar fotos da câmera mais rápido), HD externo para backup e um mouse com fio próprio para edição de precisão.</p>
+            </div>
+
+            <div class="resolution-item">
+                <strong>8. Softwares</strong>
+                <p>Adobe Photography Plan (Lightroom + Photoshop, versão paga) ou alternativas gratuitas como GIMP e Darktable; Canva (versão gratuita já atende, mas o Canva Pro libera mais recursos); CapCut (gratuito) para os vídeos curtos.</p>
+            </div>
+
+            <h3>💰 Orçamento (exemplo)</h3>
+            <table class="budget-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Especificação</th>
+                        <th>Valor (R$)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Computador</td>
+                        <td>Notebook 15,6", Intel Core i5, 16 GB RAM, SSD 512 GB, GPU dedicada de entrada (RTX 2050)</td>
+                        <td>4.800,00</td>
+                    </tr>
+                    <tr>
+                        <td>Periféricos</td>
+                        <td>Mouse de precisão e monitor externo 24" com boa cobertura de cor</td>
+                        <td>1.100,00</td>
+                    </tr>
+                    <tr>
+                        <td>Periféricos opcionais</td>
+                        <td>Leitor de cartão SD + HD externo 1 TB para backup</td>
+                        <td>350,00</td>
+                    </tr>
+                    <tr>
+                        <td>Sistema operacional</td>
+                        <td>Windows 11 Home (licença original)</td>
+                        <td>600,00</td>
+                    </tr>
+                    <tr>
+                        <td>Programas</td>
+                        <td>Adobe Photography Plan (assinatura anual)</td>
+                        <td>480,00</td>
+                    </tr>
+
+                    <tr class="total-row">
+                        <td colspan="2">Valor total do investimento</td>
+                        <td>7.330,00</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="obs">💡 Os valores acima são fictícios, apenas para servir de modelo. Na atividade real, vocês devem pesquisar preços atuais em lojas online e citar a fonte de cada preço.</div>
+        </div>
+
         <div class="scenario-container" id="scenarioContainer">
             <div class="scenario-title" id="scenarioTitle"></div>
             <div class="scenario-description" id="scenarioDescription"></div>
@@ -263,14 +500,22 @@
                 <ol>
                     <li>Qual tipo de computador usar (notebook, PC desktop, tablet, all-in-one, workstation, placa tipo Raspberry Pi, etc.) e por quê.</li>
                     <li>Qual processador é ideal (marca, modelo/geração, quantidade de núcleos) para as tarefas descritas.</li>
-                    <li>Qual quantidade e tipo de memória RAM é ideal.</li>
+                    <li>Qual quantidade de memória RAM é ideal.</li>
                     <li>É necessária placa de vídeo dedicada? Se sim, qual modelo? Se não, por que a integrada é suficiente?</li>
-                    <li>Qual tipo e capacidade de armazenamento (SSD, HD, capacidade em GB/TB).</li>
+                    <li>Qual capacidade de armazenamento (SSD, HD, capacidade em GB/TB).</li>
                     <li>Quais periféricos são necessários para o trabalho (ex: mouse, teclado, monitor, webcam, headset, mesa digitalizadora, etc.).</li>
                     <li>Quais periféricos ou acessórios opcionais poderiam melhorar o trabalho, mesmo não sendo essenciais.</li>
                     <li>Quais programas/softwares seriam usados, incluindo versões gratuitas ou pagas.</li>
-                    <li>Pesquisar e listar o valor de cada item (hardware, periféricos e softwares) para montar um orçamento.</li>
-                    <li>Somar todos os valores e apresentar o valor total do investimento necessário.</li>
+                    <li>Pesquisar e listar o valor de cada item (hardware, periféricos e softwares) para montar um orçamento.
+                        <ol type="a" class="sub-checklist">
+                            <li>Computador - modelo e valor</li>
+                            <li>Periféricos e valores</li>
+                            <li>Periféricos opcionais e valor</li>
+                            <li>Sistema operacional - valor</li>
+                            <li>Programas utilizados - valor</li>
+                            <li>Valor total do investimento</li>
+                        </ol>
+                    </li>
                 </ol>
                 <div class="obs">💡 Dica: monte o orçamento em formato de tabela (item | especificação | valor) e cite de onde tirou os preços pesquisados.</div>
             </div>
@@ -454,6 +699,16 @@
                 <h3>Pergunta:</h3>
                 <p>${scenario.question}</p>
             `;
+        }
+
+        function toggleExample() {
+            const exampleDiv = document.getElementById('exampleModel');
+            const toggleText = document.getElementById('exampleToggleText');
+
+            const isShowing = exampleDiv.classList.toggle('show');
+            toggleText.textContent = isShowing
+                ? '🔼 Ocultar exemplo resolvido'
+                : '📖 Ver exemplo resolvido (modelo)';
         }
 
         function newSort() {
