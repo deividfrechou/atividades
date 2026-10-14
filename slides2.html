@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tutorial Canva — Slides passo a passo</title>
+<style>
+:root{--ink:#182235;--muted:#5e6b7d;--purple:#6c3de8;--cyan:#17a8bb;--paper:#f5f7fb;--line:#dfe5ef;--green:#1d936b;--orange:#f28a36}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 Arial,Helvetica,sans-serif}
+header{background:linear-gradient(120deg,#17243b,#4b2ba3 70%,#147f98);color:#fff;padding:54px 22px 48px}
+.wrap{max-width:1100px;margin:auto;padding:0 22px}header .wrap{padding:0 22px}
+.kicker{text-transform:uppercase;letter-spacing:.15em;font-size:.78rem;font-weight:bold;color:#c9f5ff}
+h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.1;margin:.5rem 0 1rem;max-width:850px}
+header p{max-width:760px;font-size:1.12rem;color:#e9eaff}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.pill{border:1px solid #ffffff55;border-radius:30px;padding:5px 12px;font-size:.85rem}
+nav{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 3px 12px #1b29400c}
+nav .wrap{display:flex;gap:8px;overflow-x:auto;padding-top:10px;padding-bottom:10px}
+nav a{white-space:nowrap;text-decoration:none;color:#49329b;font-weight:bold;font-size:.85rem;background:#f0ebff;border-radius:24px;padding:7px 12px}
+main{padding:32px 0 70px}.intro,.step,.toolbox,.checklist,.finish{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;margin:0 0 24px;box-shadow:0 8px 24px #17243b08}
+h2{font-size:1.65rem;line-height:1.2;margin:0 0 12px}h3{margin:18px 0 5px;font-size:1.08rem}p{margin:.45rem 0 .8rem}ul,ol{padding-left:1.35rem}li{margin:.3rem 0}.muted{color:var(--muted)}.num{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#eee8ff;color:#5530b6;font-weight:bold;margin-right:8px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.note{border-left:4px solid var(--cyan);background:#eafafd;padding:12px 15px;border-radius:0 12px 12px 0;margin:14px 0}.warn{border-left-color:var(--orange);background:#fff5e9}.good{border-left-color:var(--green);background:#eaf8f1}
+figure{margin:14px 0}figure img{width:100%;height:auto;border:1px solid var(--line);border-radius:12px;display:block}figcaption{font-size:.85rem;color:var(--muted);margin-top:6px}
+.mock{aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#fff;border:1px solid #d9dfeb;position:relative;padding:18px;display:flex;gap:14px;align-items:center}
+.mock .canvas{position:relative;overflow:hidden;border-radius:8px;width:100%;height:100%;background:#eaf4e9;padding:18px;display:flex;flex-direction:column;justify-content:center}
+.mock .title{font-weight:900;font-size:clamp(1rem,2.2vw,2rem);line-height:1.05;max-width:60%;color:#163c35}
+.mock .sub{font-size:clamp(.55rem,1vw,.95rem);max-width:57%;color:#35534d;margin-top:10px}
+.blob{position:absolute;border-radius:50%;right:8%;top:13%;width:30%;aspect-ratio:1;background:#e9bd56}
+.blob:after{content:"";position:absolute;background:#277c64;width:75%;height:75%;border-radius:48% 52% 45% 55%;right:-12%;bottom:-10%}
+.visual-label{font-size:.75rem;font-weight:bold;color:#6546c3;letter-spacing:.04em;text-transform:uppercase;margin-bottom:7px}
+.mock .bar{position:absolute;left:0;right:0;bottom:0;height:9px;background:#277c64}
+.mock.chartmock{background:#fffaf0}.chartmock .canvas{background:#fffaf0;flex-direction:row;align-items:center;gap:10px}.bargraph{display:flex;align-items:end;gap:8px;height:68%;width:48%;border-bottom:2px solid #52606d}.bargraph span{flex:1;background:#2d9272;border-radius:5px 5px 0 0}.bargraph span:nth-child(1){height:35%}.bargraph span:nth-child(2){height:55%;background:#f0b64e}.bargraph span:nth-child(3){height:78%}.bargraph span:nth-child(4){height:95%;background:#7450d5}
+.mock .photo{width:40%;height:75%;border-radius:45% 45% 12px 12px;background:linear-gradient(145deg,#91c8ad,#e9d58b 50%,#528b6b);position:absolute;right:7%;bottom:0}
+.mock .photo:before{content:"";position:absolute;width:35%;height:35%;border-radius:50%;background:#f3c69b;top:10%;left:31%}
+.mock .photo:after{content:"";position:absolute;width:55%;height:45%;border-radius:50% 50% 0 0;background:#315b4e;top:27%;left:22%}
+.mock .shape{position:absolute;right:9%;top:14%;width:24%;height:24%;background:#f1bb48;transform:rotate(45deg);border-radius:5px}
+.mock .caption{position:absolute;left:18px;bottom:13px;font-size:.65rem;color:#47625a}
+.mock .cards{display:flex;gap:7px;position:absolute;bottom:12%;left:8%;right:8%}.mock .cards span{background:#fff;border:1px solid #d7e5d8;border-radius:8px;padding:8px 5px;flex:1;text-align:center;font-size:clamp(.48rem,.8vw,.75rem);font-weight:bold;color:#236b53}
+.mini{background:#f7f5ff;border-radius:12px;padding:13px}.mini strong{display:block;color:#4d2fa0}
+kbd{font-family:inherit;background:#eef0f5;border:1px solid #d9deea;border-radius:5px;padding:2px 6px;font-size:.88em}
+table{width:100%;border-collapse:collapse;margin:12px 0}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f4f1ff}
+footer{background:#17243b;color:#e9eaff;padding:30px 0}footer p{margin:0}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.intro,.step,.toolbox,.checklist,.finish{padding:19px}.mock{padding:10px}.mock .canvas{padding:12px}}
+@media print{nav{display:none}body{background:#fff;font-size:11pt}header{padding:25px}.intro,.step,.toolbox,.checklist,.finish{box-shadow:none;break-inside:avoid;margin-bottom:12px;padding:18px}a{color:inherit}footer{background:#fff;color:#111;border-top:1px solid #ccc}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="kicker">Guia prático • Canva para iniciantes</div>
+<h1>Como criar uma apresentação de slides no Canva</h1>
+<p>Um tutorial visual, passo a passo, para aprender a usar <strong>Formas, Elementos gráficos, Fotos, Vídeos, 3D, Animações, Tabelas, Gráficos e Molduras</strong> de maneira intencional — e não apenas decorar os slides.</p>
+<div class="pills"><span class="pill">8 slides-modelo</span><span class="pill">Instruções detalhadas</span><span class="pill">Exemplos visuais</span><span class="pill">Tema: consumo consciente</span></div>
+</div></header>
+<nav><div class="wrap">
+<a href="#antes">Preparação</a><a href="#slide1">Slide 1</a><a href="#slide2">Slide 2</a><a href="#slide3">Slide 3</a><a href="#slide4">Slide 4</a><a href="#slide5">Slide 5</a><a href="#slide6">Slide 6</a><a href="#slide7">Slide 7</a><a href="#slide8">Slide 8</a><a href="#revisao">Revisão</a>
+</div></nav>
+<main class="wrap">
+<section class="intro" id="antes">
+<h2>Antes de começar: prepare o arquivo</h2>
+<ol>
+<li>Acesse <a href="https://www.canva.com/" target="_blank" rel="noopener">canva.com</a> e entre na sua conta.</li>
+<li>Na página inicial, clique em <strong>Criar um design</strong> e procure por <strong>Apresentação (16:9)</strong>. Se a interface mostrar uma opção semelhante, escolha o formato horizontal para projetor e tela.</li>
+<li>Escolha <strong>Apresentação em branco</strong> para praticar as ferramentas sem que um modelo pronto faça tudo por você.</li>
+<li>Renomeie o arquivo no topo, por exemplo: <em>Consumo consciente — apresentação</em>.</li>
+<li>Para inserir um novo slide, use o botão <strong>+</strong> ou a opção de adicionar página. Os nomes e a posição dos botões podem mudar conforme a versão do Canva.</li>
+</ol>
+<div class="note"><strong>Ideia didática:</strong> todos os oito slides usarão o tema “Consumo consciente”. Assim, você aprende as ferramentas dentro de uma apresentação real, com começo, desenvolvimento e conclusão.</div>
+<h3>Como ler as instruções</h3>
+<p><strong>O que fazer</strong> explica os cliques. <strong>Como deve ficar</strong> descreve a composição final. <strong>Por que usar</strong> explica a função visual e didática do recurso.</p>
+</section>
+
+<section class="step" id="slide1">
+<h2><span class="num">1</span>Slide de abertura — título, formas e hierarquia</h2>
+<div class="grid"><div>
+<div class="visual-label">Exemplo de composição</div>
+<div class="mock"><div class="canvas"><div class="title">CONSUMO<br>CONSCIENTE</div><div class="sub">Pequenas escolhas. Grandes impactos.</div><div class="blob"></div><div class="bar"></div></div></div>
+</div><div>
+<h3>Objetivo</h3><p>Apresentar o assunto com clareza e despertar curiosidade, sem encher a tela de texto.</p>
+<h3>Passo a passo</h3>
+<ol><li>Na barra lateral, clique em <strong>Texto</strong> e adicione um título.</li><li>Escreva “Consumo consciente”. Selecione o texto e aumente a fonte até ele ser o primeiro elemento que chama atenção.</li><li>Adicione uma caixa de texto menor com a frase “Pequenas escolhas. Grandes impactos.”</li><li>Abra <strong>Elementos → Formas</strong>. Escolha um círculo, retângulo arredondado ou outra forma simples.</li><li>Redimensione a forma pelas alças dos cantos. Use uma cor de destaque e posicione-a atrás ou ao lado do título, sem cobrir as palavras.</li><li>Se a forma ficar sobre o texto, selecione-a e use <strong>Posição</strong> para enviar para trás.</li><li>Alinhe o título e subtítulo. Deixe margens livres nas bordas.</li></ol>
+</div></div>
+<div class="note good"><strong>Como deve ficar:</strong> título grande à esquerda, frase curta logo abaixo e uma forma decorativa à direita. Use no máximo duas famílias tipográficas e três cores principais.</div>
+<div class="note"><strong>Uso inteligente de Formas:</strong> elas criam contraste, separam áreas e direcionam o olhar. Não coloque formas só para preencher espaços.</div>
+</section>
+
+<section class="step" id="slide2">
+<h2><span class="num">2</span>Slide de contexto — Fotos e Molduras</h2>
+<div class="grid"><div>
+<div class="visual-label">Exemplo de composição</div>
+<div class="mock"><div class="canvas" style="background:#f5f1e5"><div class="title" style="color:#253b34;max-width:55%">O QUE É<br>CONSUMIR?</div><div class="sub" style="max-width:55%">É escolher produtos e serviços considerando necessidade, durabilidade e impacto.</div><div class="photo"></div><div class="caption">Imagem ilustrativa • consumo no dia a dia</div></div></div>
+</div><div>
+<h3>Objetivo</h3><p>Conectar o conceito a uma situação que os alunos reconheçam.</p>
+<h3>Passo a passo: inserir uma foto</h3>
+<ol><li>Adicione um novo slide.</li><li>Na lateral, abra <strong>Elementos</strong> ou <strong>Fotos</strong> — a organização pode variar.</li><li>Pesquise termos específicos, como “sacola reutilizável”, “feira de alimentos” ou “garrafa reutilizável”.</li><li>Clique na foto para adicioná-la. Arraste-a para a direita do slide e ajuste o tamanho.</li><li>Use uma foto nítida, relacionada ao assunto e com espaço visual para o texto.</li></ol>
+<h3>Passo a passo: usar uma Moldura</h3>
+<ol><li>Abra <strong>Elementos → Molduras</strong> e escolha uma moldura simples, por exemplo retangular ou circular.</li><li>Posicione e dimensione a moldura.</li><li>Arraste uma foto para dentro da moldura até ela encaixar.</li><li>Dê dois cliques na foto para reposicionar o enquadramento; confirme quando o resultado estiver bom.</li></ol>
+</div></div>
+<div class="note good"><strong>Como deve ficar:</strong> texto curto à esquerda e uma foto grande enquadrada à direita. A moldura dá acabamento e mantém o recorte organizado.</div>
+<div class="note warn"><strong>Atenção:</strong> uma moldura vazia é apenas um recipiente. Se a imagem não encaixar, arraste-a para dentro da moldura em vez de soltá-la ao lado.</div>
+</section>
+
+<section class="step" id="slide3">
+<h2><span class="num">3</span>Slide de explicação — Elementos gráficos e ícones</h2>
+<div class="grid"><div>
+<div class="visual-label">Exemplo de composição</div>
+<div class="mock"><div class="canvas" style="background:#f0f8f2"><div class="title" style="max-width:100%;font-size:clamp(1rem,1.8vw,1.5rem);text-align:center">3 ESCOLHAS MAIS CONSCIENTES</div><div class="cards"><span>♻ REDUZIR<br>Evitar excessos</span><span>↻ REUTILIZAR<br>Usar novamente</span><span>✓ RECICLAR<br>Separar resíduos</span></div><div class="caption">Ícones e cartões organizam as ideias</div></div></div>
+</div><div>
+<h3>Objetivo</h3><p>Transformar uma explicação em três ideias fáceis de lembrar.</p>
+<h3>Passo a passo</h3>
+<ol><li>Adicione um slide e escreva o título “3 escolhas mais conscientes”.</li><li>Abra <strong>Elementos</strong> e pesquise ícones como “reciclagem”, “reutilizar”, “folha” ou “check”.</li><li>Escolha ícones do mesmo estilo visual. Evite misturar desenhos realistas, emojis e ícones de linhas muito diferentes.</li><li>Adicione três formas iguais para servir de cartões. Duplique a primeira forma duas vezes para manter o mesmo tamanho e cor.</li><li>Posicione um ícone em cada cartão e acrescente um subtítulo com uma explicação curta.</li><li>Selecione os elementos relacionados e use as opções de alinhamento/posição para distribuir os três cartões de forma equilibrada.</li></ol>
+</div></div>
+<div class="note"><strong>Como deve ficar:</strong> três cartões alinhados, cada um com um ícone, uma palavra-chave e uma frase curta. Os elementos gráficos apoiam o conteúdo; não substituem a explicação do apresentador.</div>
+<h3>Boas práticas de pesquisa</h3><ul><li>Pesquise por objeto ou conceito específico, não apenas “bonito”.</li><li>Use a mesma cor nos ícones ou aplique uma paleta coerente.</li><li>Verifique a licença e as condições de uso dos recursos, especialmente em trabalhos publicados ou comerciais.</li></ul>
+</section>
+
+<section class="step" id="slide4">
+<h2><span class="num">4</span>Slide com dados — Tabelas para comparar informações</h2>
+<div class="grid"><div>
+<div class="visual-label">Exemplo de composição</div>
+<div class="mock"><div class="canvas" style="background:#f8f6ff"><div class="title" style="max-width:100%;font-size:clamp(1rem,1.8vw,1.5rem)">DESCARTÁVEL OU REUTILIZÁVEL?</div><table style="font-size:clamp(.45rem,.75vw,.75rem);background:white;border-radius:8px;overflow:hidden"><tr><th>Critério</th><th>Descartável</th><th>Reutilizável</th></tr><tr><td>Uso</td><td>Uma vez</td><td>Muitas vezes</td></tr><tr><td>Resíduo</td><td>Mais frequente</td><td>Menos frequente*</td></tr><tr><td>Cuidados</td><td>Descarte</td><td>Limpeza</td></tr></table><div class="caption">*Depende do material e do tempo de uso.</div></div></div>
+</div><div>
+<h3>Objetivo</h3><p>Comparar características de forma organizada, sem criar um parágrafo longo.</p>
+<h3>Passo a passo</h3>
+<ol><li>Crie um novo slide e adicione o título “Descartável ou reutilizável?”.</li><li>Abra <strong>Elementos → Tabelas</strong> (ou procure “Tabela” na busca de elementos).</li><li>Insira uma tabela com três colunas e quatro linhas, se essa opção estiver disponível. Caso a interface seja diferente, escolha uma tabela equivalente.</li><li>Na primeira linha, digite: “Critério”, “Descartável” e “Reutilizável”.</li><li>Preencha as linhas com “Uso”, “Resíduo” e “Cuidados”, usando frases muito curtas.</li><li>Destaque a linha de cabeçalho com cor de fundo e texto legível.</li><li>Ajuste a largura das colunas para que as palavras não fiquem cortadas.</li></ol>
+</div></div>
+<div class="note good"><strong>Como deve ficar:</strong> título no topo e tabela centralizada ocupando a maior parte do espaço. A tabela deve ser legível a distância; não use letras minúsculas para caber mais conteúdo.</div>
+<div class="note warn"><strong>Precisão:</strong> evite afirmar que todo produto reutilizável é automaticamente melhor. A durabilidade, o material, a lavagem e a frequência de uso também influenciam o impacto.</div>
+</section>
+
+<section class="step" id="slide5">
+<h2><span class="num">5</span>Slide de resultados — Gráficos para contar uma história com dados</h2>
+<div class="grid"><div>
+<div class="visual-label">Exemplo visual (dados fictícios)</div>
+<div class="mock chartmock"><div class="canvas"><div style="flex:1"><div class="title" style="font-size:clamp(.9rem,1.7vw,1.5rem);max-width:100%">HÁBITOS DA TURMA</div><div class="sub" style="max-width:100%">Exemplo fictício de respostas</div></div><div class="bargraph"><span></span><span></span><span></span><span></span></div></div></div>
+</div><div>
+<h3>Objetivo</h3><p>Mostrar uma comparação ou tendência que seria difícil perceber apenas lendo números.</p>
+<h3>Passo a passo</h3>
+<ol><li>Crie um slide com o título “Hábitos da turma”.</li><li>Abra <strong>Elementos → Gráficos</strong> e escolha o tipo adequado: barras/colunas para comparar categorias, linha para acompanhar mudanças ao longo do tempo ou pizza para poucas partes de um total.</li><li>Insira o gráfico e abra a área de edição de dados.</li><li>Troque os rótulos genéricos por categorias, por exemplo “Leva garrafa”, “Usa sacola” e “Separa resíduos”.</li><li>Substitua os números de demonstração por dados reais de uma pesquisa da turma. Se ainda não houver pesquisa, identifique os números como fictícios.</li><li>Adicione um título e, se necessário, indique a unidade (pessoas, respostas ou porcentagem).</li><li>Use poucas cores e confira se os rótulos são legíveis.</li></ol>
+</div></div>
+<div class="note"><strong>Como deve ficar:</strong> gráfico em destaque e uma frase que explique a principal observação, como “A prática mais comum foi levar garrafa reutilizável”. Só escreva essa conclusão se os dados realmente mostrarem isso.</div>
+<div class="note warn"><strong>Regra de ouro:</strong> nunca invente dados para parecer que houve uma pesquisa. O exemplo deste tutorial é ilustrativo; substitua-o pelos resultados verdadeiros da turma ou mantenha a indicação “dados fictícios”.</div>
+</section>
+
+<section class="step" id="slide6">
+<h2><span class="num">6</span>Slide multimídia — Vídeo com propósito</h2>
+<div class="grid"><div>
+<div class="visual-label">Exemplo de composição</div>
+<div class="mock"><div class="canvas" style="background:#e8f5f8"><div class="title" style="max-width:52%;color:#163f4c">DO HÁBITO À AÇÃO</div><div class="sub" style="max-width:52%">Assista a um trecho curto e observe uma solução possível.</div><div class="photo" style="background:linear-gradient(140deg,#80c5cf,#286b77);border-radius:12px;width:38%;height:70%;bottom:12%;right:7%"></div><div style="position:absolute;right:20%;top:38%;background:#fff;color:#147d8b;border-radius:50%;width:48px;height:48px;display:grid;place-items:center;font-size:1.4rem">▶</div></div></div>
+</div><div>
+<h3>Objetivo</h3><p>Usar um trecho audiovisual para ilustrar uma ideia, não como enfeite ou pausa sem relação com a aula.</p>
+<h3>Passo a passo</h3>
+<ol><li>Escolha um vídeo curto que mostre uma prática relacionada ao tema, como separação de resíduos ou reutilização de materiais.</li><li>No Canva, abra <strong>Elementos → Vídeos</strong> ou a seção de vídeos, conforme a interface.</li><li>Pesquise palavras-chave e confira o conteúdo antes de inserir. Outra possibilidade é carregar um vídeo próprio pela opção de uploads.</li><li>Arraste o vídeo para o slide e redimensione-o como uma janela horizontal. Evite que ele ocupe todo o slide se você também precisa de uma pergunta orientadora.</li><li>Adicione ao lado uma pergunta: “Que atitude simples aparece neste vídeo?”</li><li>Pré-visualize a apresentação para conferir reprodução, áudio e duração.</li></ol>
+</div></div>
+<div class="note good"><strong>Como deve ficar:</strong> vídeo de um lado e uma pergunta do outro. O professor pausa depois do trecho para recolher respostas e conectar o vídeo ao conteúdo.</div>
+<div class="note warn"><strong>Antes de apresentar:</strong> teste o vídeo e a conexão, se o recurso depender da internet. Tenha uma imagem ou explicação alternativa caso a reprodução falhe. Respeite direitos autorais e permissões de uso.</div>
+</section>
+
+<section class="step" id="slide7">
+<h2><span class="num">7</span>Slide de destaque — Elementos 3D e animações discretas</h2>
+<div class="grid"><div>
+<div class="visual-label">Exemplo de composição</div>
+<div class="mock"><div class="canvas" style="background:#f3edff"><div class="title" style="max-width:55%;color:#34215f">UMA IDEIA<br>QUE GANHA<br>FORMA</div><div class="sub" style="max-width:53%;color:#574a78">Destaque uma palavra ou objeto importante.</div><div class="shape"></div><div class="caption">Elemento 3D ilustrativo + movimento suave</div></div></div>
+</div><div>
+<h3>Objetivo</h3><p>Dar ênfase a um conceito-chave sem transformar o slide em uma coleção de efeitos.</p>
+<h3>Passo a passo: elemento 3D</h3>
+<ol><li>Abra <strong>Elementos</strong> e procure a categoria <strong>3D</strong>, ou pesquise um termo como “globo 3D”, “folha 3D” ou “caixa 3D”.</li><li>Escolha um único objeto que tenha relação com a mensagem.</li><li>Insira-o, ajuste o tamanho e deixe espaço ao redor. Se o recurso não aparecer na sua conta, use uma ilustração comum como alternativa.</li><li>Confira se o objeto não compete com o título ou encobre texto.</li></ol>
+<h3>Passo a passo: animação</h3>
+<ol><li>Selecione o título ou elemento que deseja animar.</li><li>Clique em <strong>Animar</strong> e veja as opções disponíveis.</li><li>Escolha um movimento simples e discreto, como aparecer ou surgir suavemente.</li><li>Se houver controles de velocidade ou intensidade, prefira um efeito curto e moderado.</li><li>Visualize o slide e repita apenas quando houver uma razão clara para o movimento.</li></ol>
+</div></div>
+<div class="note"><strong>Como deve ficar:</strong> uma palavra principal, um objeto 3D relacionado e no máximo um ou dois elementos com movimento. A animação deve ajudar a revelar a ideia, não distrair a plateia.</div>
+<div class="note warn"><strong>Evite:</strong> animar cada frase, misturar muitos estilos ou usar movimentos rápidos em todos os slides. O excesso reduz a leitura e pode cansar.</div>
+</section>
+
+<section class="step" id="slide8">
+<h2><span class="num">8</span>Slide final — síntese, chamada à ação e consistência</h2>
+<div class="grid"><div>
+<div class="visual-label">Exemplo de composição</div>
+<div class="mock"><div class="canvas" style="background:#e9f5ee"><div class="title" style="max-width:100%;color:#1d4b3b;text-align:center">QUAL ESCOLHA VOCÊ<br>VAI MUDAR HOJE?</div><div class="sub" style="max-width:100%;text-align:center">Escolha uma atitude possível e coloque-a em prática.</div><div class="cards"><span>REDUZIR</span><span>REUTILIZAR</span><span>RECICLAR</span></div><div class="bar"></div></div></div>
+</div><div>
+<h3>Objetivo</h3><p>Retomar a mensagem central e convidar o público a fazer algo concreto.</p>
+<h3>Passo a passo</h3>
+<ol><li>Adicione o oitavo slide e escreva uma pergunta de encerramento: “Qual escolha você vai mudar hoje?”.</li><li>Insira três formas ou cartões alinhados com as palavras “Reduzir”, “Reutilizar” e “Reciclar”.</li><li>Se desejar, adicione um ícone pequeno a cada cartão, mantendo o mesmo estilo dos slides anteriores.</li><li>Inclua uma frase de ação: “Escolha uma atitude possível e coloque-a em prática esta semana”.</li><li>Revise cores, fontes, alinhamento, espaçamento e tamanho dos títulos para manter a identidade visual.</li><li>Apresente em modo de visualização e leia o texto à distância. Corte qualquer frase longa demais.</li></ol>
+</div></div>
+<div class="note good"><strong>Como deve ficar:</strong> uma pergunta forte no centro, três ações visuais e uma instrução final concreta. Não termine com uma tela cheia de texto ou apenas com “Obrigado”.</div>
+</section>
+
+<section class="toolbox">
+<h2>Resumo: qual ferramenta usar e quando?</h2>
+<table><thead><tr><th>Ferramenta</th><th>Use para</th><th>Exemplo neste tutorial</th><th>Evite</th></tr></thead><tbody>
+<tr><td><strong>Formas</strong></td><td>Separar áreas, criar cartões e dar destaque.</td><td>Slide 1 e slide 8.</td><td>Encher espaços vazios sem função.</td></tr>
+<tr><td><strong>Fotos</strong></td><td>Mostrar situações reais e aproximar o tema do público.</td><td>Slide 2.</td><td>Imagem decorativa sem relação com a mensagem.</td></tr>
+<tr><td><strong>Molduras</strong></td><td>Recortar e organizar fotos em formatos consistentes.</td><td>Slide 2.</td><td>Deixar a moldura vazia ou cortar o assunto principal.</td></tr>
+<tr><td><strong>Elementos gráficos</strong></td><td>Representar conceitos com ícones e ilustrações.</td><td>Slide 3.</td><td>Misturar estilos ou usar ícones em excesso.</td></tr>
+<tr><td><strong>Tabelas</strong></td><td>Comparar informações organizadas em linhas e colunas.</td><td>Slide 4.</td><td>Colocar parágrafos inteiros dentro das células.</td></tr>
+<tr><td><strong>Gráficos</strong></td><td>Mostrar proporções, comparações ou tendências.</td><td>Slide 5.</td><td>Usar dados sem fonte ou escolher um gráfico inadequado.</td></tr>
+<tr><td><strong>Vídeos</strong></td><td>Demonstrar um processo ou trazer um exemplo audiovisual.</td><td>Slide 6.</td><td>Inserir um vídeo longo sem pergunta orientadora.</td></tr>
+<tr><td><strong>3D</strong></td><td>Dar destaque visual a um objeto ou conceito.</td><td>Slide 7.</td><td>Deixar o objeto competir com o título.</td></tr>
+<tr><td><strong>Animações</strong></td><td>Revelar informação ou guiar a atenção.</td><td>Slide 7.</td><td>Animar tudo ou usar efeitos rápidos demais.</td></tr>
+</tbody></table>
+</section>
+
+</main>
+<footer><div class="wrap"><p>Tutorial educativo de Canva • Material de apoio para criação de apresentações • Atualize os passos se a interface da sua conta estiver diferente.</p></div></footer>
+</body></html>
