@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caderno de Desafios - Perguntas de Investigação</title>
+    <style>
+        :root {
+            --primary: #182B49;
+            --secondary: #46505F;
+            --accent: #B45309;
+            --bg-light: #F4F6F9;
+            --text-dark: #212529;
+            --border-color: #D1D5DB;
+        }
+
+        body {
+            font-family: 'Calibri', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+        }
+
+        header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2rem;
+        }
+
+        header p {
+            margin: 0;
+            font-style: italic;
+            color: #E2E8F0;
+        }
+
+        .nav-container {
+            position: sticky;
+            top: 0;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .nav-title {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            background-color: var(--bg-light);
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .challenge-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 6px solid var(--primary);
+            scroll-margin-top: 100px; /* Garante espaço ao rolar para o topo da âncora */
+        }
+
+        .challenge-card h2 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 0.5rem;
+        }
+
+        .category {
+            font-size: 0.9rem;
+            font-weight: bold;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .story-box {
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--secondary);
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .story-box h3 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .story-box p {
+            margin-bottom: 0.75rem;
+        }
+        .story-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .mission {
+            font-style: italic;
+            color: #374151;
+            background: #FEF3C7;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--accent);
+            margin: 1rem 0;
+        }
+
+        .questions-section h4 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        ol.questions-list {
+            padding-left: 1.25rem;
+            margin: 0;
+        }
+
+        ol.questions-list li {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Caderno de Desafios Práticos</h1>
+        
+    </header>
+
+    <nav class="nav-container">
+        <span class="nav-title">Navegação Rápida entre os Desafios (1 a 10):</span>
+        <div class="nav-links">
+            <a href="#desafio-1">1</a>
+            <a href="#desafio-2">2</a>
+            <a href="#desafio-3">3</a>
+            <a href="#desafio-4">4</a>
+            <a href="#desafio-5">5</a>
+            <a href="#desafio-6">6</a>
+            <a href="#desafio-7">7</a>
+            <a href="#desafio-8">8</a>
+            <a href="#desafio-9">9</a>
+            <a href="#desafio-10">10</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- DESAFIO 1 -->
+        <section id="desafio-1" class="challenge-card">
+            <h2>Desafio 1 — A Nota Fiscal que Desapareceu</h2>
+            <span class="category">Eixo Temático: Notas Fiscais & Sonegação Fiscal</span>
+            
+            <div class="story-box">
+                <h3>A História</h3>
+                <p>Mariana começou a trabalhar como auxiliar administrativa em uma loja de equipamentos eletrônicos. Em uma manhã movimentada, um cliente comprou um computador por R$ 3.800,00. Pagou por Pix e pediu a nota fiscal para apresentar à empresa em que trabalhava.</p>
+                <p>O vendedor respondeu que poderia conceder um desconto de R$ 150,00 caso o cliente aceitasse não receber a nota. O cliente ficou tentado, pois economizaria dinheiro. Mariana, entretanto, percebeu que o pagamento seria registrado no sistema financeiro da loja, mas talvez não aparecesse corretamente nos registros da venda.</p>
+                <p>No final do dia, ao organizar os documentos, Mariana encontrou três situações diferentes:<br>
+                - Uma venda registrada no sistema, com pagamento confirmado, mas sem documento fiscal localizado.<br>
+                - Uma venda com nota fiscal emitida, mas com valor diferente do pagamento recebido.<br>
+                - Uma compra cancelada que continuava aparecendo como venda no relatório interno.</p>
+                <p>O gerente disse que eram apenas detalhes administrativos e pediu que ela não criasse problemas. Mariana ficou em dúvida: erros acontecem, mas como saber se eram erros de registro, falhas de procedimento ou tentativas deliberadas de esconder operações?</p>
+            </div>
+
+            <div class="mission">
+                <strong>Sua Missão:</strong> Você faz parte de uma equipe de auditoria interna contratada para verificar os registros da loja. Deve analisar as situações e propor uma forma de regularizar as operações.
+            </div>
+
+            <div class="questions-section">
+                <h4>Investigue e Responda:</h4>
+                <ol class="questions-list">
+                    <li>Para que serve uma nota fiscal e quais informações ela pode comprovar?</li>
+                    <li>Qual é a diferença entre comprovante de Pix, recibo e documento fiscal?</li>
+                    <li>A ausência de uma nota localizada prova, sozinha, que houve crime? Que outras evidências seriam necessárias?</li>
+                    <li>Por que o valor da venda precisa ser coerente com os registros financeiros e fiscais?</li>
+                    <li>Quais riscos o consumidor e a empresa podem enfrentar quando uma operação não é documentada adequadamente?</li>
+                    <li>Que procedimentos a loja poderia adotar para evitar que o problema se repita?</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- DESAFIO 2 -->
+        <section id="desafio-2" class="challenge-card">
+            <h2>Desafio 2 — A Construtora Fantasma e a Licitação</h2>
+            <span class="category">Eixo Temático: Empresas Fantasma & Corrupção em Licitações</span>
+            
+            <div class="story-box">
+                <h3>A História</h3>
+                <p>A prefeitura de uma cidade do interior abriu uma licitação de urgência para a construção de uma creche comunitária no valor de R$ 4,5 milhões. Três empresas apresentaram propostas: Construtora Alvorada, Edificações Serranas e a recém-criada Alfa Engenharia.</p>
+                <p>A Alfa Engenharia venceu ao oferecer um desconto de 25% sobre o orçamento de referência. No entanto, durante uma investigação jornalística local, descobriu-se que o endereço registrado do CNPJ da Alfa Engenharia correspondia a uma casa abandonada sem nenhum maquinário ou funcionário no local. Além disso, o sócio-majoritário registrado era um beneficiário do programa Bolsa Família da zona rural vizinha.</p>
+                <p>Mesmo sem sede física real, a Alfa Engenharia já havia recebido um adiantamento de R$ 1,2 milhão dos cofres públicos. Poucos dias após a transferência, o dinheiro foi fracionado e repassado para diversas contas físicas e jurídicas em outros estados.</p>
+            </div>
+
+            <div class="mission">
+                <strong>Sua Missão:</strong> Como auditor do Tribunal de Contas do Estado, você foi destacado para analisar o processo licitatório e a estrutura da empresa vencedora.
+            </div>
+
+            <div class="questions-section">
+                <h4>Investigue e Responda:</h4>
+                <ol class="questions-list">
+                    <li>O que caracteriza uma 'Empresa Fantasma' ou 'Laranja' e qual a sua função em esquemas ilegais?</li>
+                    <li>Quais sinais de alerta (red flags) deveriam ter sido identificados pela comissão de licitação antes de homologar a vitória da Alfa Engenharia?</li>
+                    <li>Como o uso de 'laranjas' dificulta a responsabilização dos verdadeiros articuladores do esquema?</li>
+                    <li>Qual é o impacto social do desvio de verbas destinadas a infraestruturas públicas como creches?</li>
+                    <li>Quais mecanismos de cruzamento de dados públicos poderiam prevenir a contratação de empresas fraudulentas?</li>
+                    <li>Quais medidas legais e administrativas o município deve tomar imediatamente após a constatação da fraude?</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- DESAFIO 3 -->
+        <section id="desafio-3" class="challenge-card">
+            <h2>Desafio 3 — A Rota dos Bilhetes de Papel no Arquipélago</h2>
+            <span class="category">Eixo Temático: Paraísos Fiscais & Sonegação Internacional</span>
+            
+            <div class="story-box">
+                <h3>A História</h3>
+                <p>Um influente grupo do setor alimentício com sede no Brasil reportava lucros baixíssimos em suas operações nacionais, alegando altos custos de fornecimento de matéria-prima. Como resultado, pagava o valor mínimo de Imposto de Renda Pessoa Jurídica (IRPJ) e CSLL.</p>
+                <p>Entretanto, fiscais da Receita Federal notaram que a matéria-prima produzida no interior paulista era vendida por um valor simbólico para uma trading company sediada nas Ilhas Virgens Britânicas — um jurisdição com tributação favorecida (paraíso fiscal). Essa empresa offshore, controlada secretamente pelos mesmos donos do grupo brasileiro, revendia os mesmos grãos para compradores internacionais no preço de mercado, obtendo lucros astronômicos tributados a 0%.</p>
+                <p>Para completar, a offshore 'emprestava' esse dinheiro de volta para a matriz brasileira sob a forma de mútuo internacional, gerando despesas financeiras dedutíveis para a empresa do Brasil e zerando ainda mais o imposto devido no país.</p>
+            </div>
+
+            <div class="mission">
+                <strong>Sua Missão:</strong> Você atua na fiscalização de preços de transferência e operações internacionais da Receita Federal. Sua missão é desmascarar o esquema de triangulação financeira.
+            </div>
+
+            <div class="questions-section">
+                <h4>Investigue e Responda:</h4>
+                <ol class="questions-list">
+                    <li>O que caracteriza um Paraíso Fiscal e por que ele atrai empresas e indivíduos que desejam elidir ou sonegando impostos?</li>
+                    <li>O que é a prática de 'Preços de Transferência' (Transfer Pricing) e como ela foi utilizada para manipular o lucro da empresa?</li>
+                    <li>Qual é a diferença entre Planejamento Tributário (Elisão Fiscal) e Sonegação/Evasão Fiscal (Fraude)?</li>
+                    <li>Como o empréstimo internacional da offshore para a empresa brasileira funcionava como um 'duplo benefício' fraudulento?</li>
+                    <li>Quais instrumentos internacionais e normas brasileiras foram criados para combater esse tipo de erosão da base tributária?</li>
+                    <li>Como a auditoria pode calcular o imposto sonegado e quais penalidades devem ser aplicadas ao grupo empresarial?</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- DESAFIO 4 -->
+        <section id="desafio-4" class="challenge-card">
+            <h2>Desafio 4 — A Fraude nos Cartões dos Programas Sociais</h2>
+            <span class="category">Eixo Temático: Programas Sociais & Desvio de Recurso Público</span>
+            
+            <div class="story-box">
+                <h3>A História</h3>
+                <p>Um programa federal de transferência de renda foi desenhado para amparar famílias em situação de extrema vulnerabilidade em um município com 50 mil habitantes. Cada família cadastrada deveria receber R$ 600,00 mensais para compra de alimentos e suprimentos básicos.</p>
+                <p>Um cruzamento de dados realizado pela Controladoria-Geral da União (CGU) revelou discrepâncias alarmantes: mais de 800 beneficiários cadastrados no município possuíam veículos de luxo em seus nomes, eram servidores públicos concursados ou haviam falecido há mais de um ano. Enquanto isso, dezenas de famílias verdadeiramente necessitadas tinham seus cadastros sistematicamente indeferidos por 'falta de saldo orçamentário'.</p>
+                <p>A investigação descobriu que servidores da assistência social local cobravam uma 'taxa de agilização' de 30% do primeiro benefício para aprovar cadastros irregulares e mantinham os cartões de pessoas falecidas ativos, sacando os valores mensalmente em lotéricas da região.</p>
+            </div>
+
+            <div class="mission">
+                <strong>Sua Missão:</strong> Como perito criminal encarregado do caso, você deve auditar o Cadastro Único (CadÚnico) local e rastrear a fraude operacional.
+            </div>
+
+            <div class="questions-section">
+                <h4>Investigue e Responda:</h4>
+                <ol class="questions-list">
+                    <li>Qual é o objetivo socioeconômico dos programas de transferência de renda e como a fraude afeta esse propósito?</li>
+                    <li>Quais falhas de controle interno permitiram que servidores cadastrassem pessoas inelegíveis ou falecidas?</li>
+                    <li>Como o desvio de verbas sociais afeta a economia local de municípios de pequeno porte?</li>
+                    <li>Quais tipos penais (crimes) foram cometidos pelos servidores públicos e pelos falsos beneficiários?</li>
+                    <li>Como a análise de inteligência de dados (Data Analytics) pode identificar automaticamente fraudes em programas de governo?</li>
+                    <li>Desenhe um plano de ação para recadastrar as famílias e reaver os valores desviados dos cofres públicos.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- DESAFIO 5 -->
+        <section id="desafio-5" class="challenge-card">
+            <h2>Desafio 5 — O Dilema da Selic e o Custo do Pão</h2>
+            <span class="category">Eixo Temático: Banco Central, Taxa Selic & Inflação</span>
+            
+            <div class="story-box">
+                <h3>A História</h3>
+                <p>O Brasil enfrenta um ciclo de alta expressiva nos preços de itens básicos. A cesta básica subiu 18% em 12 meses, e o pão francês tornou-se o símbolo dessa alta devido ao custo do trigo importado e dos combustíveis. A população protesta contra o alto custo de vida.</p>
+                <p>Em resposta, o Comitê de Política Monetária (Copom) do Banco Central do Brasil decide elevar a taxa básica de juros (Selic) de 6% para 13.5% ao ano. A medida gera reações mistas: enquanto economistas afirmam ser o único remédio contra a inflação, sindicatos e empresários criticam a decisão, alegando que os juros altos vão encarecer os empréstimos, travar os investimentos e gerar desemprego.</p>
+                <p>Em uma padaria de bairro, o dono, Seu Carlos, quer renovar os fornos para produzir mais e reduzir custos, mas ao consultar o banco, descobre que a taxa de financiamento subiu de 10% para 22% ao ano, tornando o investimento inviável.</p>
+            </div>
+
+            <div class="mission">
+                <strong>Sua Missão:</strong> Você é um consultor econômico contratado pela associação comercial local para explicar o impacto das decisões do Banco Central na vida dos pequenos empresários e consumidores.
+            </div>
+
+            <div class="questions-section">
+                <h4>Investigue e Responda:</h4>
+                <ol class="questions-list">
+                    <li>O que é a taxa Selic e qual é o papel constitucional/legal do Banco Central do Brasil no controle da inflação?</li>
+                    <li>Como o aumento da taxa Selic atua para conter a inflação de demanda e custos?</li>
+                    <li>Por que o aumento dos juros pelo Banco Central afeta diretamente a decisão do Seu Carlos de não comprar novos fornos?</li>
+                    <li>Quais são as consequências colaterais de se manter taxas de juros elevadas por um período prolongado?</li>
+                    <li>Qual é a relação entre a taxa de câmbio (dólar) e a inflação de itens como o trigo e o pão?</li>
+                    <li>Se você estivesse na reunião do Copom, quais variáveis econômicas analisaria além da inflação para decidir a taxa de juros?</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- DESAFIO 6 -->
+        <section id="desafio-6" class="challenge-card">
+            <h2>Desafio 6 — As Armadilhas nas Entrelinhas do Empréstimo</h2>
+            <span class="category">Eixo Temático: Tipos de Financiamento & Taxas Inclusas (CET)</span>
+            
+            <div class="story-box">
+                <h3>A História</h3>
+                <p>A Sra. Helena, proprietária de uma pequena oficina mecânica, precisava de R$ 50.000,00 para comprar um elevador automotivo e expandir seu negócio. Pesquisou em duas instituições financeiras:<br>
+                - Banco A: Ofereceu o valor com 'A menor taxa de juros do mercado: apenas 1.2% ao mês!'.<br>
+                - Banco B: Ofereceu a taxa de 1.5% ao mês, mas garantiu transparência total e isenção de taxas administrativas contratuais.</p>
+                <p>Inclinada a fechar com o Banco A por causa da taxa de juros aparentemente menor, Helena resolveu pedir o detalhamento do contrato. Para sua surpresa, o Banco A incluiu obrigatoriamente no financiamento: TAC (Taxa de Abertura de Crédito), Seguro Prestamista de R$ 2.400,00, Venda Casada de um Título de Capitalização de R$ 1.000,00 e Tarifas de Avaliação do Bem.</p>
+                <p>Ao calcular o Custo Efetivo Total (CET), Helena percebeu que a parcela mensal do Banco A era significativamente superior à do Banco B.</p>
+            </div>
+
+            <div class="mission">
+                <strong>Sua Missão:</strong> Como educador financeiro, ajude a Sra. Helena a analisar as propostas e tomar a decisão mais vantajosa para sua empresa.
+            </div>
+
+            <div class="questions-section">
+                <h4>Investigue e Responda:</h4>
+                <ol class="questions-list">
+                    <li>O que é o Custo Efetivo Total (CET) de um financiamento e por que ele é mais importante do que a taxa de juros nominal?</li>
+                    <li>Quais são as diferenças conceituais entre empréstimo pessoal, financiamento com garantia (ex: alienação fiduciária) e leasing?</li>
+                    <li>A prática do Banco A de condicionar a liberação do crédito à aquisição de um Título de Capitalização é legal? Explique.</li>
+                    <li>Qual é a função do IOF (Imposto sobre Operações Financeiras) na operação e quem arrecada esse valor?</li>
+                    <li>Calcule/compare qualitativamente o impacto financeiro das tarifas adicionais cobradas pelo Banco A em relação à proposta limpa do Banco B.</li>
+                    <li>Que recomendações você daria a um empreendedor antes de assinar qualquer contrato de crédito empresarial?</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- DESAFIO 7 -->
+        <section id="desafio-7" class="challenge-card">
+            <h2>Desafio 7 — O Paradoxo do PIB e a Cidade do Petróleo</h2>
+            <span class="category">Eixo Temático: PIB & Desenvolvimento Econômico</span>
+            
+            <div class="story-box">
+                <h3>A História</h3>
+                <p>O município fictício de 'Porto das Águas' comemorou um marco econômico histórico: seu Produto Interno Bruto (PIB) per capita atingiu a marca de R$ 180.000,00 por ano, colocando a cidade no topo do ranking estadual e superando grandes metrópoles nacionais.</p>
+                <p>A disparada do PIB ocorreu devido à instalação de uma grande refinaria de petróleo em seu território e à exploração offshore de hidrocarbonetos na sua costa. O indicador macroeconômico desenhava o retrato de uma comunidade próspera.</p>
+                <p>No entanto, ao caminhar pelas ruas da cidade, o cenário real era contrastante: 40% da população vivia sem saneamento básico, os postos de saúde enfrentavam falta crônica de medicamentos, as escolas municipais apresentavam baixos índices de aprendizado e o custo de vida local havia explodido, encarecendo aluguéis e alimentos para os moradores antigos.</p>
+            </div>
+
+            <div class="mission">
+                <strong>Sua Missão:</strong> Você é um pesquisador de um instituto de economia socioambiental contratado para elaborar um diagnóstico real sobre a economia local.
+            </div>
+
+            <div class="questions-section">
+                <h4>Investigue e Responda:</h4>
+                <ol class="questions-list">
+                    <li>O que é o Produto Interno Bruto (PIB) e qual a diferença entre PIB Total e PIB per capita?</li>
+                    <li>Por que um PIB per capita elevado não significa necessariamente qualidade de vida ou distribuição justa de renda para a população?</li>
+                    <li>Quais são as três óticas de cálculo do PIB (Ótica da Oferta/Produção, da Demanda/Gasto e da Renda)?</li>
+                    <li>Como o fenômeno das 'externalidades negativas' da exploração petrolífera afeta o bem-estar local sem ser descontado do PIB?</li>
+                    <li>Quais outros indicadores socioeconômicos (como IDH e Índice de Gini) deveriam ser analisados em conjunto com o PIB?</li>
+                    <li>Quais políticas públicas a prefeitura deveria adotar para transformar os royalties do petróleo em desenvolvimento sustentável de longo prazo?</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- DESAFIO 8 -->
+        <section id="desafio-8" class="challenge-card">
+            <h2>Desafio 8 — A Lavanderia dos Postos de Combustível</h2>
+            <span class="category">Eixo Temático: Rota do Dinheiro, Lavagem de Dinheiro & Crimes Fiscais</span>
+            
+            <div class="story-box">
+                <h3>A História</h3>
+                <p>A Operação 'Chama Limpa', desencadeada pela Polícia Federal em conjunto com o Coaf, identificou uma rede de 15 postos de combustíveis que faturavam mensalmente valores incompatíveis com sua localização e fluxo de veículos. Um dos postos, situado em uma rua pacata do interior, declarava vender 500 mil litros de gasolina aditivada por mês — tudo pago exclusivamente em dinheiro vivo.</p>
+                <p>Na prática, os combustíveis nunca saíram das distribuidoras. A organização criminosa utilizava os postos para misturar dinheiro ilícito oriundo de extorsão e contrabando com o faturamento legítimo da empresa. O dinheiro limpo era então depositado no sistema bancário como 'receita comercial legítima' e distribuído como lucros isentos aos sócios.</p>
+                <p>Para disfarçar o esquema, os contadores da rede emitiam milhares de cupons fiscais fracionados no valor de R$ 50,00 para CPFs genéricos ou inexistentes durante os horários da madrugada.</p>
+            </div>
+
+            <div class="mission">
+                <strong>Sua Missão:</strong> Como perito em inteligência financeira do COAF, analise a movimentação e descreva o mecanismo de dissimulação do capital.
+            </div>
+
+            <div class="questions-section">
+                <h4>Investigue e Responda:</h4>
+                <ol class="questions-list">
+                    <li>Quais são as três fases clássicas do processo de Lavagem de Dinheiro (Colocação, Ocultação e Integração)?</li>
+                    <li>Em qual fase da lavagem de dinheiro se enquadra a emissão de cupons fiscais falsos fracionados durante a madrugada?</li>
+                    <li>O que é o COAF (Conselho de Controle de Atividades Financeiras) e qual a sua função no sistema financeiro nacional?</li>
+                    <li>Por que atividades comerciais que lidam fortemente com dinheiro em espécie (como postos, estacionamentos e lavagens) são alvos frequentes desses esquemas?</li>
+                    <li>Quais são as infrações administrativas e criminais cometidas pelos contadores e administradores da rede?</li>
+                    <li>Como os sistemas bancários automatizados podem configurar 'gatilhos de alerta' para detectar operações de depósitos atípicos?</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- DESAFIO 9 -->
+        <section id="desafio-9" class="challenge-card">
+            <h2>Desafio 9 — A Guerra Fiscal dos Municípios Vizinhos</h2>
+            <span class="category">Eixo Temático: Guerra Fiscal, ISS & Crimes Fiscais</span>
+            
+            <div class="story-box">
+                <h3>A História</h3>
+                <p>Duas cidades vizinhas, 'Serra Verde' e 'Vale Dourado', possuem realidades econômicas muito distintas. Serra Verde possui uma vasta estrutura de serviços, escolas e hospitais públicos, cobrando uma alíquota de Imposto Sobre Serviços (ISS) de 5% — o valor padrão de mercado.</p>
+                <p>Para atrair empresas do setor financeiro e de tecnologia, o prefeito de Vale Dourado sancionou uma lei municipal reduzindo a alíquota de ISS para 0,5%, além de oferecer isenção de IPTU por 20 anos. Dezenas de multinacionais de tecnologia fecharam suas sedes em Serra Verde e transferiram seus endereços fiscais para uma pequena sala comercial alugada em Vale Dourado.</p>
+                <p>Apesar de figurarem formalmente no Vale Dourado, todos os executivos, programadores e infraestrutura física continuavam funcionando na estrutura urbana de Serra Verde, que viu sua arrecadação despencar e seus serviços públicos entrarem em colapso por falta de verbas.</p>
+            </div>
+
+            <div class="mission">
+                <strong>Sua Missão:</strong> Você atua na Procuradoria Jurídica do Município de Serra Verde. Elabore um parecer contestando a legalidade da manobra fiscal de Vale Dourado.
+            </div>
+
+            <div class="questions-section">
+                <h4>Investigue e Responda:</h4>
+                <ol class="questions-list">
+                    <li>O que é o Imposto Sobre Serviços (ISS) e qual ente federativo é responsável por sua arrecadação?</li>
+                    <li>O que é o fenômeno da 'Guerra Fiscal' entre municípios ou estados e quais suas consequências para a federação?</li>
+                    <li>A redução da alíquota do ISS para 0.5% promovida pelo município de Vale Dourado é constitucional? Explique com base na alíquota mínima do ISS.</li>
+                    <li>O que caracteriza o conceito de 'Estabelecimento Prestador' para fins de recolhimento de ISS no local do serviço real?</li>
+                    <li>Quais penalidades a Lei de Responsabilidade Fiscal (LRF) prevê para gestores públicos que concedem renúncia ilegal de receita?</li>
+                    <li>Como a Reforma Tributária (IBS/CBS) aprovada no Brasil pretende extinguir a Guerra Fiscal dos impostos sobre o consumo?</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- DESAFIO 10 -->
+        <section id="desafio-10" class="challenge-card">
+            <h2>Desafio 10 — A Encruzilhada da Reforma e o Consumo dos Famintos</h2>
+            <span class="category">Eixo Temático: Regressividade Tributária, Cesta Básica & Inclusão Social</span>
+            
+            <div class="story-box">
+                <h3>A História</h3>
+                <p>Em um debate nacional sobre a reformulação do sistema tributário, foram apresentados dados alarmantes sobre a distribuição da carga fiscal no país: a metade mais pobre da população compromete, em média, 27% de sua renda mensal exclusivamente com o pagamento de impostos indiretos embutidos nos preços de alimentos, remédios e gás de cozinha.</p>
+                <p>Em contrapartida, os 1% mais ricos da população pagam proporcionalmente menos de 10% de sua renda total em tributos, uma vez que grande parte de seus rendimentos provém de lucros e dividendos distribuídos por suas empresas com isenção fiscal, além de investimentos no mercado financeiro.</p>
+                <p>Um grupo de parlamentares propõe a criação do mecanismo de 'Cashback do Povo' (devolução automática dos impostos pagos na cesta básica para famílias cadastradas no programa de baixa renda) e a taxação progressiva de grandes fortunas e dividendos, enquanto grupos industriais alegam que a tributação sobre o capital reduzirá a atratividade do país.</p>
+            </div>
+
+            <div class="mission">
+                <strong>Sua Missão:</strong> Você foi convidado como especialista em finanças públicas para uma audiência no Senado Federal para avaliar o impacto da regressividade tributária no Brasil.
+            </div>
+
+            <div class="questions-section">
+                <h4>Investigue e Responda:</h4>
+                <ol class="questions-list">
+                    <li>Qual é a diferença entre Tributação Direta (sobre renda e patrimônio) e Tributação Indireta (sobre consumo)?</li>
+                    <li>Por que o sistema tributário brasileiro é considerado altamente 'regressivo' e como isso aprofunda a desigualdade social?</li>
+                    <li>O que é o princípio da 'Capacidade Contributiva' e do 'Mínimo Existencial' no direito tributário?</li>
+                    <li>Como funciona a proposta de 'Cashback Tributário' e quais são suas vantagens operacionais frente à isenção ampla de produtos da cesta básica?</li>
+                    <li>Quais seriam os potenciais prós e contras econômicos da tributação sobre lucros e dividendos empresariais?</li>
+                    <li>Como formular uma proposta de reforma tributária equilibrada que garanta justiça fiscal sem comprometer o crescimento econômico do país?</li>
+                </ol>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Caderno de Desafios Interativos — Desenvolvido para Fins Educacionais e Acadêmicos.</p>
+    </footer>
+
+</body>
+</html>
