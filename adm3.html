@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Os 4 Ps do Marketing e a Revolução Digital - TechByte Audio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        cyan: {
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                        },
+                        emerald: {
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                        },
+                        violet: {
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #080c14;
+            color: #f1f5f9;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080c14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+        .content-card {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+        }
+        .interactive-box {
+            background: #131d31;
+            border: 1px solid #24334d;
+        }
+        .glow-cyan {
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.12);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500 selection:text-slate-950">
+
+    <!-- BARRA SUPERIOR DE NAVEGAÇÃO E PROGRESSO DE LEITURA -->
+    <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 via-emerald-400 to-violet-500 flex items-center justify-center text-slate-950 font-black text-lg shadow-lg">
+                    <i class="fa-solid fa-headphones"></i>
+                </div>
+                <div>
+                    <h1 class="text-xs sm:text-sm font-bold text-white leading-none">Os 4 Ps do Marketing e a Revolução Digital</h1>
+                    <p class="text-[11px] text-cyan-400 font-medium mt-0.5">Estudo Interativo: TechByte Audio</p>
+                </div>
+            </div>
+
+            <!-- Navegação Rápida -->
+            <nav class="hidden md:flex items-center gap-1 text-xs font-medium text-slate-300">
+                <a href="#sec-etapa1" class="px-2.5 py-1 rounded hover:text-white hover:bg-slate-800 transition">1. Dilema</a>
+                <a href="#sec-etapa2" class="px-2.5 py-1 rounded hover:text-white hover:bg-slate-800 transition">2. Os 4 Ps</a>
+                <a href="#sec-etapa3" class="px-2.5 py-1 rounded hover:text-white hover:bg-slate-800 transition">3. Ferramentas</a>
+                <a href="#sec-etapa4" class="px-2.5 py-1 rounded hover:text-white hover:bg-slate-800 transition">4. Segurança</a>
+                <a href="#sec-etapa5" class="px-2.5 py-1 rounded hover:text-white hover:bg-slate-800 transition">5. Crises</a>
+            </nav>
+        </div>
+        <!-- Barra de Progresso de Leitura Fixa -->
+        <div class="w-full bg-slate-900 h-1">
+            <div id="scroll-progress" class="bg-gradient-to-r from-cyan-500 via-emerald-400 to-violet-500 h-full w-0 transition-all duration-150"></div>
+        </div>
+    </header>
+
+    <!-- CABEÇALHO DA AULA -->
+    <section class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-10 px-4 border-b border-slate-800">
+        <div class="max-w-4xl mx-auto space-y-4 text-center">
+            <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+                Os 4 Ps do Marketing e a <span class="bg-gradient-to-r from-cyan-400 via-emerald-400 to-violet-400 bg-clip-text text-transparent">Revolução Digital</span>
+            </h1>
+
+            <p class="text-slate-300 text-xs sm:text-base max-w-2xl mx-auto leading-relaxed">
+                Compreenda como alinhar Produto, Preço, Praça e Promoção. Escolha ferramentas tecnológicas estratégicas, garanta a segurança de dados e resolva crises reais do mercado de trabalho.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="max-w-4xl mx-auto w-full px-4 py-10 space-y-16">
+
+        <!-- ETAPA 1: O DILEMA DAS VENDAS (ESTUDO DE CASO TECHBYTE) -->
+        <section id="sec-etapa1" class="space-y-6 scroll-mt-20">
+            <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-cyan-600 text-slate-950 font-black flex items-center justify-center text-sm shadow">1</span>
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-white">Etapa 1: O Dilema das Vendas</h2>
+                    <p class="text-xs text-slate-400">Por que ter um bom produto não garante vendas?</p>
+                </div>
+            </div>
+
+            <!-- Apresentação da TechByte Audio -->
+            <div class="content-card p-6 rounded-2xl space-y-4 border-l-4 border-l-cyan-500 glow-cyan">
+                <div class="flex items-center gap-3 text-cyan-400 text-sm font-bold">
+                    <i class="fa-solid fa-microchip text-lg"></i>
+                    <span>Cenário Inicial: O Lançamento do TechByte Pulse Pro</span>
+                </div>
+                
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    A empresa de tecnologia <strong>TechByte Audio</strong> desenvolveu o fone de ouvido sem fio <strong>"Pulse Pro"</strong>. O produto é inovador: possui cancelamento de ruído ativo de última geração, tradução de áudio instantânea em 12 idiomas e bateria com autonomia de 30 horas. 
+                </p>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Porém, mesmo após meses de produção e grande investimento em engenharia, <strong>as vendas estão muito abaixo do esperado</strong>. A diretoria não entende o motivo, pois o produto é superior aos concorrentes diretos.
+                </p>
+
+                <!-- DESAFIO 1 -->
+                <div class="interactive-box p-5 rounded-2xl space-y-4 mt-4">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <h3 class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass text-cyan-400"></i> DESAFIO 1: Diagnóstico Inicial das Vendas
+                        </h3>
+                        <span class="text-[10px] bg-cyan-500/10 text-cyan-400 px-2.5 py-0.5 rounded-full border border-cyan-500/30 font-semibold">Investigação Interativa</span>
+                    </div>
+
+                    <p class="text-xs text-slate-300">
+                        Como especialista de marketing consultado pela TechByte, qual é a principal razão para o produto não estar vendendo bem? Escolha uma hipótese para investigar:
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                        <button onclick="checkD1('preco')" class="p-3.5 bg-slate-950 hover:bg-cyan-500/20 border border-slate-800 rounded-xl text-left font-medium text-slate-200 transition flex items-start gap-2.5">
+                            <i class="fa-solid fa-tag text-cyan-400 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-white">Hipótese A: Preço Inadequado</strong>
+                                <span class="text-[11px] text-slate-400">O produto pode estar caro demais para o público-alvo ou sem condições flexíveis de pagamento.</span>
+                            </div>
+                        </button>
+                        <button onclick="checkD1('praca')" class="p-3.5 bg-slate-950 hover:bg-cyan-500/20 border border-slate-800 rounded-xl text-left font-medium text-slate-200 transition flex items-start gap-2.5">
+                            <i class="fa-solid fa-store text-emerald-400 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-white">Hipótese B: Canais (Praça) Errados</strong>
+                                <span class="text-[11px] text-slate-400">O consumidor ideal não encontra o fone nas lojas ou o site oficial é difícil de navegar.</span>
+                            </div>
+                        </button>
+                        <button onclick="checkD1('promocao')" class="p-3.5 bg-slate-950 hover:bg-cyan-500/20 border border-slate-800 rounded-xl text-left font-medium text-slate-200 transition flex items-start gap-2.5">
+                            <i class="fa-solid fa-bullhorn text-amber-400 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-white">Hipótese C: Comunicação (Promoção) Ineficaz</strong>
+                                <span class="text-[11px] text-slate-400">As pessoas simplesmente não conhecem o produto ou não entenderam seus benefícios.</span>
+                            </div>
+                        </button>
+                        <button onclick="checkD1('mix')" class="p-3.5 bg-slate-950 hover:bg-cyan-500/20 border border-slate-800 rounded-xl text-left font-medium text-slate-200 transition flex items-start gap-2.5">
+                            <i class="fa-solid fa-layer-group text-violet-400 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-white">Hipótese D: Desalinhamento Geral do Mix</strong>
+                                <span class="text-[11px] text-slate-400">Falta de equilíbrio integrado entre Preço, Praça, Promoção e Atendimento.</span>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div id="d1-feedback" class="hidden text-xs p-4 rounded-xl bg-slate-950 border border-cyan-500/40 text-slate-200 space-y-2"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ETAPA 2: OS 4 PS DO MARKETING -->
+        <section id="sec-etapa2" class="space-y-6 scroll-mt-20">
+            <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-cyan-600 text-slate-950 font-black flex items-center justify-center text-sm shadow">2</span>
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-white">Etapa 2: Os 4 Ps do Marketing (Mix de Marketing)</h2>
+                    <p class="text-xs text-slate-400">A estrutura estratégica essencial para qualquer planejamento de negócios</p>
+                </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Para resolver o problema da TechByte Audio, precisamos compreender o chamado <strong>Mix de Marketing</strong> (ou 4 Ps). Cada 'P' representa uma decisão estratégica que precisa estar em total harmonia com as outras:
+            </p>
+
+            <!-- Cards Explicativos dos 4 Ps -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="content-card p-5 rounded-2xl border-t-4 border-t-cyan-400 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-black uppercase text-cyan-400 tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-box text-base"></i> 1. Produto
+                        </span>
+                        <span class="text-[10px] bg-slate-900 text-slate-400 px-2.5 py-0.5 rounded-full border border-slate-800">O que vender?</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Engloba atributos físicos e funcionais, design, qualidade, utilidade, nome da marca, garantia e a solução real que entrega ao cliente.
+                    </p>
+                </div>
+
+                <div class="content-card p-5 rounded-2xl border-t-4 border-t-emerald-400 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-black uppercase text-emerald-400 tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-calculator text-base"></i> 2. Preço
+                        </span>
+                        <span class="text-[10px] bg-slate-900 text-slate-400 px-2.5 py-0.5 rounded-full border border-slate-800">Por quanto vender?</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        É o valor cobrado do cliente. Deve cobrir os custos operacionais, impostos e margem de lucro, mantendo-se atraente frente à concorrência.
+                    </p>
+                </div>
+
+                <div class="content-card p-5 rounded-2xl border-t-4 border-t-violet-400 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-black uppercase text-violet-400 tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-truck-fast text-base"></i> 3. Praça (Distribuição)
+                        </span>
+                        <span class="text-[10px] bg-slate-900 text-slate-400 px-2.5 py-0.5 rounded-full border border-slate-800">Onde vender?</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Canais onde o produto é disponibilizado e entregue ao consumidor: lojas físicas, e-commerce, marketplaces, logística e facilidade de compra.
+                    </p>
+                </div>
+
+                <div class="content-card p-5 rounded-2xl border-t-4 border-t-amber-400 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-black uppercase text-amber-400 tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-rectangle-ad text-base"></i> 4. Promoção (Comunicação)
+                        </span>
+                        <span class="text-[10px] bg-slate-900 text-slate-400 px-2.5 py-0.5 rounded-full border border-slate-800">Como divulgar?</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Ações para tornar o produto conhecido e atraente: anúncios pagos, campanhas nas redes sociais, assessoria de imprensa e promoções de vendas.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tabela Comparativa -->
+            <div class="content-card p-5 rounded-2xl overflow-x-auto">
+                <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-table text-cyan-400"></i> Aplicação do Mix para o Fone Pulse Pro
+                </h3>
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px] bg-slate-950">
+                            <th class="p-2.5">Pilar</th>
+                            <th class="p-2.5">Pergunta-Chave</th>
+                            <th class="p-2.5">Decisão da TechByte Audio</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800 text-slate-300">
+                        <tr>
+                            <td class="p-2.5 font-bold text-cyan-400">Produto</td>
+                            <td class="p-2.5">O que oferecemos?</td>
+                            <td class="p-2.5">Fone inteligente com IA, case de recarga rápida e 2 anos de garantia.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2.5 font-bold text-emerald-400">Preço</td>
+                            <td class="p-2.5">Qual o valor justo?</td>
+                            <td class="p-2.5">R$ 299,00 à vista ou 6x de R$ 54,90 (Competitivo para o segmento premium).</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2.5 font-bold text-violet-400">Praça</td>
+                            <td class="p-2.5">Onde o cliente compra?</td>
+                            <td class="p-2.5">Site oficial responsivo, aplicativo e parcerias com grandes marketplaces.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2.5 font-bold text-amber-400">Promoção</td>
+                            <td class="p-2.5">Como atraí-lo?</td>
+                            <td class="p-2.5">Vídeos curtos de demonstração do cancelamento de ruído e reviews de tecnologia.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- DESAFIO 2: CLASSIFICADOR DOS 4 PS -->
+            <div class="content-card p-6 rounded-2xl border-l-4 border-l-cyan-500 space-y-5 glow-cyan">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-gamepad text-cyan-400 text-xl"></i>
+                        <div>
+                            <h3 class="font-bold text-white text-base">DESAFIO 2: Classificador Rápido dos 4 Ps</h3>
+                            <p class="text-[11px] text-slate-400">Classifique as ações estratégicas abaixo no pilar correto</p>
+                        </div>
+                    </div>
+                    <span id="d2-score" class="text-xs font-extrabold bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/40">
+                        Acertos: 0 / 6
+                    </span>
+                </div>
+
+                <div class="interactive-box p-5 rounded-2xl space-y-4 text-center">
+                    <span id="d2-progress" class="text-[11px] uppercase tracking-wider text-slate-400 font-bold block">
+                        Questão 1 de 6
+                    </span>
+
+                    <div id="d2-card" class="bg-slate-950 border border-slate-800 p-5 rounded-xl text-xs sm:text-sm font-semibold text-white shadow-inner min-h-[80px] flex items-center justify-center">
+                        "A TechByte desenvolve uma nova versão do fone resistente à água e ao suor para praticantes de corrida."
+                    </div>
+
+                    <!-- Botões dos 4 Ps -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                        <button onclick="playD2('Produto')" class="py-3 px-3 bg-slate-950 hover:bg-cyan-500/30 hover:border-cyan-400 border border-slate-800 rounded-xl text-xs font-bold text-cyan-400 transition flex flex-col items-center gap-1">
+                            <i class="fa-solid fa-box text-base"></i> Produto
+                        </button>
+                        <button onclick="playD2('Preço')" class="py-3 px-3 bg-slate-950 hover:bg-emerald-500/30 hover:border-emerald-400 border border-slate-800 rounded-xl text-xs font-bold text-emerald-400 transition flex flex-col items-center gap-1">
+                            <i class="fa-solid fa-calculator text-base"></i> Preço
+                        </button>
+                        <button onclick="playD2('Praça')" class="py-3 px-3 bg-slate-950 hover:bg-violet-500/30 hover:border-violet-400 border border-slate-800 rounded-xl text-xs font-bold text-violet-400 transition flex flex-col items-center gap-1">
+                            <i class="fa-solid fa-truck-fast text-base"></i> Praça
+                        </button>
+                        <button onclick="playD2('Promoção')" class="py-3 px-3 bg-slate-950 hover:bg-amber-500/30 hover:border-amber-400 border border-slate-800 rounded-xl text-xs font-bold text-amber-400 transition flex flex-col items-center gap-1">
+                            <i class="fa-solid fa-rectangle-ad text-base"></i> Promoção
+                        </button>
+                    </div>
+
+                    <div id="d2-feedback" class="hidden text-xs p-3.5 rounded-xl text-left border transition-all"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ETAPA 3: A REVOLUÇÃO DIGITAL NOS NEGÓCIOS -->
+        <section id="sec-etapa3" class="space-y-6 scroll-mt-20">
+            <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-cyan-600 text-slate-950 font-black flex items-center justify-center text-sm shadow">3</span>
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-white">Etapa 3: A Revolução Digital nos Negócios</h2>
+                    <p class="text-xs text-slate-400">Tecnologias estratégicas, transformação das vendas e a escolha das ferramentas certas</p>
+                </div>
+            </div>
+
+            <div class="content-card p-6 rounded-2xl space-y-4">
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    A revolução digital transformou a forma como as empresas vendem, divulgam e atendem seus clientes. No entanto, utilizar a tecnologia de forma estratégica não significa usar todas as ferramentas disponíveis ao mesmo tempo, mas sim <strong>escolher a ferramenta correta para a necessidade específica do negócio</strong>.
+                </p>
+
+                <!-- Comparativo Antes vs Hoje -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="interactive-box p-4 rounded-xl border-l-4 border-l-rose-500 space-y-2">
+                        <span class="font-bold text-rose-400 flex items-center gap-2 text-sm">
+                            <i class="fa-solid fa-bullhorn"></i> Divulgação e Vendas Tradicionais (Antes)
+                        </span>
+                        <ul class="text-slate-300 space-y-1.5 list-disc list-inside">
+                            <li>Panfletos em papel, comerciais de rádio e jornal local.</li>
+                            <li>Atendimento presencial restrito ao horário comercial.</li>
+                            <li>Controle manual de estoque e caderno de caixa.</li>
+                            <li>Impossibilidade de medir exatamente quantas pessoas viram o anúncio.</li>
+                        </ul>
+                    </div>
+
+                    <div class="interactive-box p-4 rounded-xl border-l-4 border-l-emerald-400 space-y-2">
+                        <span class="font-bold text-emerald-400 flex items-center gap-2 text-sm">
+                            <i class="fa-solid fa-chart-line"></i> Estratégia Digital Integrada (Hoje)
+                        </span>
+                        <ul class="text-slate-300 space-y-1.5 list-disc list-inside">
+                            <li>Redes sociais e vídeos demonstrativos altamente segmentados.</li>
+                            <li>Atendimento 24/7 com assistentes virtuais e Chatbots.</li>
+                            <li>Sistemas de gestão e planilhas integradas de estoque e vendas.</li>
+                            <li>Análise de dados em tempo real (taxa de conversão e custo de anúncio).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pergunta provocadora: Seguidores vs Vendas -->
+                <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-2 text-xs">
+                    <strong class="text-amber-400 font-bold uppercase tracking-wider block flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb"></i> Pergunta Provocadora: "Ter milhares de seguidores garante vender mais?"
+                    </strong>
+                    <p class="text-slate-300 leading-relaxed">
+                        <strong>Não!</strong> Seguidores e curtidas são métricas de vaidade se não gerarem pedidos reais e lucro. Tecnologia oferece recursos, mas os resultados dependem de planejamento, gestão financeira, atendimento eficiente e entrega no prazo.
+                    </p>
+                </div>
+            </div>
+
+            <!-- NOVO DESAFIO 3: LABORATÓRIO DE IMPACTO DIGITAL -->
+            <div class="content-card p-6 rounded-2xl border-l-4 border-l-emerald-500 space-y-6 glow-cyan">
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <div class="flex items-center gap-2 text-emerald-400 font-bold text-base">
+                            <i class="fa-solid fa-laptop-code text-xl"></i>
+                            <span>DESAFIO 3: Laboratório de Impacto Digital — Escolha da Ferramenta Certa</span>
+                        </div>
+                        <span id="d3-counter" class="text-xs font-bold bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full border border-emerald-500/30">
+                            Cenários Solucionados: 0 / 4
+                        </span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Como consultor de tecnologia da TechByte Audio, você enfrentará 4 desafios reais da empresa. Para cada situação, escolha a <strong>combinação de ferramenta tecnológica ideal</strong> e analise o impacto gerado no negócio:
+                    </p>
+                </div>
+
+                <div id="d3-scenarios-container" class="space-y-6">
+                    <!-- Gerado dinamicamente via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ETAPA 4: SEGURANÇA DIGITAL E PROTEÇÃO DE DADOS (LGPD) -->
+        <section id="sec-etapa4" class="space-y-6 scroll-mt-20">
+            <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-cyan-600 text-slate-950 font-black flex items-center justify-center text-sm shadow">4</span>
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-white">Etapa 4: Segurança Digital, Privacidade e LGPD</h2>
+                    <p class="text-xs text-slate-400">Protegendo as informações da empresa e garantindo a confiança do consumidor</p>
+                </div>
+            </div>
+
+            <div class="content-card p-6 rounded-2xl space-y-4">
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    A presença no ambiente digital exige responsabilidade e prevenção. A reputação de uma empresa pode ser destruída por vazamentos de dados de clientes, golpes de e-mail (phishing) ou descumprimento da <strong>LGPD (Lei Geral de Proteção de Dados Pessoais)</strong>.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <div class="interactive-box p-3.5 rounded-xl space-y-1 border border-slate-800">
+                        <span class="font-bold text-cyan-400 block"><i class="fa-solid fa-key mr-1"></i> Senhas e Autenticação (MFA)</span>
+                        <p class="text-slate-300">Adoção obrigatória de senhas fortes e verificação em duas etapas para impedir acesso indevido às contas da loja.</p>
+                    </div>
+                    <div class="interactive-box p-3.5 rounded-xl space-y-1 border border-slate-800">
+                        <span class="font-bold text-emerald-400 block"><i class="fa-solid fa-user-shield mr-1"></i> Proteção de Dados (LGPD)</span>
+                        <p class="text-slate-300">Coletar apenas os dados estritamente necessários para a entrega e jamais expor planilhas de clientes em redes sociais.</p>
+                    </div>
+                    <div class="interactive-box p-3.5 rounded-xl space-y-1 border border-slate-800">
+                        <span class="font-bold text-amber-400 block"><i class="fa-solid fa-robot mr-1"></i> Uso Responsável de IA</span>
+                        <p class="text-slate-300">Revisão humana indispensável em conteúdos gerados por IA e proibição de inserir dados confidenciais dos clientes nas ferramentas.</p>
+                    </div>
+                    <div class="interactive-box p-3.5 rounded-xl space-y-1 border border-slate-800">
+                        <span class="font-bold text-violet-400 block"><i class="fa-solid fa-shield-virus mr-1"></i> Prevenção a Golpes (Phishing)</span>
+                        <p class="text-slate-300">Desconfiar de mensagens de urgência com links externos que exigem confirmação imediata de senhas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DESAFIO 4: QUIZ SEGURO OU ARRISCADO -->
+            <div class="content-card p-6 rounded-2xl border-l-4 border-l-violet-500 space-y-5 glow-cyan">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-violet-400 text-xl"></i>
+                        <div>
+                            <h3 class="font-bold text-white text-base">DESAFIO 4: Quiz "Seguro ou Arriscado?"</h3>
+                            <p class="text-[11px] text-slate-400">Analise as atitudes dos funcionários da TechByte e classifique quanto à segurança digital</p>
+                        </div>
+                    </div>
+                    <span id="d4-score" class="text-xs font-bold bg-violet-500/20 text-violet-300 px-3 py-1 rounded-full border border-violet-500/30">
+                        Classificados: 0 / 4
+                    </span>
+                </div>
+
+                <div id="d4-container" class="space-y-3">
+                    <!-- Conteúdo gerado via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ETAPA 5: SIMULAÇÃO FINAL DE CRISES E OPORTUNIDADES -->
+        <section id="sec-etapa5" class="space-y-6 scroll-mt-20">
+            <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-cyan-600 text-slate-950 font-black flex items-center justify-center text-sm shadow">5</span>
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-white">Etapa 5: Gestor de Crises e Oportunidades do Mercado Digital</h2>
+                    <p class="text-xs text-slate-400">Aplicação integrada dos 4 Ps e Segurança na tomada de decisão gerencial</p>
+                </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                No ambiente de negócios dinâmico, problemas reais acontecem diariamente. Um profissional de marketing completo sabe integrar os 4 Ps e as boas práticas digitais para resolver crises e aproveitar oportunidades de mercado.
+            </p>
+
+            <!-- DESAFIO 5: CRISES CORPORATIVAS -->
+            <div class="content-card p-6 rounded-2xl border-l-4 border-l-amber-500 space-y-6">
+                <div class="space-y-1">
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-400"></i> DESAFIO 5: Simulador de Decisões Estratégicas de Crise
+                    </h3>
+                    <p class="text-xs text-slate-300">
+                        Como gestor da TechByte Audio, escolha a melhor solução para cada dilema real enfrentado pela empresa:
+                    </p>
+                </div>
+
+                <div class="space-y-5 text-xs">
+                    <!-- Cenário 1: Praça -->
+                    <div class="interactive-box p-4 rounded-xl space-y-3 border border-slate-800">
+                        <span class="font-bold text-amber-400 block uppercase"><i class="fa-solid fa-truck-ramp-box mr-1"></i> Cenário 1: Crise na Praça (Logística)</span>
+                        <p class="text-slate-300">
+                            A transportadora parceira atrasou a entrega dos fones Pulse Pro para 100 clientes durante a promoção de fim de ano. O que fazer?
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <button onclick="answerD5(1, 'err', false)" class="p-2.5 bg-slate-950 hover:bg-slate-900 rounded-lg text-slate-300 border border-slate-800 text-left">Ignorar mensagens privadas e aguardar que a transportadora conclua as entregas no prazo dela.</button>
+                            <button onclick="answerD5(1, 'cor', true)" class="p-2.5 bg-slate-950 hover:bg-slate-900 rounded-lg text-slate-300 border border-slate-800 font-bold text-cyan-400 text-left">Notificar os clientes proativamente, enviar código de rastreio prioritário e renegociar o contrato logístico.</button>
+                        </div>
+                        <div id="d5-fb-1" class="hidden p-3 rounded-lg text-[11px] mt-2"></div>
+                    </div>
+
+                    <!-- Cenário 2: Preço -->
+                    <div class="interactive-box p-4 rounded-xl space-y-3 border border-slate-800">
+                        <span class="font-bold text-amber-400 block uppercase"><i class="fa-solid fa-tags mr-1"></i> Cenário 2: Crise no Preço (Guerra de Preços)</span>
+                        <p class="text-slate-300">
+                            Um concorrente lançou um fone réplica por R$ 89,00, mas de péssima qualidade e sem garantia. Qual deve ser o posicionamento da TechByte?
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <button onclick="answerD5(2, 'err', false)" class="p-2.5 bg-slate-950 hover:bg-slate-900 rounded-lg text-slate-300 border border-slate-800 text-left">Reduzir o preço do Pulse Pro para R$ 80,00, vendendo abaixo do custo de fabricação para não perder clientes.</button>
+                            <button onclick="answerD5(2, 'cor', true)" class="p-2.5 bg-slate-950 hover:bg-slate-900 rounded-lg text-slate-300 border border-slate-800 font-bold text-emerald-400 text-left">Manter o preço viável e destacar na divulgação a garantia de 2 anos, a durabilidade e a tecnologia superior.</button>
+                        </div>
+                        <div id="d5-fb-2" class="hidden p-3 rounded-lg text-[11px] mt-2"></div>
+                    </div>
+
+                    <!-- Cenário 3: Promoção/Reputação -->
+                    <div class="interactive-box p-4 rounded-xl space-y-3 border border-slate-800">
+                        <span class="font-bold text-amber-400 block uppercase"><i class="fa-solid fa-comments mr-1"></i> Cenário 3: Crise na Promoção (Reclamação Pública)</span>
+                        <p class="text-slate-300">
+                            Um consumidor indignado comentou publicamente em um post da TechByte dizendo que a caixa do fone veio amassada no transporte. Como reagir?
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <button onclick="answerD5(3, 'cor', true)" class="p-2.5 bg-slate-950 hover:bg-slate-900 rounded-lg text-slate-300 border border-slate-800 font-bold text-violet-400 text-left">Responder publicamente com empatia, solicitar os dados em canal privado e providenciar a troca imediata do item.</button>
+                            <button onclick="answerD5(3, 'err', false)" class="p-2.5 bg-slate-950 hover:bg-slate-900 rounded-lg text-slate-300 border border-slate-800 text-left">Apagar o comentário do cliente imediatamente e bloqueá-lo da página oficial para não queimar a imagem.</button>
+                        </div>
+                        <div id="d5-fb-3" class="hidden p-3 rounded-lg text-[11px] mt-2"></div>
+                    </div>
+
+                    <!-- Cenário 4: Segurança -->
+                    <div class="interactive-box p-4 rounded-xl space-y-3 border border-slate-800">
+                        <span class="font-bold text-amber-400 block uppercase"><i class="fa-solid fa-user-lock mr-1"></i> Cenário 4: Crise na Segurança Digital</span>
+                        <p class="text-slate-300">
+                            Um e-mail suspeito informando que a conta do Instagram da TechByte será cancelada em 24h caso a senha não seja confirmada em um link externo.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <button onclick="answerD5(4, 'err', false)" class="p-2.5 bg-slate-950 hover:bg-slate-900 rounded-lg text-slate-300 border border-slate-800 text-left">Clicar no link e informar a senha por medo de perder o perfil comercial de vendas.</button>
+                            <button onclick="answerD5(4, 'cor', true)" class="p-2.5 bg-slate-950 hover:bg-slate-900 rounded-lg text-slate-300 border border-slate-800 font-bold text-rose-400 text-left">Identificar a tentativa de Golpe (Phishing), ignorar o link e reportar a mensagem às políticas de segurança.</button>
+                        </div>
+                        <div id="d5-fb-4" class="hidden p-3 rounded-lg text-[11px] mt-2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-8 px-4 text-center text-xs text-slate-500">
+        <div class="max-w-4xl mx-auto space-y-1">
+            <p class="font-bold text-slate-400">Aula Interativa: Os 4 Ps do Marketing e a Revolução Digital</p>
+            <p>TechByte Audio - Formação em Gestão e Estratégia Digital</p>
+        </div>
+    </footer>
+
+    <!-- JS VANILLA + WEB AUDIO API -->
+    <script>
+        // --- GERADOR DE ÁUDIO SINTÉTICO NATIVO ---
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            if (type === 'success') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(659.25, audioCtx.currentTime + 0.15);
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.3);
+            } else if (type === 'error') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(180, audioCtx.currentTime);
+                osc.frequency.linearRampToValueAtTime(110, audioCtx.currentTime + 0.2);
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.25);
+            }
+        }
+
+        // --- BARRA DE PROGRESSO DE SCROLL ---
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+        });
+
+        // --- DESAFIO 1: DIAGNÓSTICO DE VENDAS ---
+        function checkD1(type) {
+            const fb = document.getElementById('d1-feedback');
+            fb.classList.remove('hidden');
+            playSound('success');
+
+            let title = "Diagnóstico Analisado com Sucesso!";
+            let text = "";
+
+            if (type === 'preco') {
+                text = "O Preço é crucial! Se estiver muito alto sem percepção de valor, espanta clientes. Se estiver muito baixo, pode passar a sensação de produto inferior ou não cobrir os custos operacionais.";
+            } else if (type === 'praca') {
+                text = "A Praça é vital! Se o consumidor quer comprar o Pulse Pro mas o site trava, o frete é absurdo ou não há opção de checkout rápido, a venda é perdida.";
+            } else if (type === 'promocao') {
+                text = "A Promoção é essencial! Um produto revolucionário que não é divulgado nos canais corretos permanece invisível no mercado.";
+            } else {
+                text = "Perfeito! Todas as hipóteses estão conectadas. O segredo do Marketing de sucesso é o alinhamento equilibrado de todo o Mix (Produto, Preço, Praça e Promoção).";
+            }
+
+            fb.innerHTML = `
+                <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-cyan-400 text-base mt-0.5"></i>
+                    <div>
+                        <strong class="text-cyan-400 font-bold block">${title}</strong>
+                        <p class="mt-1 leading-relaxed">${text}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- DESAFIO 2: CLASSIFICADOR DOS 4 PS ---
+        const d2Data = [
+            { 
+                text: '"A TechByte desenvolve uma nova versão do fone resistente à água e ao suor para praticantes de corrida."', 
+                correct: 'Produto', 
+                exp: 'Correto! Alterações e novos recursos do item pertencem ao Pilar de Produto.' 
+            },
+            { 
+                text: '"A empresa define o valor de venda em R$ 299,00 após calcular custos de produção e margem de lucro."', 
+                correct: 'Preço', 
+                exp: 'Correto! A precificação baseada em custos e margem pertence ao Pilar de Preço.' 
+            },
+            { 
+                text: '"A TechByte começa a vender seus produtos em marketplaces populares, além da sua própria loja virtual."', 
+                correct: 'Praça', 
+                exp: 'Correto! Os pontos e canais de venda onde o cliente encontra o produto pertencem à Praça.' 
+            },
+            { 
+                text: '"A marca veicula um vídeo demonstrando o fone inteligente nas redes sociais."', 
+                correct: 'Promoção', 
+                exp: 'Correto! Anúncios, divulgação e comunicação com o público pertencem à Promoção.' 
+            },
+            { 
+                text: '"A equipe modifica a embalagem do fone para utilizar material 100% reciclável."', 
+                correct: 'Produto', 
+                exp: 'Correto! Alterações no design e embalagem fazem parte do Pilar de Produto.' 
+            },
+            { 
+                text: '"A loja cria um cupom com 10% de desconto para compras feitas no final do mês."', 
+                correct: 'Promoção', 
+                exp: 'Correto! Ofertas promocionais e cupons pertencem ao Pilar de Promoção.' 
+            }
+        ];
+
+        let d2Index = 0;
+        let d2Score = 0;
+
+        function playD2(userChoice) {
+            const current = d2Data[d2Index];
+            const fb = document.getElementById('d2-feedback');
+            fb.classList.remove('hidden', 'bg-emerald-500/10', 'border-emerald-500/30', 'text-emerald-300', 'bg-rose-500/10', 'border-rose-500/30', 'text-rose-300');
+
+            if (userChoice === current.correct) {
+                playSound('success');
+                d2Score++;
+                fb.classList.add('bg-emerald-500/10', 'border-emerald-500/30', 'text-emerald-300');
+                fb.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400 mr-1.5"></i> ${current.exp}`;
+            } else {
+                playSound('error');
+                fb.classList.add('bg-rose-500/10', 'border-rose-500/30', 'text-rose-300');
+                fb.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-400 mr-1.5"></i> Incorreto. Esta decisão pertence ao pilar <strong>${current.correct}</strong>.`;
+            }
+
+            document.getElementById('d2-score').innerText = `Acertos: ${d2Score} / ${d2Data.length}`;
+
+            setTimeout(() => {
+                d2Index = (d2Index + 1) % d2Data.length;
+                document.getElementById('d2-card').innerText = d2Data[d2Index].text;
+                document.getElementById('d2-progress').innerText = `Questão ${d2Index + 1} de ${d2Data.length}`;
+                fb.classList.add('hidden');
+            }, 2300);
+        }
+
+        // --- DESAFIO 3: LABORATÓRIO DE IMPACTO DIGITAL (ESCOLHA DA FERRAMENTA CERTA) ---
+        const d3Scenarios = [
+            {
+                id: 1,
+                title: "Cenário A: Lançamento de um Novo Recurso e Alcance de Público",
+                problem: "A TechByte quer demonstrar o recurso de 'Tradução Instantânea em 12 Idiomas' para estudantes, viajantes e jovens profissionais de forma rápida e atrativa.",
+                options: [
+                    { tool: "Redes Sociais com Vídeos Demonstrativos", correct: true, exp: "Excelente! Vídeos curtos nas redes sociais e influencers mostram a tecnologia em uso prático, gerando alto engajamento no público jovem.", impact: "Alta visibilidade de marca e atração imediata de interessados." },
+                    { tool: "Planilha de Estoque Manual", correct: false, exp: "Inadequado. Planilhas servem para controle interno e não para divulgação de novos recursos aos clientes.", impact: "Nenhum impacto nas vendas." },
+                    { tool: "Chatbot de Atendimento Automático", correct: false, exp: "Parcialmente útil para tirar dúvidas, mas não tem o apelo visual para lançar e demonstrar um produto novo.", impact: "Pouco alcance visual." }
+                ]
+            },
+            {
+                id: 2,
+                title: "Cenário B: Atendimento ao Cliente com Dúvidas Recorrentes (24/7)",
+                problem: "O suporte da TechByte está sobrecarregado respondendo diariamente às mesmas 5 perguntas sobre 'compatibilidade de Bluetooth' e 'tempo de entrega'.",
+                options: [
+                    { tool: "Publicações Diárias no Jornal", correct: false, exp: "Ineficiente e custoso. Não resolve dúvidas individuais nem atende em tempo real.", impact: "Altos custos sem resolutividade." },
+                    { tool: "Chatbot / Atendimento Automático Integrado", correct: true, exp: "Perfeito! O Chatbot responde dúvidas frequentes instantaneamente 24 horas por dia, liberando a equipe humana para casos complexos.", impact: "Redução de 80% na fila de suporte e satisfação do cliente." },
+                    { tool: "Sistemas de Gestão Financeira", correct: false, exp: "Incorreto. Ferramentas financeiras gerenciam caixa e impostos, não o suporte ao cliente.", impact: "Sem efeito no atendimento." }
+                ]
+            },
+            {
+                id: 3,
+                title: "Cenário C: Controle de Estoque e Prevenção de Prejuízos",
+                problem: "A TechByte vendeu 50 fones Pulse Pro no site, mas quando foi embalar percebeu que só tinha 10 unidades no estoque físico, gerando cancelamentos e raiva nos clientes.",
+                options: [
+                    { tool: "Sistema de Gestão Integrado (ERP / Planilhas)", correct: true, exp: "Perfeito! A integração entre e-commerce e sistema de estoque atualiza as quantidades em tempo real, impedindo vender o que não existe.", impact: "Eliminação de vendas sem estoque e maior confiabilidade." },
+                    { tool: "Anúncios Patrocinados Pagos", correct: false, exp: "Incorreto. Anunciar sem estoque só pioraria a crise e aumentaria os cancelamentos.", impact: "Prejuízo financeiro e perda de reputação." },
+                    { tool: "Filtros de Fotos no Instagram", correct: false, exp: "Inadequado. Recursos estéticos não resolvem controle de estoque.", impact: "Nenhum impacto operacional." }
+                ]
+            },
+            {
+                id: 4,
+                title: "Cenário D: Análise do Comportamento do Consumidor e Tendências",
+                problem: "A diretoria precisa descobrir quais cores do fone (Preto, Prata ou Azul) são mais procuradas e em qual região do país o frete é considerado mais impeditivo.",
+                options: [
+                    { tool: "Panfletos Impressos nas Ruas", correct: false, exp: "Ineficiente. Panfletos não geram relatórios ou dados sobre comportamento do usuário.", impact: "Dados imprecisos e desperdício de papel." },
+                    { tool: "Análise de Dados / Web Analytics & Inteligência Artificial", correct: true, exp: "Excelente! Ferramentas de inteligência de dados analisam cliques, buscas e carrinho abandonado, revelando a preferência exata do público.", impact: "Decisões baseadas em fatos reais, reduzindo riscos de investimento." },
+                    { tool: "Envio de E-mails em Massa sem Autorização", correct: false, exp: "Incorreto e arriscado perante a LGPD.", impact: "Risco de bloqueio da conta por Spam." }
+                ]
+            }
+        ];
+
+        let d3Solved = 0;
+
+        function renderD3() {
+            const container = document.getElementById('d3-scenarios-container');
+            container.innerHTML = d3Scenarios.map(sc => `
+                <div class="interactive-box p-4 rounded-xl space-y-3 border border-slate-800">
+                    <div>
+                        <span class="text-[10px] bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded uppercase">${sc.title}</span>
+                        <p class="text-xs text-white font-semibold mt-1 rounded">${sc.problem}</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <p class="text-[11px] text-slate-400 font-bold uppercase">Escolha a Ferramenta Tecnológica:</p>
+                        <div class="grid grid-cols-1 gap-2" id="d3-opts-${sc.id}">
+                            ${sc.options.map((opt, idx) => `
+                                <button onclick="checkD3(${sc.id}, ${idx})" class="p-3 bg-slate-950 hover:bg-slate-900 border border-slate-800 rounded-lg text-left text-xs font-medium text-slate-300 transition flex items-center justify-between">
+                                    <span><i class="fa-solid fa-wrench text-cyan-400 mr-2"></i> ${opt.tool}</span>
+                                    <i class="fa-solid fa-chevron-right text-slate-600 text-xs"></i>
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div id="d3-fb-${sc.id}" class="hidden p-3 rounded-xl text-xs space-y-1"></div>
+                </div>
+            `).join('');
+        }
+
+        function checkD3(scId, optIdx) {
+            const sc = d3Scenarios.find(x => x.id === scId);
+            const opt = sc.options[optIdx];
+            const fb = document.getElementById(`d3-fb-${scId}`);
+
+            fb.classList.remove('hidden', 'bg-emerald-500/20', 'border-emerald-500/40', 'text-emerald-300', 'bg-rose-500/20', 'border-rose-500/40', 'text-rose-300');
+
+            if (opt.correct) {
+                playSound('success');
+                d3Solved++;
+                fb.classList.add('bg-emerald-500/20', 'border', 'border-emerald-500/40', 'text-emerald-300');
+                fb.innerHTML = `
+                    <div class="font-bold flex items-center gap-1.5"><i class="fa-solid fa-circle-check"></i> ${opt.exp}</div>
+                    <div class="text-[11px] text-emerald-200 mt-1"><strong>Impacto no Negócio:</strong> ${opt.impact}</div>
+                `;
+            } else {
+                playSound('error');
+                fb.classList.add('bg-rose-500/20', 'border', 'border-rose-500/40', 'text-rose-300');
+                fb.innerHTML = `
+                    <div class="font-bold flex items-center gap-1.5"><i class="fa-solid fa-circle-xmark"></i> ${opt.exp}</div>
+                    <div class="text-[11px] text-rose-200 mt-1"><strong>Consequência:</strong> ${opt.impact}</div>
+                `;
+            }
+
+            document.getElementById(`d3-opts-${scId}`).querySelectorAll('button').forEach(b => b.disabled = true);
+            document.getElementById('d3-counter').innerText = `Cenários Solucionados: ${d3Solved} / ${d3Scenarios.length}`;
+        }
+
+        // --- DESAFIO 4: SEGURO OU ARRISCADO ---
+        const d4Scenarios = [
+            { id: 1, title: "Envio de ofertas sem consentimento prévio do usuário", desc: "Coletar e-mails da internet e enviar propagandas sem autorização prévia.", correct: "risco", exp: "Arriscado! Viola a LGPD e caracteriza spam, prejudicando a reputação da marca." },
+            { id: 2, title: "Autenticação em dois fatores na conta comercial", desc: "Ativar verificação extra em duas etapas para acesso ao painel do e-commerce.", correct: "seguro", exp: "Seguro! Protege os sistemas contra acesso não autorizado e ataques cibernéticos." },
+            { id: 3, title: "Coleta estrita dos dados para envio de faturamento", desc: "Solicitar no checkout apenas os dados necessários para entrega e emissão da nota fiscal.", correct: "seguro", exp: "Seguro! Respeita o princípio da minimização de dados da LGPD." },
+            { id: 4, title: "Compartilhamento de planilha com dados de clientes em grupos abertos", desc: "Enviar lista contendo telefones e nomes de compradores em aplicativos de mensagens abertos.", correct: "risco", exp: "Arriscado! Exposição gravíssima de dados pessoais de consumidores." }
+        ];
+
+        let d4Approved = 0;
+
+        function renderD4Game() {
+            const container = document.getElementById('d4-container');
+            container.innerHTML = d4Scenarios.map(sc => `
+                <div class="interactive-box p-4 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div class="space-y-1 text-xs">
+                        <strong class="text-white block font-semibold">${sc.title}</strong>
+                        <p class="text-slate-300">${sc.desc}</p>
+                        <span id="d4-fb-${sc.id}" class="hidden text-[11px] block font-medium mt-1"></span>
+                    </div>
+                    <div class="flex gap-2 w-full sm:w-auto" id="d4-btns-${sc.id}">
+                        <button onclick="checkD4(${sc.id}, 'seguro')" class="px-3 py-1.5 bg-slate-950 hover:bg-emerald-500/30 text-emerald-400 border border-slate-800 rounded-lg text-xs font-bold transition flex-1 sm:flex-none">
+                            Seguro
+                        </button>
+                        <button onclick="checkD4(${sc.id}, 'risco')" class="px-3 py-1.5 bg-slate-950 hover:bg-rose-500/30 text-rose-400 border border-slate-800 rounded-lg text-xs font-bold transition flex-1 sm:flex-none">
+                            Arriscado
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function checkD4(id, choice) {
+            const sc = d4Scenarios.find(x => x.id === id);
+            const fb = document.getElementById(`d4-fb-${id}`);
+            const btns = document.getElementById(`d4-btns-${id}`);
+
+            fb.classList.remove('hidden', 'text-emerald-400', 'text-rose-400');
+
+            if (choice === sc.correct) {
+                playSound('success');
+                d4Approved++;
+                fb.classList.add('text-emerald-400');
+                fb.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${sc.exp}`;
+            } else {
+                playSound('error');
+                fb.classList.add('text-rose-400');
+                fb.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Incorreto. ${sc.exp}`;
+            }
+
+            btns.querySelectorAll('button').forEach(b => b.disabled = true);
+            document.getElementById('d4-score').innerText = `Classificados: ${d4Approved} / ${d4Scenarios.length}`;
+        }
+
+        // --- DESAFIO 5: CRISES CORPORATIVAS ---
+        function answerD5(scNum, option, isCorrect) {
+            const fb = document.getElementById(`d5-fb-${scNum}`);
+            fb.classList.remove('hidden', 'bg-emerald-500/20', 'border-emerald-500/40', 'text-emerald-300', 'bg-rose-500/20', 'border-rose-500/40', 'text-rose-300');
+
+            if (isCorrect) {
+                playSound('success');
+                fb.classList.add('bg-emerald-500/20', 'border', 'border-emerald-500/40', 'text-emerald-300');
+                if (scNum === 1) fb.innerHTML = '<strong>Excelente Decisão!</strong> Transparência e resolução ágil preservam a confiança na marca durante problemas logísticos (Praça).';
+                if (scNum === 2) fb.innerHTML = '<strong>Muito Bem!</strong> Baixar preços sem margem gera prejuízo. Focar na proposta de valor do Produto protege a saúde financeira do negócio.';
+                if (scNum === 3) fb.innerHTML = '<strong>Correto!</strong> Atendimento profissional transforma uma crítica em oportunidade de fidelização do cliente.';
+                if (scNum === 4) fb.innerHTML = '<strong>Perfeito!</strong> Identificar tentativas de phishing é indispensável para evitar o roubo de contas comerciais.';
+            } else {
+                playSound('error');
+                fb.classList.add('bg-rose-500/20', 'border', 'border-rose-500/40', 'text-rose-300');
+                fb.innerHTML = '<strong>Decisão Arriscada!</strong> Esta ação prejudica a reputação ou traz riscos operacionais para a empresa. Reavalie o cenário.';
+            }
+        }
+
+        window.onload = function() {
+            renderD3();
+            renderD4Game();
+        };
+    </script>
+</body>
+</html>
+```
+
+The interactive application is ready for use in the workspace.
