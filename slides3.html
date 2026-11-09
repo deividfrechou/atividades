@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atividade: Protótipo de Aplicativo no Canva · Startup 360°</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#FBF8F2;--paper-2:#F3EEE3;--ink:#1B2430;--soft:#4A5266;--coral:#FF5A5F;--coral-d:#E13F44;--teal:#1FA8A0;--teal-d:#0F7A74;--yellow:#FFD23F;--line:#E4DDC9;--white:#fff;--shadow:0 6px 24px rgba(27,36,48,.08);
+    --navy:#101C2C;--green:#16B981;--bg:#F3F6FA;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.55;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif;margin:0;letter-spacing:-.01em;}
+  .nav{position:sticky;top:0;z-index:50;display:flex;gap:6px;align-items:center;padding:12px 24px;background:rgba(251,248,242,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap;}
+  .nav b{font-family:'Fraunces',serif;color:var(--coral-d);margin-right:10px;font-weight:900;}
+  .nav a{font-size:.8rem;font-weight:600;text-decoration:none;color:var(--soft);padding:7px 12px;border-radius:999px;}
+  .nav a:hover{background:var(--paper-2);color:var(--ink);}
+  section{max-width:1080px;margin:0 auto;padding:56px 24px;}
+  hr.div{max-width:1080px;margin:0 auto;border:none;border-top:1px dashed var(--line);}
+  .kicker{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--coral-d);display:block;margin-bottom:8px;}
+  .head{margin-bottom:28px;max-width:64ch;}
+  .head h2{font-size:clamp(1.5rem,3vw,2.1rem);}
+  .head p{color:var(--soft);margin:10px 0 0;}
+
+  .hero{padding-top:64px;max-width:1080px;margin:0 auto;}
+  .eyebrow{display:inline-block;background:var(--ink);color:var(--paper);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:18px;}
+  .hero h1{font-size:clamp(2.1rem,5vw,3.3rem);line-height:1.04;max-width:18ch;}
+  .hero h1 em{color:var(--coral-d);}
+  .hero p{color:var(--soft);font-size:1.05rem;max-width:62ch;margin-top:14px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+  .chips span{background:var(--white);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:.84rem;font-weight:600;}
+
+  .todo{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .todo div{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);}
+  .todo .ic{font-size:1.6rem;margin-bottom:6px;}
+  .todo h4{font-size:1.02rem;margin-bottom:4px;}
+  .todo p{font-size:.86rem;color:var(--soft);margin:0;}
+
+  /* modelo */
+  .model{background:var(--navy);color:#fff;border-radius:28px;padding:40px 34px;}
+  .model .kicker{color:var(--green);}
+  .model h2{color:#fff;}
+  .model .head p{color:#B8C4D6;}
+  .ident{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;margin:26px 0 8px;}
+  .logo-box{background:var(--bg);border-radius:20px;padding:30px;text-align:center;color:var(--navy);}
+  .logo-box .lg{font-family:'Fraunces',serif;font-weight:900;font-size:2.4rem;}
+  .logo-box .lg i{color:var(--green);font-style:normal;}
+  .logo-box p{margin:4px 0 0;color:var(--soft);font-style:italic;}
+  .palette{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .sw{border-radius:14px;padding:14px;font-size:.78rem;font-weight:700;display:flex;flex-direction:column;justify-content:flex-end;min-height:70px;}
+  .ident-note{font-size:.88rem;color:#B8C4D6;margin-top:6px;}
+  .goal{background:rgba(22,185,129,.14);border:1px solid rgba(22,185,129,.4);border-radius:16px;padding:16px 20px;margin-top:22px;font-size:.93rem;}
+  .goal b{color:var(--green);}
+
+  /* phones */
+  .screens{display:flex;flex-wrap:wrap;justify-content:center;gap:40px 28px;padding:30px 0 6px;}
+  .sc{width:210px;max-width:100%;}
+  .num{font-family:'Fraunces',serif;font-weight:900;font-size:1.6rem;color:var(--green);}
+  .sc h4{color:#fff;font-size:1rem;margin:0 0 10px;}
+  .phone{width:210px;height:410px;background:#000;border-radius:30px;padding:8px;box-shadow:0 16px 34px rgba(0,0,0,.4);}
+  .scr{width:100%;height:100%;border-radius:23px;background:var(--bg);overflow:hidden;display:flex;flex-direction:column;color:var(--navy);font-size:10.5px;}
+  .pad{padding:14px 13px;display:flex;flex-direction:column;gap:7px;flex:1;}
+  .dark{background:var(--navy);color:#fff;}
+  .scr h5{margin:0;font-family:'Fraunces',serif;font-size:15px;}
+  .card{background:#fff;border-radius:12px;padding:9px 11px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 6px rgba(16,28,44,.06);}
+  .card small{color:#6B7788;display:block;font-size:9px;}
+  .btn{background:var(--green);color:#fff;text-align:center;border-radius:12px;padding:9px;font-weight:800;letter-spacing:.03em;}
+  .btn.out{background:transparent;border:1.5px solid var(--green);color:var(--green);}
+  .big{font-size:22px;font-weight:800;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+  .tile{background:#fff;border-radius:12px;padding:10px 6px;text-align:center;font-weight:700;font-size:9.5px;box-shadow:0 2px 6px rgba(16,28,44,.06);}
+  .tile span{display:block;font-size:19px;margin-bottom:2px;}
+  .back{font-size:9.5px;font-weight:700;color:var(--green);}
+  .bal{background:var(--navy);color:#fff;border-radius:14px;padding:12px;}
+  .bal small{color:#9FB0C8;font-size:9px;}
+  .bal .big{color:var(--green);}
+  .elem{font-size:.78rem;color:#B8C4D6;margin-top:12px;}
+  .elem b{color:var(--green);}
+  .sim-res{background:var(--navy);color:#fff;border-radius:12px;padding:10px;text-align:center;}
+  .sim-res .big{color:var(--green);}
+  .bar{height:6px;border-radius:3px;background:var(--green);margin-top:3px;}
+  .tip{background:#fff;border-left:4px solid var(--green);border-radius:10px;padding:8px 10px;}
+  .tip b{display:block;margin-bottom:1px;}
+  .tip small{color:#6B7788;}
+  .center{align-items:center;justify-content:center;text-align:center;}
+
+  /* fluxo */
+  .flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin:8px 0 18px;}
+  .fb{background:var(--white);border:1.5px solid var(--line);border-radius:14px;padding:12px 16px;font-weight:700;font-size:.86rem;text-align:center;}
+  .fb span{display:block;font-family:'Fraunces',serif;color:var(--coral-d);font-size:1.2rem;}
+  .fb.main{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .fb.main span{color:var(--yellow);}
+  .fa{color:var(--soft);font-size:1.2rem;}
+  .branch{display:flex;flex-direction:column;gap:8px;}
+  .rule{background:#FFF3CE;border-radius:12px;padding:13px 16px;font-size:.9rem;margin-top:8px;}
+
+  /* canva */
+  .tips{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .t{background:var(--white);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:14px;padding:16px 18px;font-size:.9rem;}
+  .t:nth-child(even){border-left-color:var(--coral);}
+  .t b{display:block;margin-bottom:2px;}
+
+  /* ficha */
+  .ficha{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .field label{display:block;font-weight:700;font-size:.86rem;margin-bottom:2px;}
+  .field small{display:block;color:var(--soft);font-size:.78rem;margin-bottom:6px;}
+  .field textarea,.field input[type=text]{width:100%;font-family:inherit;font-size:.9rem;border:1.5px solid var(--line);border-radius:10px;padding:9px 11px;background:var(--paper);resize:vertical;}
+  .field textarea:focus,.field input:focus{outline:none;border-color:var(--teal);}
+  .field.full{grid-column:1/-1;}
+  .colors{display:flex;gap:8px;}
+  .colors input{width:46px;height:38px;padding:2px;cursor:pointer;}
+  .pbtn{margin-top:16px;background:var(--ink);color:#fff;border:none;border-radius:999px;padding:11px 22px;font-weight:700;cursor:pointer;font-family:inherit;}
+
+  .check{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .ck{display:flex;gap:12px;align-items:center;background:var(--white);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;font-weight:600;font-size:.9rem;user-select:none;}
+  .ck .box{width:24px;height:24px;border-radius:7px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;}
+  .ck.on{border-color:var(--teal);background:#EEF9F8;}
+  .ck.on .box{background:var(--teal);border-color:var(--teal);}
+  .prog{margin-top:18px;height:10px;background:var(--paper-2);border-radius:6px;overflow:hidden;}
+  .prog i{display:block;height:100%;width:0;background:var(--teal);transition:width .3s;}
+  .pt{font-size:.82rem;color:var(--soft);margin-top:6px;}
+
+  .pitch{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
+  .pitch ol{margin:0;padding-left:20px;} .pitch li{padding:6px 0;}
+  .crit{display:flex;flex-direction:column;gap:8px;}
+  .crit div{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:11px 14px;font-size:.88rem;}
+  footer{text-align:center;padding:40px;color:var(--soft);font-size:.85rem;}
+
+  @media (max-width:860px){
+    .todo,.ident,.tips,.ficha,.check,.pitch{grid-template-columns:1fr;}
+    .model{padding:28px 18px;}
+  }
+  @media print{.nav,.pbtn{display:none;} body{background:#fff;}}
+
+  /* ===== RESPONSIVO ===== */
+  body{overflow-x:hidden;}
+  .hero h1{max-width:none;}
+  .elem{max-width:210px;}
+  @media (max-width:1100px){
+    .hero,section{padding-left:20px !important;padding-right:20px !important;}
+  }
+  @media (max-width:860px){
+    section{padding-top:44px;padding-bottom:44px;}
+    .hero{padding-top:44px !important;}
+    .model{border-radius:22px;padding:26px 16px;}
+    .logo-box .lg{font-size:2rem;}
+  }
+  @media (max-width:560px){
+    .nav{padding:10px 14px;}
+    .hero,section{padding-left:14px !important;padding-right:14px !important;}
+    .hero p{font-size:.98rem;}
+    .chips span{font-size:.78rem;padding:6px 11px;}
+    .model{padding:22px 12px;border-radius:18px;}
+    .palette{grid-template-columns:1fr 1fr;}
+    .sw{min-height:60px;padding:10px;}
+    .screens{gap:34px;}
+    .sc{width:100%;max-width:290px;}
+    .phone{width:100%;max-width:290px;height:auto;aspect-ratio:210/410;margin:0 auto;}
+    .scr{font-size:clamp(10.5px,3.4vw,13px);}
+    .scr h5{font-size:clamp(15px,4.6vw,18px);}
+    .big{font-size:clamp(22px,6.4vw,26px);}
+    .elem{max-width:none;}
+    .flow{flex-direction:column;}
+    .fa{transform:rotate(90deg);}
+    .branch{width:100%;}
+    .fb{width:100%;}
+    .rule{font-size:.86rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <b>🚀 Startup 360°</b>
+  <a href="#modelo">Protótipo FINANCE+</a><a href="#fluxo">Navegação</a>
+</nav>
+
+<header class="hero" id="atividade" style="padding-left:24px;padding-right:24px;">
+  <span class="eyebrow">Atividade individual · Canva</span>
+  <h1>Reproduza o <em>protótipo</em> FINANCE+</h1>
+  <p>Sua atividade é construir, no Canva, este protótipo demonstrativo exatamente como ele aparece abaixo: com a mesma identidade visual, as <b>5 telas</b> e a navegação entre elas feita por botões e links.</p>
+  <div class="chips"><span>👤 Individual</span><span>🎨 Feito no Canva</span><span>📱 5 telas</span><span>🔗 Navegação por botões e links</span></div>
+</header>
+
+<hr class="div">
+
+<section id="modelo">
+  <div class="model">
+    <div class="head"><span class="kicker">Protótipo demonstrativo · 5 telas</span><h2>Protótipo demonstrativo: FINANCE+</h2><p>Observe a identidade visual e cada uma das cinco telas. É este o protótipo que você deve montar.</p></div>
+
+    <div class="goal"><b>Objetivo do aplicativo:</b> ajudar jovens a organizar suas finanças, compreender o uso do dinheiro e tomar decisões financeiras mais conscientes.</div>
+
+    <div class="ident">
+      <div class="logo-box"><div class="lg">FINANCE<i>+</i></div><p>Seu dinheiro, suas decisões.</p></div>
+      <div class="palette">
+        <div class="sw" style="background:#101C2C;color:#fff;border:1px solid #2A3A52;">#101C2C<br><span style="font-weight:500;opacity:.7">Azul-marinho</span></div>
+        <div class="sw" style="background:#16B981;color:#fff;">#16B981<br><span style="font-weight:500;opacity:.85">Verde</span></div>
+        <div class="sw" style="background:#F3F6FA;color:#101C2C;">#F3F6FA<br><span style="font-weight:500;opacity:.7">Fundo claro</span></div>
+        <div class="sw" style="background:#FFFFFF;color:#101C2C;">#FFFFFF<br><span style="font-weight:500;opacity:.7">Branco</span></div>
+      </div>
+    </div>
+    <div class="ident-note">Estilo: visual moderno, com azul-marinho, verde, branco, cartões arredondados e ícones simples.</div>
+
+    <div class="screens">
+
+      <div class="sc"><div class="num">01</div><h4>Início e apresentação</h4>
+        <div class="phone"><div class="scr dark"><div class="pad center">
+          <div style="font-size:34px;">💹</div><h5 style="font-size:20px;">FINANCE<span style="color:var(--green)">+</span></h5>
+          <div style="color:#9FB0C8;">Seu dinheiro, suas decisões.</div>
+          <div style="margin:8px 0;color:#DDE6F2;">Aprenda a cuidar melhor<br>do seu dinheiro.</div>
+          <div class="btn" style="width:100%;">COMEÇAR</div>
+          <div style="color:#9FB0C8;font-size:9.5px;">Já tem uma conta? <b style="color:var(--green)">Entrar</b></div>
+        </div></div></div>
+        <div class="elem"><b>Elementos:</b> logotipo, nome, slogan, breve apresentação e botão de entrada.</div></div>
+
+      <div class="sc"><div class="num">02</div><h4>Painel principal</h4>
+        <div class="phone"><div class="scr"><div class="pad">
+          <h5>Olá, Mariana!</h5>
+          <div class="bal"><small>Saldo disponível</small><div class="big">R$ 1.250,00</div></div>
+          <div class="grid2"><div class="card" style="display:block;"><small>Receitas</small><b style="color:#0F9A6B">R$ 2.000</b></div><div class="card" style="display:block;"><small>Despesas</small><b style="color:#E13F44">R$ 750</b></div></div>
+          <b>O que deseja fazer?</b>
+          <div class="grid2"><div class="tile"><span>🧾</span>Controlar gastos</div><div class="tile"><span>🧮</span>Simular empréstimo</div><div class="tile"><span>📚</span>Aprender</div><div class="tile"><span>🎯</span>Minhas metas</div></div>
+        </div></div></div>
+        <div class="elem"><b>Elementos:</b> saudação, saldo, receitas, despesas e atalhos para as funcionalidades.</div></div>
+
+      <div class="sc"><div class="num">03</div><h4>Controle financeiro</h4>
+        <div class="phone"><div class="scr"><div class="pad">
+          <div class="back">← Voltar ao painel</div><h5>Meu controle financeiro</h5>
+          <div class="card"><div>🍽️ Alimentação<div class="bar" style="width:100px"></div></div><b>R$ 250</b></div>
+          <div class="card"><div>🚌 Transporte<div class="bar" style="width:60px"></div></div><b>R$ 150</b></div>
+          <div class="card"><div>🎮 Lazer<div class="bar" style="width:80px"></div></div><b>R$ 200</b></div>
+          <div class="card"><div>📦 Outros<div class="bar" style="width:60px"></div></div><b>R$ 150</b></div>
+          <div class="card" style="background:var(--navy);color:#fff;"><span>Total de gastos</span><b style="color:var(--green)">R$ 750</b></div>
+          <div class="btn" style="margin-top:auto;">+ Registrar despesa</div>
+        </div></div></div>
+        <div class="elem"><b>Elementos:</b> categorias de gastos, valores, total e botão para registrar despesa. <i>Exemplo ilustrativo de despesas mensais.</i></div></div>
+
+      <div class="sc"><div class="num">04</div><h4>Simulador financeiro</h4>
+        <div class="phone"><div class="scr"><div class="pad">
+          <div class="back">← Voltar ao painel</div><h5>Simule antes de contratar</h5>
+          <div class="card"><div><small>Valor do empréstimo</small><b>R$ 2.000,00</b></div></div>
+          <div class="card"><div><small>Taxa de juros mensal</small><b>2%</b></div></div>
+          <div class="card"><div><small>Número de parcelas</small><b>12 vezes</b></div></div>
+          <div class="sim-res"><small style="color:#9FB0C8;">Valor aproximado da parcela</small><div class="big">R$ 189,12</div><small style="color:#DDE6F2;">Total aproximado: R$ 2.269,44</small></div>
+          <div style="font-size:9px;color:#6B7788;">Simulação ilustrativa com parcelas fixas e juros compostos.</div>
+        </div></div></div>
+        <div class="elem"><b>Elementos:</b> valor, taxa, prazo, resultado e comparação do custo do crédito.</div></div>
+
+      <div class="sc"><div class="num">05</div><h4>Educação financeira</h4>
+        <div class="phone"><div class="scr"><div class="pad">
+          <div class="back">← Voltar ao painel</div><h5>Aprenda a cuidar do seu dinheiro</h5>
+          <div class="tip"><b>O que é inflação?</b><small>Entenda por que os preços aumentam e como isso afeta seu poder de compra.</small></div>
+          <div class="tip"><b>O que é a Selic?</b><small>Conheça a taxa básica de juros da economia brasileira.</small></div>
+          <div class="tip" style="border-left-color:var(--coral);"><b>Cuidado com golpes!</b><small>Desconfie de promessas de lucro rápido e garantido.</small></div>
+          <div class="btn out" style="margin-top:auto;">Ver todas as dicas</div>
+        </div></div></div>
+        <div class="elem"><b>Elementos:</b> conteúdos educativos, dicas e orientações financeiras.</div></div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section id="fluxo">
+  <div class="head"><span class="kicker">Navegação simulada</span><h2>Como as telas se conectam</h2>
+  <p>O protótipo deve permitir que alguém navegue pelas páginas como se estivesse usando um aplicativo de verdade.</p></div>
+  <div class="flow">
+    <div class="fb"><span>1</span>Início</div><div class="fa">→</div>
+    <div class="fb main"><span>2</span>Painel principal</div><div class="fa">→</div>
+    <div class="branch">
+      <div class="fb"><span>3</span>Controle</div>
+      <div class="fb"><span>4</span>Simulador</div>
+      <div class="fb"><span>5</span>Aprender</div>
+    </div>
+  </div>
+  <div class="rule">📌 As telas 3, 4 e 5 são acessadas pelos <b>atalhos do painel principal</b>. Todas devem ter a opção de <b>voltar ao painel</b>.</div>
+</section>
+
+<footer>Startup 360° · Protótipo demonstrativo FINANCE+</footer>
+
+
+</body>
+</html>
